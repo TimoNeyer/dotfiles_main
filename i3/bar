@@ -1,0 +1,73 @@
+# i3status configuration file.
+# Save this file as ~/.config/i3/i3status.conf or ~/.i3status.conf
+
+general {
+    output_format = "i3bar"
+    color = true
+    interval = 5
+    color_good = "#00FF00"
+    color_degraded = "#FFFF00"
+    color_bad = "#FF0000"
+}
+
+# order
+
+# System load average, displays the system load
+load {
+    format = "Load: %1min"
+}
+
+# Displays available memory
+memory {
+    format = "Mem: %free"
+}
+
+# CPU usage percentage
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+# Network throughput (requires the sys/class/net/<device>/statistics/rx_bytes and tx_bytes files)
+ethernet enp2s0 {
+    format_up = "E: %ip"
+    format_down = ""
+}
+
+wireless wlp3s0 {
+    format_up = "WLN %ip (%quality, %essid)"
+    format_down = ""
+}
+
+# Volume for the default audio device
+volume master {
+    format = "Vol: %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+# Battery status (useful for laptops)
+battery 0 {
+    format = "BAT %status %percentage"
+    last_full_capacity = true
+    integer_battery_capacity = true
+}
+
+# Time and date
+time {
+    format = "%Y-%m-%d %H:%M:%S"
+}
+
+# Temperature (make sure lm-sensors is installed)
+temperature 0 {
+    # Adjust to your thermal zone
+    format = "Temp: %degrees°C"
+    path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+# custom 
+exec my_custom_script {
+    format = "Script: %output"
+    interval = 30
+}
+

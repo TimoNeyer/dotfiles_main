@@ -1,0 +1,12 @@
+*.local
+*.local/
+*.vscode/
+.venv/
+venv/
+*.bin
+*.out
+*.[oa]
+.vim/
+zig-out/
+.zig-cache/
+.zed/
