@@ -1,11 +1,3 @@
-
-SHORTKEYS
-Review
-Documentation
-Support
-GitHub
-
-
 [
   {
     "key": "ctrl+t",
@@ -107,7 +99,7 @@ GitHub
   },
   {
     "key": "ctrl+z",
-    "label": "backtab",
+    "label": "backpage",
     "action": "back",
     "sites": "",
     "sitesArray": [
@@ -116,13 +108,56 @@ GitHub
   },
   {
     "key": "ctrl+f",
-    "label": "forwardtab",
+    "label": "forwardpage",
     "action": "forward",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+tab",
+    "label": "switchtab",
+    "action": "nexttab",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+Shift+tab",
+    "label": "switchrevtab",
+    "action": "prevtab",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "action": "hardreload",
+    "key": "ctrl+Shift+r",
+    "label": "forcereltab",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+r",
+    "label": "reltab",
+    "action": "reload",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "action": "copyurl",
+    "key": "ctrl+Shift+c",
+    "label": "cpyurlmisc",
     "sites": "",
     "sitesArray": [
       ""
     ]
   }
 ]
-
-

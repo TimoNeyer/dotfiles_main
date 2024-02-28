@@ -18,6 +18,8 @@ set $l2 Super
 
 # setup for lockscreen
 set $lock "i3lock -e -f --raw=1920x1200:rgb --image /usr/share/backgrounds/parrot-fly-grey.rgb"
+set $lockt "xrandr --output eDP --primary --output HDMI-A-0 --off --output DisplayPort-0 --off --output DisplayPort-0 --off && scrot /tmp/screen.png &&  i3lock -u -e -i /tmp/screen.png && rm /tmp/screen.png"
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Cantarell 10
@@ -35,7 +37,7 @@ font pango:Cantarell 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec mate-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -49,10 +51,9 @@ bindsym $mod+d exec dmenu_run
 
 # set defaults 
 default_orientation vertical
-workspace_layout tabbed
+workspace_layout stacked
 title_align left
 for_window [all] title_window_icon on
-for_window [all] gaps inner all set 20
 
 # change focus
 bindsym $mod+j focus down
@@ -79,10 +80,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+n; split h
+bindsym $mod+Shift+n split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -91,12 +92,14 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+v layout splitv
+bindsym $mod+n layout splith
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -130,8 +133,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # switch workspaces relative
-bindsym $l2+$mod+l workspace prev
-bindsym $l2+$mod+h workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Tab workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -177,9 +180,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+d mode "default"
-
-        # experimental
-        bindsym $l2+Space mode "default"
         bindsym $l2+j mode "default"
 }
 
@@ -196,7 +196,6 @@ mode "launcher" {
         bindsym $mod+d mode "default"
         
         # experimental
-        bindsym $l2+Space mode "default"
         bindsym $l2+k mode "default"
 }
 
@@ -214,37 +213,65 @@ mode "system" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+Shift+y mode "default"
+        bindsym $mod+y mode "default"
+}
+
+# screen config
+mode "monitors" {
+        bindsym h+1+l exec xrandr --output HDMI-A-0 --primary --auto --left-of eDP
+        bindsym h+1+r exec xrandr --output HDMI-A-0 --primary --auto --right-of eDP
+        bindsym h+1+a exec xrandr --output HDMI-A-0 --primary --auto --above  eDP
+        bindsym h+1+b exec xrandr --output HDMI-A-0 --primary --auto --below eDP
+
+        bindsym h+2+l exec xrandr --output HDMI-A-1 --primary --auto --left-of eDP
+        bindsym h+2+r exec xrandr --output HDMI-A-1 --primary --auto --right-of eDP
+        bindsym h+2+a exec xrandr --output HDMI-A-1 --primary --auto --above  eDP
+        bindsym h+2+b exec xrandr --output HDMI-A-1 --primary --auto --below eDP
+
+        bindsym d+1+l exec xrandr --output DisplayPort-0 --primary --auto --left-of eDP
+        bindsym d+1+r exec xrandr --output DisplayPort-0 --primary --auto --right-of eDP
+        bindsym d+1+a exec xrandr --output DisplayPort-0 --primary --auto --above  eDP
+        bindsym d+1+b exec xrandr --output DisplayPort-0 --primary --auto --below eDP
+
+        bindsym d+2+l exec xrandr --output DisplayPort-1 --primary --auto --left-of eDP
+        bindsym d+2+r exec xrandr --output DisplayPort-1 --primary --auto --right-of eDP
+        bindsym d+2+a exec xrandr --output DisplayPort-1 --primary --auto --above  eDP
+        bindsym d+2+b exec xrandr --output DisplayPort-1 --primary --auto --below eDP
+
+        bindsym d+3+l exec xrandr --output DisplayPort-2 --primary --auto --left-of eDP
+        bindsym d+3+r exec xrandr --output DisplayPort-2 --primary --auto --right-of eDP
+        bindsym d+3+a exec xrandr --output DisplayPort-2 --primary --auto --above  eDP
+        bindsym d+3+b exec xrandr --output DisplayPort-2 --primary --auto --below eDP
+
+        bindsym d+4+l exec xrandr --output DisplayPort-3 --primary --auto --left-of eDP
+        bindsym d+4+r exec xrandr --output DisplayPort-3 --primary --auto --right-of eDP
+        bindsym d+4+a exec xrandr --output DisplayPort-3 --primary --auto --above  eDP
+        bindsym d+4+b exec xrandr --output DisplayPort-3 --primary --auto --below eDP
+
+        bindsym d+5+l exec xrandr --output DisplayPort-4 --primary --auto --left-of eDP
+        bindsym d+5+r exec xrandr --output DisplayPort-4 --primary --auto --right-of eDP
+        bindsym d+5+a exec xrandr --output DisplayPort-4 --primary --auto --above  eDP
+        bindsym d+5+b exec xrandr --output DisplayPort-4 --primary --auto --below eDP
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+m mode "default"
 }
 
 bindsym $mod+y mode "system"
-
+bindsym $mod+m mode "monitors"
 bindsym $mod+b mode "resize"
-# experimental
-bindsym $l2+j mode "resize"
-bindsym $l2+k mode "launcher"
-
 
 # keyboard options
-mode "layout_change" {
-        bindsym lock exec --no-startup-id  "setxkbmap -layout de"
-        bindsym --release lock mode "default"
-}
-
-#bindsym lock mode "de"
-bindsym $l2+Shift+u exec setxkbmap -layout us
-exec "synclient VertScrollDelta=-111"
+exec_always setxkbmap -option 'grp:caps_switch' us,de 
 
 # quick locking of screen
 bindsym mod4+l exec --no-startup-id $lock
-
+bindsym mod4+Shift+l exec --no-startup-id $lockt
 
 # set enviroment
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh -c "
 exec_always --no-startup-id "feh --bg-scale /usr/share/backgrounds/parrot-fly-grey.jpg"
-
-# make sure, the zshrc is loaded
-exec_always --no-startup-id source .zshrc
 
 # set colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -256,20 +283,14 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # configure borders
 smart_gaps on 
 
-# config for external monitors
-bar {
-    output all
-    status_command i3status
-}
-
-# config for external monitors
-bindsym $mod+e+v focus output nonprimary
-bindsym $mod+l+v focus output primary
-
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+mminus scratchpad show
+bindsym $mod+minus scratchpad show
 
 # gotos 
-bindsym $mod+Shift+n exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+Shift+t exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 bindsym $mod+Shift+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+# miscellaneous
+focus_wrapping yes
+
