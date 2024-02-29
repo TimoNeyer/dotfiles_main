@@ -263,7 +263,9 @@ bindsym $mod+m mode "monitors"
 bindsym $mod+b mode "resize"
 
 # keyboard options
-exec_always setxkbmap -option 'grp:caps_switch' us,de 
+exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 
+exec_always --no-startup-id "synclient 'VertScrollDelta'=-78"
+exec_always --no-startup-id "synclient 'HorizScrollDelta'=78"
 
 # quick locking of screen
 bindsym mod4+l exec --no-startup-id $lock
@@ -284,7 +286,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 smart_gaps on 
 
 # scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Ctrl+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # gotos 
@@ -293,4 +295,5 @@ bindsym $mod+Shift+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 # miscellaneous
 focus_wrapping yes
+#exec_always --no-startup-id i3-msg 'exec Telegram >/dev/null &; exec discord & > /dev/null'
 
