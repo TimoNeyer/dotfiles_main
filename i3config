@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# leyer 1 keys
+# layer 1 keys
 set $mod Mod1
 
 # layer 2 keys
@@ -133,8 +133,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # switch workspaces relative
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+Tab workspace next
+bindsym $mod+Control+l workspace next
+bindsym $mod+Control+h workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -179,8 +179,7 @@ mode "resize" {
         # back to normal: Enter or Escape or $mod+d
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+d mode "default"
-        bindsym $l2+j mode "default"
+        bindsym $mod+r mode "default"
 }
 
 # mode for quickly launching apps
@@ -204,7 +203,7 @@ mode "launcher" {
 # systemctl
 mode "system" {
         bindsym l exec --no-startup-id $lock, mode "default"
-        bindsym e exec --no-startup-id "i3-msg exit"j, mode "default"
+        bindsym e exec --no-startup-id "i3-msg exit", mode "default"
         bindsym s exec --no-startup-id "i3lock && systemctl suspend", mode "default"
         bindsym h exec --no-startup-id "i3lock && systemctl hibernate", mode "default"
         bindsym r exec --no-startup-id "i3lock && systemctl reboot", mode "default"
@@ -260,7 +259,7 @@ mode "monitors" {
 
 bindsym $mod+y mode "system"
 bindsym $mod+m mode "monitors"
-bindsym $mod+b mode "resize"
+bindsym $mod+r mode "resize"
 
 # keyboard options
 exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 
