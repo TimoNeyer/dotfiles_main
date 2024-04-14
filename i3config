@@ -17,7 +17,7 @@ set $l2 Super
 
 
 # setup for lockscreen
-set $lock "i3lock -e -f --raw=1920x1200:rgb --image /usr/share/backgrounds/parrot-fly-grey.rgb"
+
 set $lockt "xrandr --output eDP --primary --output HDMI-A-0 --off --output DisplayPort-0 --off --output DisplayPort-0 --off && scrot /tmp/screen.png &&  i3lock -u -e -i /tmp/screen.png && rm /tmp/screen.png"
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -51,9 +51,11 @@ bindsym $mod+d exec dmenu_run
 
 # set defaults 
 default_orientation vertical
-workspace_layout stacked
+workspace_layout tabbed 
 title_align left
 for_window [all] title_window_icon on
+default_border pixel 3
+hide_edge_borders none
 
 # change focus
 bindsym $mod+j focus down
@@ -135,6 +137,7 @@ bindsym $mod+0 workspace $ws10
 # switch workspaces relative
 bindsym $mod+Control+l workspace next
 bindsym $mod+Control+h workspace prev
+bindsym $mod+Space workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -147,6 +150,10 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# set ws1 on primary screen
+workspace 1 output pimary
+mouse_warping output
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -182,32 +189,14 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-# mode for quickly launching apps
-mode "launcher" {
-        bindsym t exec "mate-terminal & > /dec/null"
-        bindsym f exec "ff & > /dev/null"
-        bindsym b exec "brave-browser & > /dev/null"
-        bindsym c exec "code"
-        
-        # back to normal
-        bindsym Escape mode "default"
-        bindsym Return mode "default"
-        bindsym $mod+d mode "default"
-        
-        # experimental
-        bindsym $l2+k mode "default"
-}
-
-
-
 # systemctl
 mode "system" {
         bindsym l exec --no-startup-id $lock, mode "default"
         bindsym e exec --no-startup-id "i3-msg exit", mode "default"
-        bindsym s exec --no-startup-id "i3lock && systemctl suspend", mode "default"
-        bindsym h exec --no-startup-id "i3lock && systemctl hibernate", mode "default"
-        bindsym r exec --no-startup-id "i3lock && systemctl reboot", mode "default"
-        bindsym Shift+s exec --no-startup-id "i3lock && systemctl poweroff", mode "default"
+        bindsym s exec --no-startup-id "xsecurelock && systemctl suspend", mode "default"
+        bindsym h exec --no-startup-id "xsecurelock && systemctl hibernate", mode "default"
+        bindsym r exec --no-startup-id "xsecurelock && systemctl reboot", mode "default"
+        bindsym Shift+s exec --no-startup-id "xsecurelock && systemctl poweroff", mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -215,50 +204,7 @@ mode "system" {
         bindsym $mod+y mode "default"
 }
 
-# screen config
-mode "monitors" {
-        bindsym h+1+l exec xrandr --output HDMI-A-0 --primary --auto --left-of eDP
-        bindsym h+1+r exec xrandr --output HDMI-A-0 --primary --auto --right-of eDP
-        bindsym h+1+a exec xrandr --output HDMI-A-0 --primary --auto --above  eDP
-        bindsym h+1+b exec xrandr --output HDMI-A-0 --primary --auto --below eDP
-
-        bindsym h+2+l exec xrandr --output HDMI-A-1 --primary --auto --left-of eDP
-        bindsym h+2+r exec xrandr --output HDMI-A-1 --primary --auto --right-of eDP
-        bindsym h+2+a exec xrandr --output HDMI-A-1 --primary --auto --above  eDP
-        bindsym h+2+b exec xrandr --output HDMI-A-1 --primary --auto --below eDP
-
-        bindsym d+1+l exec xrandr --output DisplayPort-0 --primary --auto --left-of eDP
-        bindsym d+1+r exec xrandr --output DisplayPort-0 --primary --auto --right-of eDP
-        bindsym d+1+a exec xrandr --output DisplayPort-0 --primary --auto --above  eDP
-        bindsym d+1+b exec xrandr --output DisplayPort-0 --primary --auto --below eDP
-
-        bindsym d+2+l exec xrandr --output DisplayPort-1 --primary --auto --left-of eDP
-        bindsym d+2+r exec xrandr --output DisplayPort-1 --primary --auto --right-of eDP
-        bindsym d+2+a exec xrandr --output DisplayPort-1 --primary --auto --above  eDP
-        bindsym d+2+b exec xrandr --output DisplayPort-1 --primary --auto --below eDP
-
-        bindsym d+3+l exec xrandr --output DisplayPort-2 --primary --auto --left-of eDP
-        bindsym d+3+r exec xrandr --output DisplayPort-2 --primary --auto --right-of eDP
-        bindsym d+3+a exec xrandr --output DisplayPort-2 --primary --auto --above  eDP
-        bindsym d+3+b exec xrandr --output DisplayPort-2 --primary --auto --below eDP
-
-        bindsym d+4+l exec xrandr --output DisplayPort-3 --primary --auto --left-of eDP
-        bindsym d+4+r exec xrandr --output DisplayPort-3 --primary --auto --right-of eDP
-        bindsym d+4+a exec xrandr --output DisplayPort-3 --primary --auto --above  eDP
-        bindsym d+4+b exec xrandr --output DisplayPort-3 --primary --auto --below eDP
-
-        bindsym d+5+l exec xrandr --output DisplayPort-4 --primary --auto --left-of eDP
-        bindsym d+5+r exec xrandr --output DisplayPort-4 --primary --auto --right-of eDP
-        bindsym d+5+a exec xrandr --output DisplayPort-4 --primary --auto --above  eDP
-        bindsym d+5+b exec xrandr --output DisplayPort-4 --primary --auto --below eDP
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+m mode "default"
-}
-
 bindsym $mod+y mode "system"
-bindsym $mod+m mode "monitors"
 bindsym $mod+r mode "resize"
 
 # keyboard options
@@ -266,12 +212,23 @@ exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de "
 exec_always --no-startup-id "synclient 'VertScrollDelta'=-78"
 exec_always --no-startup-id "synclient 'HorizScrollDelta'=78"
 
+exec --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 
+exec --no-startup-id "synclient 'VertScrollDelta'=-78"
+exec --no-startup-id "synclient 'HorizScrollDelta'=78"
+
+
 # quick locking of screen
-bindsym mod4+l exec --no-startup-id $lock
+bindsym mod4+l exec --no-startup-id "sh ~/.dotfiles/locker.sh"
 bindsym mod4+Shift+l exec --no-startup-id $lockt
+
+# automaticaly locking 
+exec_always --no-startup-id killall xss-lock
+exec_always --no-startup-id xset s 60 20
+exec_always --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- ~/.dotfiles/locker.sh
 
 # set enviroment
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh -c "
+exec_always nm-applet
 exec_always --no-startup-id "feh --bg-scale /usr/share/backgrounds/parrot-fly-grey.jpg"
 
 # set colors
@@ -282,17 +239,34 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # configure borders
-smart_gaps on 
+#smart_gaps on 
 
 # scratchpad
 bindsym $mod+Ctrl+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # gotos 
-bindsym $mod+Shift+t exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
-bindsym $mod+Shift+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+bindsym $mod+m exec ~/.config/i3/imark.sh
+bindsym $mod+o exec ~/.config/i3/igo.sh
+focus_on_window_activation urgent
+
+# mappings brightness & sound
+bindsym $mod+F5 exec brightnessctl s 5%- 'amdgpu_bl0'
+bindsym $mod+F6 exec brightnessctl s +5% 'amdgpu_bl0'
+
+bindsym $mod+F1 exec amixer -D pulse sset Master toggle
+bindsym $mod+F2 exec amixer sset Master 5%-
+bindsym $mod+F3 exec amixer sset Master 5%+
+bindsym $mod+F4 exec amixer -D pulse sset Capture toggle
+
+exec_always --no-startup-id amixer -D pulse sset Capture nocap
+exec_always --no-startup-id amixer -D pulse sset Master off
+exec --no-startup-id amixer -D pulse sset Capture nocap
+exec --no-startup-id amixer -D pulse sset Master off
+
+
 
 # miscellaneous
-focus_wrapping yes
-#exec_always --no-startup-id i3-msg 'exec Telegram >/dev/null &; exec discord & > /dev/null'
+focus_wrapping force 
+focus_follows_mouse yes
 

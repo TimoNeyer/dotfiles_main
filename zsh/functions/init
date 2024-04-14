@@ -1,0 +1,12 @@
+if [ -f ~/.dotfiles/zsh/functions/x ]; then
+    . ~/.dotfiles/zsh/functions/x
+fi
+
+if [ -f ~/.dotfiles/zsh/functions/minor ]; then
+    . ~/.dotfiles/zsh/functions/minor
+fi
+
+if [ -f ~/.dotfiles/zsh/funcitons/led ]; then
+    . ~/.dotfiles/zsh/functions/led
+fi 
+
