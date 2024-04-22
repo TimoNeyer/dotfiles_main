@@ -13,10 +13,5 @@ export XSECURELOCK_SINGLE_AUTH_WINDOW=1
 
 # Deactivate all external displays
 xrandr --output eDP --auto 
-xrandr --query | grep " connected" | awk '{ print $1 }' | while read -r line; do
-    if [ "$line" != "eDP" ]; then
-        xrandr --output "$line" --auto
-    fi
-done
 
 xsecurelock

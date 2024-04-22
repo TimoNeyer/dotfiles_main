@@ -13,7 +13,7 @@ filetype plugin indent on
 syntax on
 
 " Disable all bells
-set noerrorbells visualbell t_vb=
+set noerrorbells visualbell t_vb=0
 
 " Add numbers to each line on the left-hand side.
 set number relativenumber
@@ -87,6 +87,9 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" when searching case insensitive
+set ic
+
 " }}}
 
 " PLUGINS ---------------------------------------------------------------- {{{
@@ -94,10 +97,36 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
     call plug#begin('~/.vim/plugged')
         Plug 'ervandew/supertab'
         Plug 'preservim/nerdtree'
-       " Plug 'dense-analysis/ale'
-
+        Plug 'kiith-sa/DSnips'
+        Plug 'idanarye/vim-dutyl'
+        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+        Plug 'w0rp/ale'
     call plug#end()
 
+
+    let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+
+    let g:mkdp_auto_start = 1
+
+    let g:ale_enable = 1
+    let g:ale_lint_on_text_changed = 'always'
+    let g:ale_lint_on_insert_leave = 1
+    let g:ale_lint_on_save = 1
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enable = 1
+    let g:ale_sign_column_alway = 1
+    let g:ale_linters = {
+    \   'python': ['flake8', 'mypy'],  
+    \   'c': ['gcc'],   
+    \   'cpp': ['g++'],  
+    \}
+    let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \   'python': ['autopep8', 'isort'],  
+    \   'c': [],
+    \   'cpp': [], 
+    \}
+    let g:ale_statusline_format = ['E: %d', 'W: %d', 'Ok']
 " }}}
 
 " MAPPINGS --------------------------------------------------------------- {{{
@@ -113,40 +142,45 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
     " shortcuts editing
     nnoremap O o<esc>
-    nnoremap Q q!
-    nnoremap W w!
+    nnoremap Q :q
+    nnoremap W :wq
+    nnoremap dl d$
 
     " mappings plugins
       " Nerdtree
         nnoremap <F3> :NERDTreeToggle<cr>
-        let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
-
+      " MardownPreview 
+        nnoremap <F4> :MarkdownPreviewToggle
+      " ALE
+        nnoremap yy :ALEGoToDefenition
+        nnoremap uu :ALEFindReferences
+        nnoremap fff :ALEFix
 
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
-augroup basicfold
-    autocmd! 
-    autocmd FileType * setlocal foldmethod=indent
+augroup filetype_py
+  autocmd! 
+  autocmd FileType py setlocal foldmethod=indent
 augroup END 
 
-  augroup filetype_vim
-      autocmd!
-      autocmd FileType vim setlocal foldmethod=marker
-  augroup END
-
-  augroup filetype_py
-      autocmd! 
-      autocmd FileType py setlocal foldmethod=indent
-  augroup END 
-
-  augroup remember_folds
+augroup remember_folds
     autocmd!
     autocmd BufWinLeave * mkview
     autocmd BufWinEnter * silent! loadview
-  augroup END
+augroup END
 
+augroup filetype_md
+    autocmd FileType md setlocal set tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType md setlocal let g:vim_markdown_new_list_item_indent = 0
+    autocmd FileType md setlocal set expandtab number ruler autoindent smartindent
+    autocmd Filetype md setlocal syntax off 
+augroup END
 
 " }}}
 

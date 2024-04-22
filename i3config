@@ -264,8 +264,6 @@ exec_always --no-startup-id amixer -D pulse sset Master off
 exec --no-startup-id amixer -D pulse sset Capture nocap
 exec --no-startup-id amixer -D pulse sset Master off
 
-
-
 # miscellaneous
 focus_wrapping force 
 focus_follows_mouse yes
