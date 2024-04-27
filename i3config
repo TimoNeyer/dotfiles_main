@@ -98,7 +98,7 @@ bindsym $mod+v layout splitv
 bindsym $mod+n layout splith
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+t floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -166,12 +166,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym j resize shrink height 10 px or 10 ppt
@@ -204,8 +198,15 @@ mode "system" {
         bindsym $mod+y mode "default"
 }
 
+
 bindsym $mod+y mode "system"
 bindsym $mod+r mode "resize"
+
+#bindsym $mod+i mode "insert"
+#bindsym $mod+Escape mode "normal"
+
+#include ~/.config/i3/normal.conf
+#include ~/.config/i3/insert.conf
 
 # keyboard options
 exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 

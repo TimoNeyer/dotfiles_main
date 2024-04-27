@@ -62,3 +62,4 @@ alias vault='xset s 30 10'
 alias doascheck='doas -C /etc/doas.conf && echo "config ok" || echo "config error"'
 alias sudo=doas
 alias uni='cd /var/global/uni/S2'
+alias latexcheat='firefox --new-window /var/global/uni/Liste\ mathematischer\ Symbole\ –\ Wikipedia.html'
