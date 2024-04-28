@@ -1,0 +1,4 @@
+opacity-rule = [
+    "85:class_g = 'alacritty' && focused",
+    "85:class_g = 'alacritty' && !focused",
+];

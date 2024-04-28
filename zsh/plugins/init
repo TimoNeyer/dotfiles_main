@@ -7,5 +7,13 @@ if [ -f ~/.dotfiles/zsh/plugins/vi-mode/zsh-vi-mode.zsh ]; then
 fi
 
 if [ -f ~/.dotfiles/zsh/plugins/command-time ]; then
-    . ~/.dotfiles/zsh/plugins/command-time 
+    . ~/.dotfiles/zsh/plugins/command-time
+fi
+
+if [ -f ~/.dotfiles/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+  . ~/.dotfiles/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
+if [ -f ~/.dotfiles/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+    . ~/.dotfiles/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi

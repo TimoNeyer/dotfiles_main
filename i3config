@@ -49,9 +49,9 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# set defaults 
+# set defaults
 default_orientation vertical
-workspace_layout tabbed 
+workspace_layout tabbed
 title_align left
 for_window [all] title_window_icon on
 default_border pixel 3
@@ -122,7 +122,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace 
+# switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -137,7 +137,7 @@ bindsym $mod+0 workspace $ws10
 # switch workspaces relative
 bindsym $mod+Control+l workspace next
 bindsym $mod+Control+h workspace prev
-bindsym $mod+Space workspace back_and_forth
+# bindsym $mod+Space workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -185,12 +185,12 @@ mode "resize" {
 
 # systemctl
 mode "system" {
-        bindsym l exec --no-startup-id $lock, mode "default"
+        bindsym l exec --no-startup-id xsecurelock, mode "default"
         bindsym e exec --no-startup-id "i3-msg exit", mode "default"
-        bindsym s exec --no-startup-id "xsecurelock && systemctl suspend", mode "default"
-        bindsym h exec --no-startup-id "xsecurelock && systemctl hibernate", mode "default"
-        bindsym r exec --no-startup-id "xsecurelock && systemctl reboot", mode "default"
-        bindsym Shift+s exec --no-startup-id "xsecurelock && systemctl poweroff", mode "default"
+        bindsym s exec --no-startup-id  systemctl suspend, mode "default"
+        bindsym h exec --no-startup-id  systemctl hibernate, mode "default"
+        bindsym r exec --no-startup-id systemctl reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -209,11 +209,11 @@ bindsym $mod+r mode "resize"
 #include ~/.config/i3/insert.conf
 
 # keyboard options
-exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 
+exec_always --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de "
 exec_always --no-startup-id "synclient 'VertScrollDelta'=-78"
 exec_always --no-startup-id "synclient 'HorizScrollDelta'=78"
 
-exec --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de " 
+exec --no-startup-id "setxkbmap -option 'grp:caps_switch' us,de "
 exec --no-startup-id "synclient 'VertScrollDelta'=-78"
 exec --no-startup-id "synclient 'HorizScrollDelta'=78"
 
@@ -222,7 +222,7 @@ exec --no-startup-id "synclient 'HorizScrollDelta'=78"
 bindsym mod4+l exec --no-startup-id "sh ~/.dotfiles/locker.sh"
 bindsym mod4+Shift+l exec --no-startup-id $lockt
 
-# automaticaly locking 
+# automaticaly locking
 exec_always --no-startup-id killall xss-lock
 exec_always --no-startup-id xset s 60 20
 exec_always --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- ~/.dotfiles/locker.sh
@@ -230,7 +230,7 @@ exec_always --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l
 # set enviroment
 exec_always --no-startup-id "$HOME/.config/polybar/launch.sh -c "
 exec_always nm-applet
-exec_always --no-startup-id "feh --bg-scale /usr/share/backgrounds/parrot-fly-grey.jpg"
+exec_always --no-startup-id "feh --bg-scale /home/main/Pictures/background_kali.jpg"
 
 # set colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -240,13 +240,13 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # configure borders
-#smart_gaps on 
+#smart_gaps on
 
 # scratchpad
 bindsym $mod+Ctrl+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# gotos 
+# gotos
 bindsym $mod+m exec ~/.config/i3/imark.sh
 bindsym $mod+o exec ~/.config/i3/igo.sh
 focus_on_window_activation urgent
@@ -266,6 +266,5 @@ exec --no-startup-id amixer -D pulse sset Capture nocap
 exec --no-startup-id amixer -D pulse sset Master off
 
 # miscellaneous
-focus_wrapping force 
+focus_wrapping force
 focus_follows_mouse yes
-
