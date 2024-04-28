@@ -1,0 +1,8 @@
+#
+# GITIGNORE FOR CONFIG FILES IN $HOME/.CONFIG
+#
+
+autostart
+cef_user_data
+user-dirs.dirs
+user-dirs.locale
