@@ -42,7 +42,7 @@
 @define-color cpu	@green;
 @define-color temp	@brgreen;
 @define-color layout	@bryellow;
-@define-color battery	@aqua;
+@define-color disk @aqua;
 @define-color date	@black;
 @define-color time	@white;
 
@@ -68,7 +68,7 @@
 }
 
 /* Each module */
-#battery,
+#disk,
 #clock,
 #cpu,
 #language,
@@ -80,8 +80,8 @@
 #tray,
 #backlight,
 #idle_inhibitor,
-#disk,
 #user,
+#hyprland,
 #mpris {
 	padding-left: 8pt;
 	padding-right: 8pt;
@@ -92,6 +92,7 @@
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
+#disk.critical,
 #battery.critical.discharging {
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
@@ -129,13 +130,13 @@
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
 	color: @white;
-	background: @inactive;
+	background: @unfocused;
 }
 
 /* Active (on focused output) */
-#workspaces button.focused {
-	color: @black;
-	background: @focused;
+#workspaces button.active {
+	color: @focused;
+	background: @unfocused;
 }
 
 /* Contains an urgent window */
@@ -185,8 +186,8 @@
 	color: @black;
 }
 
-#battery {
-	background: @battery;
+#disk {
+	background: @disk;
 	color: @white;
 }
 
@@ -212,8 +213,8 @@
 
 #custom-arrow2 {
 	font-size: 11pt;
-	color: @date;
-	background: @layout;
+	color: @disk;
+	background: @network;
 }
 
 #custom-arrow3 {
@@ -224,7 +225,7 @@
 
 #custom-arrow4 {
 	font-size: 11pt;
-	color: @battery;
+	color: @date;
 	background: @temp;
 }
 
@@ -243,7 +244,7 @@
 #custom-arrow7 {
 	font-size: 11pt;
 	color: @memory;
-	background: @network;
+	background: @disk;
 }
 
 #custom-arrow8 {

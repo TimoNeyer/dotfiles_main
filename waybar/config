@@ -3,10 +3,8 @@
 	"position": "top",
 
 	"modules-left": [
-		"sway/mode",
-		"sway/workspaces",
+        "hyprland/workspaces",
 		"custom/arrow10",
-		"sway/window"
 	],
 
 	"modules-right": [
@@ -14,6 +12,8 @@
 		"pulseaudio",
 		"custom/arrow8",
 		"network",
+        "custom/arrow2",
+        "disk",
 		"custom/arrow7",
 		"memory",
 		"custom/arrow6",
@@ -90,13 +90,24 @@
 	},
 
     "hyprland/workspaces": {
-        "active-only": true,
+        "active-only": false,
+        "move-to-monitor": true,
      },
 
 	"tray": {
 		"icon-size": 18
 		//"spacing": 10
 	},
+
+    "disk": {
+        "interval": 60,
+        "format": "DSK: {percentage_used}%",
+        "states": {
+            "warning": 75,
+            "critical": 85
+        },
+        "path": "/"
+    },
 
 	"custom/arrow1": {
 		"format": "",
