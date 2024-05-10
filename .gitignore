@@ -1,8 +1,18 @@
-#
 # GITIGNORE FOR CONFIG FILES IN $HOME/.CONFIG
 #
 
-autostart
-cef_user_data
+autostart/
+cef_user_data/
 user-dirs.dirs
 user-dirs.locale
+Code - OSS/
+btop/
+chromium/
+discord/
+gtk-2.0/
+htop/
+spicetify/
+spotify/
+Code
+GIMP/
+Signal/
