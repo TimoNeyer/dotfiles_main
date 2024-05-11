@@ -1,0 +1,67 @@
+function cdl () {
+    cd "$@" ;
+    ls -CF
+}
+
+function md () {
+    pandoc $@ | lynx -stdin;
+}
+
+function mdpdf () {
+    pandoc --from=markdown --to=pdf -o $2 $1
+}
+
+function sound () {
+    amixer set Master $(( $( echo "scale=2; $@/100" | bc)* 65536))
+}
+
+function hex-encode()
+{
+  echo "$@" | xxd -p
+}
+
+function hex-decode()
+{
+  echo "$@" | xxd -p -r
+}
+
+function rot13()
+{
+  echo "$@" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+}
+
+get_status() {
+  if [[ $? -eq 0 ]]; then
+    LAST_CMD_STATUS="%F{blue}●%f"  # Blue dot for success
+  else
+    LAST_CMD_STATUS="%F{red}●%f"   # Red dot for error
+  fi
+  set -A ELAPSED $ELAPSED $(( SECONDS-_start ))
+}
+
+fuck() {
+    local last_command=$(fc -n -l -1 -1)
+    echo "Executing: sudo $last_command"
+    echo -n "Continue? (Y/n) "
+    read -r response
+    if [[ $response =~ ^([Yy][Ee][Ss]|[Yy]|)$ ]]  # Matches "yes", "y", or empty response
+    then
+        sudo $last_command
+        return 0
+    else
+        echo "Aborted."
+        return 1
+    fi
+}
+
+preexec () {
+   set -A ELAPSED
+   (( $#ELAPSED > 1000 )) && set -A ELAPSED $ELAPSED[-1000,-1]
+   typeset -ig _start=SECONDS
+   _command_time_preexec
+}
+
+precmd() {
+    _command_time_precmd
+    get_status
+}

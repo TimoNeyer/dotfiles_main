@@ -1,0 +1,162 @@
+// -*- mode: json -*-
+
+[
+{
+	"layer": "top",
+	"position": "top",
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+
+	"modules-center": [
+		"clock#1",
+		"clock#2",
+		"clock#3"
+	],
+	"modules-right": [
+		"pulseaudio",
+		"memory",
+		"cpu",
+		"battery",
+		"disk",
+	],
+
+	"custom/left-arrow-dark": {
+		"format": "⮜",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "⮜",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "⮞",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "⮞",
+		"tooltip": false
+	},
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%m-%d}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "VOL:{volume:2}%",
+		"format-muted": "VOL:MT",
+		"scroll-step": 5,
+		"on-click": "amixer sset Master toggle",
+		"on-click-right": "pavucontrol"
+	},
+	"memory": {
+		"interval": 5,
+		"format": "MEM:{}%"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU:{usage}%"
+	},
+	"battery": {
+		"states": {
+			"good": 85,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "BAT:{capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"disk": {
+		"interval": 5,
+		"format": "DSK:{percentage_used:2}%",
+		"path": "/"
+	}
+},
+{
+    "layer": "top",
+    "position": "left",
+
+    "modules-center": [
+        "sway/window"
+    ],
+
+    "modules-right": [
+        "battery"
+    ],
+
+    "modules-left": [
+        "custom/shutdown",
+        "custom/restart",
+        "tray"
+    ],
+
+    "sway/window": {
+        "format": "{app_id}⮚{title}",
+        "icon": false,
+        "max-length": 30,
+        "rotate": 90,
+        "tooltip": false
+    },
+
+    "sway/workspaces":{
+        "rotate": 90,
+        "disable-scroll": true,
+        "disable-click": false
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "show-passive-items": true,
+      	"smooth-scrolling-threshold": 1,
+        "spacing": 3
+    },
+    "battery": {
+            "states": {
+                "good": 85,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+    "shutdown": {
+        "icon": "",
+        "format": "{icon}",
+        "tooltip": "Shutdown",
+        "on-click": "~/.config/waybar/scripts/power.sh shutdown"
+    },
+
+    "restart": {
+        "icon": "",
+        "format": "{icon}",
+        "tooltip": "Restart",
+        "on-click": "~/.config/waybar/scripts/power.sh restart"
+    }
+}]

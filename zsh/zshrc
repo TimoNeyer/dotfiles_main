@@ -1,0 +1,80 @@
+# Set the prompt
+PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %f❯❯ '
+RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
+
+
+# Export PATH$
+export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env
+
+#####################################################
+# get enviroment
+if [ -f ~/.config/zsh/env ]; then
+    . ~/.config/zsh/env
+fi
+
+if [ "$XDG_SESSION_DESKTOP" = "sway" ] ; then
+    # https://github.com/swaywm/sway/issues/595
+    export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+
+# get functions
+if [ -f ~/.config/zsh/functions/init ]; then
+    . ~/.config/zsh/functions/init
+fi
+
+# get plugins
+if [ -f ~/.config/zsh/plugins/init ]; then
+    . ~/.config/zsh/plugins/init
+fi
+
+# get aliases
+if [ -f ~/.config/zsh/aliases ]; then
+    . ~/.config/zsh/aliases
+fi
+
+#####################################################
+# definitions
+if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+export EDITOR=vim
+export VISUAL=vim
+export venv="/tmp"
+export XDG_CONFIG_HOME=~/.config
+
+# settings
+setopt PROMPT_SUBST
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd
+add-zsh-hook preexec preexec
+
+#####################################################
+# Auto completion / suggestion
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# Fish like syntax highlighting
+if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+  source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#  zstyle ':autocomplete:tab:*' insert-unambiguous yes
+#  zstyle ':autocomplete:tab:*' widget-style menu-select
+#  zstyle ':autocomplete:*' min-input 2
+  bindkey $key[Up] up-line-or-history
+  bindkey $key[Down] down-line-or-history
+fi
+
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^[[3;5~' kill-word
+bindkey '^H' backward-kill-word
+bindkey ' ' magic-space
+
+#####################################################
+# Save type history for completion and easier life
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory

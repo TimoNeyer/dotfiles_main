@@ -1,0 +1,172 @@
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+        "sway/workspaces",
+		"custom/arrow10",
+        "sway/window",
+	],
+
+	"modules-right": [
+		"custom/arrow9",
+		"pulseaudio",
+		"custom/arrow8",
+		"network",
+        "custom/arrow2",
+        "disk",
+		"custom/arrow7",
+		"memory",
+		"custom/arrow6",
+		"cpu",
+		"custom/arrow5",
+		"temperature",
+        "custom/arrow3",
+        "battery",
+		"custom/arrow4",
+		"tray",
+		"clock#date",
+		"custom/arrow1",
+		"clock#time"
+	],
+
+	// Modules
+
+
+	"clock#time": {
+		"interval": 10,
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+
+	"clock#date": {
+		"interval": 20,
+		"format": "{:%e %b %Y}",
+		"tooltip": false
+		//"tooltip-format": "{:%e %b %C}"
+	},
+
+	"cpu": {
+		"interval": 5,
+		"tooltip": false,
+		"format": "CPU {usage}%",
+		"format-alt": "CPU {load}",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": "RAM {used:0.1f}G/{total:0.1f}G",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		},
+		"tooltip": false
+	},
+
+	"network": {
+		"interval": 5,
+		"format-wifi": "WLN {essid} ({signalStrength}%)",
+		"format-ethernet": "ETH {ifname}",
+		"format-disconnected": "No connection",
+		"format-alt": " {ipaddr}/{cidr}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "VOL {volume}%",
+		"format-bluetooth": "VOL {volume}% B",
+		"format-muted": "muted",
+		"scroll-step": 1,
+		"on-click": "amixer sset Master toggle",
+		"tooltip": false
+	},
+
+	"temperature": {
+		"critical-threshold": 90,
+		"interval": 5,
+		"format": "TMP {temperatureC}°",
+		"tooltip": false
+	},
+
+    "hyprland/workspaces": {
+        "active-only": false,
+        "move-to-monitor": true,
+     },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+    },
+
+    "sway/window": {
+        "max-length": 30,
+    },
+
+	"tray": {
+		"icon-size": 18
+		//"spacing": 10
+	},
+
+    "disk": {
+        "interval": 60,
+        "format": "DSK: {percentage_used}%",
+        "states": {
+            "warning": 75,
+            "critical": 85
+        },
+        "path": "/"
+    },
+
+	"custom/arrow1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow4": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow5": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow6": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow7": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow8": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow9": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow10": {
+		"format": "",
+		"tooltip": false
+	}
+}
