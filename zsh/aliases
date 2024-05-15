@@ -33,7 +33,7 @@ alias svi='sudo vim'
 alias svim='sudo vim'
 alias ping='fping -c 10'
 alias vid='mpv'
-alias pic='eom'
+alias pic='imv-wayland'
 alias pcal='python3'
 alias cal='mate-calculator &'
 alias ping4='fping -4'
@@ -43,7 +43,8 @@ alias ff='firefox 1> /dev/null  2> /dev/null &'
 alias venv='python3 -m venv ./$1'
 alias snxd='snx -d'
 alias vpn='protonvpn-cli'
-alias bat=batcat
+alias bat='batcat'
+alias imv='imv-wayland'
 
 # helpful
 alias ipa='ip a'

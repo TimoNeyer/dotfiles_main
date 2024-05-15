@@ -222,9 +222,10 @@ bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock -i ~/Pictures/kali-red-stic
 bindsym Mod4+j exec alacritty
 
 # set enviroment
-exec_always --no-startup-id "$HOME/.config/waybar/launch.sh "
+exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec_always nm-applet
 exec_always --no-startup-id swayidle -w timeout 400 '/home/user/.local/bin/swayexit lock' timeout 1200 'sudo systemctl suspend' before-sleep '/home/user/.local/bin/swayexit lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
+exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,control
 
 # set colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
