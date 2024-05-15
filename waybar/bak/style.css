@@ -8,38 +8,43 @@
 }
 
 
-@define-color black	    #282828;
-@define-color red	    #cc241d;
-@define-color green	    #98971a;
+/* Styles */
+
+/* Colors (gruvbox) */
+@define-color black	#282828;
+@define-color red	#cc241d;
+@define-color green	#98971a;
 @define-color yellow	#d79921;
-@define-color purple	#003559;
-@define-color aqua	    #49704a;
-@define-color brgreen	#061a40;
+@define-color blue	#458588;
+@define-color purple	#b16286;
+@define-color aqua	#689d6a;
+@define-color gray	#a89984;
+@define-color brgray	#928374;
+@define-color brred	#fb4934;
+@define-color brgreen	#b8bb26;
 @define-color bryellow	#fabd2f;
-@define-color brpurple	#091b3d;
+@define-color brblue	#83a598;
+@define-color brpurple	#d3869b;
 @define-color braqua	#8ec07c;
-@define-color white	    #ebdbb2;
-@define-color bg2	    #504945;
-@define-color grey      #847F7C;
+@define-color white	#ebdbb2;
+@define-color bg2	#504945;
 
 
 @define-color warning 	@bryellow;
 @define-color critical	@red;
-@define-color mode	    @black;
+@define-color mode	@black;
 @define-color unfocused	@bg2;
-@define-color focused	@grey;
+@define-color focused	@braqua;
 @define-color inactive	@purple;
-@define-color sound	    @brpurple;
+@define-color sound	@brpurple;
 @define-color network	@purple;
 @define-color memory	@braqua;
-@define-color cpu	    @green;
-@define-color temp	    @brgreen;
+@define-color cpu	@green;
+@define-color temp	@brgreen;
 @define-color layout	@bryellow;
-@define-color disk      @aqua;
-@define-color date	    @black;
-@define-color time	    @white;
-@define-color battery   @yellow;
-@define-color tray      @bg2;
+@define-color disk @aqua;
+@define-color date	@black;
+@define-color time	@white;
 
 /* Reset all styles */
 * {
@@ -57,7 +62,7 @@
 #waybar {
 	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
 	color: @white;
-    font-family: JetBrains Mono Medium;
+	font-family: JetBrains Mono, Siji;
 	font-size: 10pt;
 	/*font-weight: bold;*/
 }
@@ -110,7 +115,7 @@
 /* Current sway mode (resize etc) */
 #mode {
 	color: @white;
-	background: #282828;
+	background: @mode;
 }
 
 /* Workspaces stuff */
@@ -129,14 +134,14 @@
 }
 
 /* Active (on focused output) */
-#workspaces button.focused {
-	color: @white;
-	background: @focused;
+#workspaces button.active {
+	color: @focused;
+	background: @unfocused;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
-	color: @white;
+	color: @black;
 	background: @warning;
 }
 
@@ -151,14 +156,9 @@
 	margin-left: 35pt;
 }
 
-#battery {
-    background: @battery;
-    color: @white;
-}
-
 #pulseaudio {
 	background: @sound;
-	color: @white;
+	color: @black;
 }
 
 #network {
@@ -168,7 +168,7 @@
 
 #memory {
 	background: @memory;
-	color: @white;
+	color: @black;
 }
 
 #cpu {
@@ -178,7 +178,7 @@
 
 #temperature {
 	background: @temp;
-	color: @white;
+	color: @black;
 }
 
 #language {
@@ -192,22 +192,7 @@
 }
 
 #tray {
-	background: @tray;
-}
-
-#custom-poweroff {
-    background: @time;
-    color: @white;
-}
-
-#custom-reboot {
-    background: @time;
-    color: @white;
-}
-
-#custom-lock {
-    background: @time;
-    color: @white;
+	background: @date;
 }
 
 #clock.date {
@@ -228,65 +213,54 @@
 
 #custom-arrow2 {
 	font-size: 11pt;
-	color: @date;
-	background: @battery;
+	color: @disk;
+	background: @network;
 }
 
 #custom-arrow3 {
 	font-size: 11pt;
-	color: @battery;
-	background: @temp;
+	color: @layout;
+	background: @battery;
 }
 
 #custom-arrow4 {
+	font-size: 11pt;
+	color: @date;
+	background: @temp;
+}
+
+#custom-arrow5 {
 	font-size: 11pt;
 	color: @temp;
 	background: @cpu;
 }
 
-#custom-arrow5 {
+#custom-arrow6 {
 	font-size: 11pt;
 	color: @cpu;
 	background: @memory;
 }
 
-#custom-arrow6 {
-	font-size: 11pt;
-	color: @memory;
-	background: transparent;
-}
-
 #custom-arrow7 {
 	font-size: 11pt;
-	color: @disk;
-	background: @tray;
+	color: @memory;
+	background: @disk;
 }
 
 #custom-arrow8 {
 	font-size: 11pt;
 	color: @network;
-	background: @disk;
+	background: @sound;
 }
 
 #custom-arrow9 {
 	font-size: 11pt;
 	color: @sound;
-	background: @network;
+	background: transparent;
 }
 
 #custom-arrow10 {
 	font-size: 11pt;
 	color: @unfocused;
 	background: transparent;
-}
-
-#custom-arrow11 {
-	font-size: 11pt;
-	color: @unfocused;
-	background: transparent;
-}
-
-#custom-wssep {
-    color: @unfocused;
-    background: @unfocused;
 }

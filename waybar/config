@@ -3,28 +3,43 @@
 	"position": "top",
 
 	"modules-left": [
-        "hyprland/workspaces",
-		"custom/arrow10",
+        "pulseaudio",
+        "custom/arrow9",
+        "network",
+        "custom/arrow8",
+        "disk",
+        "custom/arrow7",
+        "tray",
+        "custom/arrow10",
+        "sway/mode",
+        "sway/window"
 	],
 
+    "modules-center": [
+		"custom/arrow11",
+        "custom/wssep",
+        "sway/workspaces",
+        "custom/wssep",
+        "custom/arrow10"
+    ],
+
+
 	"modules-right": [
-		"custom/arrow9",
-		"pulseaudio",
-		"custom/arrow8",
-		"network",
-        "custom/arrow2",
-        "disk",
-		"custom/arrow7",
-		"memory",
 		"custom/arrow6",
-		"cpu",
+		"memory",
 		"custom/arrow5",
-		"temperature",
+		"cpu",
 		"custom/arrow4",
-		"tray",
+		"temperature",
+        "custom/arrow3",
+        "battery",
+		"custom/arrow2",
 		"clock#date",
 		"custom/arrow1",
-		"clock#time"
+		"clock#time",
+        "custom/lock",
+        "custom/reboot",
+        "custom/poweroff"
 	],
 
 	// Modules
@@ -39,8 +54,28 @@
 	"clock#date": {
 		"interval": 20,
 		"format": "{:%e %b %Y}",
-		"tooltip": false
-		//"tooltip-format": "{:%e %b %C}"
+		"tooltip": false,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
 	},
 
 	"cpu": {
@@ -56,27 +91,26 @@
 
 	"memory": {
 		"interval": 5,
-		"format": "RAM {used:0.1f}G/{total:0.1f}G",
+		"format": "RAM {percentage}%",
 		"states": {
-			"warning": 70,
-			"critical": 90
+			"warning": 50,
+			"critical": 70
 		},
-		"tooltip": false
+        "tooltip-format": "RAM {used:0.1f}G/{total:0.1f}G"
 	},
 
 	"network": {
 		"interval": 5,
-		"format-wifi": "WLN {essid} ({signalStrength}%)",
-		"format-ethernet": "ETH {ifname}",
-		"format-disconnected": "No connection",
-		"format-alt": " {ipaddr}/{cidr}",
-		"tooltip": false
+		"format-wifi": "WLN UP",
+		"format-ethernet": "ETH UP",
+		"format-disconnected": "NET DW",
+		"format-alt": "NET {ipaddr}/{cidr}",
+        "tooltip-format": "IF {ifname}, GW {gwaddr}"
 	},
 
 	"pulseaudio": {
-		"format": "VOL {volume}%",
-		"format-bluetooth": "VOL {volume}% B",
-		"format-muted": "muted",
+		"format": "VOL {volume}",
+		"format-muted": "VOL mt",
 		"scroll-step": 1,
 		"on-click": "amixer sset Master toggle",
 		"tooltip": false
@@ -85,14 +119,34 @@
 	"temperature": {
 		"critical-threshold": 90,
 		"interval": 5,
-		"format": "TMP {temperatureC}°",
+		"format": "TEM {temperatureC}°",
 		"tooltip": false
 	},
 
-    "hyprland/workspaces": {
-        "active-only": false,
-        "move-to-monitor": true,
-     },
+    "battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": " BAT {capacity}% "
+	},
+
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true
+    },
+
+    "sway/window": {
+        "max-length": 30,
+        "rewrite": {
+            "(.*)Mozilla Firefox": "Firefox: $1"
+        }
+    },
+
+    "sway/mode":{
+        "tooltip": false
+    },
 
 	"tray": {
 		"icon-size": 18
@@ -107,6 +161,47 @@
             "critical": 85
         },
         "path": "/"
+    },
+
+    "custom/vpn": {
+        "exec": "~/.config/waybar/scripts/get-vpn.sh",
+        "interval": 5,
+        "format": "VPN {}",
+        "on-click": "~/.config/waybar/scripts/toggle-vpn.sh",
+        "tooltip": false
+    },
+
+    "custom/nm": {
+        "exec": "~/.config/waybar/scripts/get-ifname.sh",
+        "interval": 2,
+        "format": "NET {}",
+        "tooltip": false
+    },
+
+    "custom/poweroff": {
+        "on-click": "~/.config/waybar/scripts/power.sh shutdown",
+        "format": "⏻",
+        "tooltip": false
+    },
+
+    "custom/restart": {
+        "on-click": "~/.config/waybar/scripts/power.sh restart",
+        "format": "↪",
+        "tooltip": false
+    },
+
+    "custom/lock": {
+        "on-click": "~/.config/waybar/scripts/power.sh lock",
+        "format": "",
+        "tooltip": false
+    },
+
+
+    // styling
+
+    "custom/wssep": {
+        "format": "|",
+        "tooltip": false
     },
 
 	"custom/arrow1": {
@@ -140,22 +235,27 @@
 	},
 
 	"custom/arrow7": {
-		"format": "",
+		"format": "",
 		"tooltip": false
 	},
 
 	"custom/arrow8": {
-		"format": "",
+		"format": "",
 		"tooltip": false
 	},
 
 	"custom/arrow9": {
-		"format": "",
+		"format": "",
 		"tooltip": false
 	},
 
 	"custom/arrow10": {
 		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow11": {
+		"format": "",
 		"tooltip": false
 	}
 }

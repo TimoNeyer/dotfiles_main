@@ -1,0 +1,37 @@
+// vim: foldmethod=marker
+
+[{
+
+"output": "eDP-1",
+"include": "~/.config/waybar/config-global",
+"position": "left",
+
+"modules-center": [
+			"sway/window",
+],
+
+"modules-right": [
+			"tray",
+],
+
+"modules-left": [
+    "module/power",
+]
+
+"module/power": {
+        "type": "custom/script",
+        "exec": "~/.config/waybar/scripts/power.sh",
+        "interval": 1
+    },
+    "module/power/button/shutdown": {
+        "icon": "",
+        "tooltip": "Shutdown",
+        "on-click": "~/.config/waybar/scripts/power.sh shutdown"
+    },
+    "module/power/button/restart": {
+        "icon": "",
+        "tooltip": "Restart",
+        "on-click": "~/.config/waybar/scripts/power.sh restart"
+    }
+},
+]
