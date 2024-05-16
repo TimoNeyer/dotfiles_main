@@ -229,7 +229,7 @@
 #custom-arrow2 {
 	font-size: 11pt;
 	color: @date;
-	background: @battery;
+	background: @temp;
 }
 
 #custom-arrow3 {

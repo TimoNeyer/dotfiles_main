@@ -41,7 +41,7 @@ get_icon() {
     echo $icon
 }
 
-KEY="4237f753da7283fcbc62ee048c29623c"
+KEY="$(cat ~/.config/secret/weather-token)"
 CITY="Potsdam"
 UNITS="metric"
 SYMBOL="°"
