@@ -2,25 +2,33 @@
 
 @keyframes blink-critical {
 	to {
-		/*color: @white;*/
+		color: @white;
 		background-color: @critical;
 	}
+}
+
+@keyframes blink-warning {
+    to {
+        color: @white;
+        background-color: @warning;
+    }
 }
 
 
 @define-color black	    #282828;
 @define-color red	    #cc241d;
-@define-color green	    #98971a;
+@define-color darkblue2 #0c2553;
 @define-color yellow	#d79921;
-@define-color purple	#003559;
-@define-color aqua	    #49704a;
-@define-color brgreen	#061a40;
+@define-color darkblue1 #003559;
+@define-color darkblue3	#133980;
+@define-color darkblue0	#061a40;
 @define-color bryellow	#fabd2f;
-@define-color brpurple	#091b3d;
-@define-color braqua	#8ec07c;
+@define-color darkblue	#091b3d;
 @define-color white	    #ebdbb2;
 @define-color bg2	    #504945;
 @define-color grey      #847F7C;
+@define-color shade     #1a4dac;
+@define-color shade2    #174396;
 
 
 @define-color warning 	@bryellow;
@@ -28,17 +36,17 @@
 @define-color mode	    @black;
 @define-color unfocused	@bg2;
 @define-color focused	@grey;
-@define-color inactive	@purple;
-@define-color sound	    @brpurple;
+@define-color inactive	@darkblue1;
+@define-color sound	    @darkblue;
 @define-color network	@purple;
-@define-color memory	@braqua;
-@define-color cpu	    @green;
-@define-color temp	    @brgreen;
+@define-color memory	@shade2;
+@define-color cpu	    @shade;
+@define-color temp	    @darkblue3;
 @define-color layout	@bryellow;
-@define-color disk      @aqua;
-@define-color date	    @black;
-@define-color time	    @white;
-@define-color battery   @yellow;
+@define-color disk      @darkblue2;
+@define-color date	    @purple;
+@define-color time	    @darkblue;
+@define-color battery   @darkblue2;
 @define-color tray      @bg2;
 
 /* Reset all styles */
@@ -83,12 +91,12 @@
 }
 
 /* Each critical module */
-#mode,
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
 #disk.critical,
 #battery.critical.discharging {
+    color: @red;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
@@ -102,7 +110,12 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning.discharging {
-	color: @warning;
+    color: @warning;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-warining;
+	animation-duration: 1s;
 }
 
 /* And now modules themselves in their respective order */
@@ -196,16 +209,19 @@
 }
 
 #custom-poweroff {
+	font-size: 11pt;
     background: @time;
     color: @white;
 }
 
 #custom-reboot {
+	font-size: 11pt;
     background: @time;
     color: @white;
 }
 
 #custom-lock {
+	font-size: 11pt;
     background: @time;
     color: @white;
 }
@@ -217,7 +233,7 @@
 
 #clock.time {
 	background: @time;
-	color: @black;
+	color: @white;
 }
 
 #custom-arrow1 {

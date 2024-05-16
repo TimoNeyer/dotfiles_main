@@ -109,7 +109,7 @@ remmina/
 freerdp/
 monitors.xml
 htop/
-alacritty/
+!alacritty/
 s/
 scripts
 yaus/
@@ -126,7 +126,7 @@ qutebrowser/
 !hypr/
 wlogout/
 !waybar/
-ulauncher/
+!waybar/scripts/
 spotify/
 vscode-sqltools/
 QtProject.conf
@@ -137,3 +137,7 @@ rofi.main/
 !rofi/
 mkgitignore.sh
 !.gitignore
+Vim/
+microsoft-edge/
+ulauncher/
+ulauncher/*

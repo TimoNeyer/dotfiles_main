@@ -180,19 +180,19 @@
 
     "custom/poweroff": {
         "on-click": "~/.config/waybar/scripts/power.sh shutdown",
-        "format": "⏻",
+        "format": " ⏻ ",
         "tooltip": false
     },
 
     "custom/restart": {
         "on-click": "~/.config/waybar/scripts/power.sh restart",
-        "format": "↪",
+        "format": " ↪ ",
         "tooltip": false
     },
 
     "custom/lock": {
         "on-click": "~/.config/waybar/scripts/power.sh lock",
-        "format": "",
+        "format": "  ",
         "tooltip": false
     },
 

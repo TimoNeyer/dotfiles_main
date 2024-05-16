@@ -218,8 +218,7 @@ input type:touchpad {
 }
 
 # quick locking of screen
-bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock -i ~/Pictures/kali-red-sticker-16x9.jpg
-bindsym Mod4+j exec alacritty
+bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock
 
 # set enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
@@ -263,3 +262,14 @@ exec --no-startup-id amixer -D pulse sset Master off
 # miscellaneous
 focus_wrapping force
 focus_follows_mouse yes
+#xwayland force
+
+# outputs
+output "eDP-1" {
+    pos 0 0
+    res 1920x1280
+}
+
+output "*" {
+    background "~/Pictures/parrot-fly-grey.png" fill
+}
