@@ -18,3 +18,5 @@ GIMP/
 Signal/
 dconf/
 secret/
+VirtualBox/
+QtProject.conf
