@@ -271,5 +271,5 @@ output "eDP-1" {
 }
 
 output "*" {
-    background "~/Pictures/parrot-fly-grey.png" fill
+    # background "~/Pictures/parrot-fly-grey.png" fill
 }

@@ -16,6 +16,7 @@
 
 
 @define-color black	    #282828;
+@define-color white	    #fdfdfd;
 @define-color red	    #cc241d;
 @define-color darkblue2 #0c2553;
 @define-color yellow	#d79921;
@@ -24,7 +25,6 @@
 @define-color darkblue0	#061a40;
 @define-color bryellow	#fabd2f;
 @define-color darkblue	#091b3d;
-@define-color white	    #ebdbb2;
 @define-color bg2	    #504945;
 @define-color grey      #847F7C;
 @define-color shade     #1a4dac;
@@ -37,16 +37,16 @@
 @define-color unfocused	@bg2;
 @define-color focused	@grey;
 @define-color inactive	@darkblue1;
-@define-color sound	    @darkblue1;
-@define-color network	@shade;
+@define-color sound	    @darkblue;
+@define-color network	@darkblue1;
 @define-color memory	@shade2;
 @define-color cpu	    @shade;
 @define-color temp	    @darkblue3;
 @define-color layout	@bryellow;
 @define-color disk      @darkblue2;
-@define-color date	    @shade;
+@define-color date	    @darkblue1;
 @define-color time	    @darkblue;
-@define-color battery   @darkblue;
+@define-color battery   @darkblue2;
 @define-color tray      @bg2;
 
 /* Reset all styles */
@@ -251,7 +251,7 @@
 #custom-arrow3 {
 	font-size: 11pt;
 	color: @battery;
-	background: @sound;
+	background: @temp;
 }
 
 #custom-arrow4 {
