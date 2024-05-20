@@ -32,7 +32,7 @@
     bindsym $mod+d exec ~/.config/rofi/launchers/type-7/launcher.sh
 
     # lock
-    bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock -i ~/Pictures/kali-red-sticker-16x9.jpg
+    bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock
 
     # scratchpad
     bindsym $mod+Ctrl+minus move scratchpad

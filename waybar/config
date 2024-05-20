@@ -12,13 +12,15 @@
         "tray",
         "custom/arrow10",
         "sway/mode",
-        "sway/window"
+        "sway/window",
+        "hypr/window"
 	],
 
     "modules-center": [
 		"custom/arrow11",
         "custom/wssep",
         "sway/workspaces",
+        "hypr/workspaces",
         "custom/wssep",
         "custom/arrow10"
     ],
@@ -142,9 +144,21 @@
         }
     },
 
-    "sway/mode":{
+    "sway/mode": {
         "tooltip": false
     },
+
+    "hypr/mode": {
+        "tooltip": false
+    },
+
+    "hypr/window": {
+        "max-length": 30,
+         "rewrite": {
+            "(.*)Mozilla Firefox": "Firefox: $1"
+        }
+    },
+
 
 	"tray": {
 		"icon-size": 18,

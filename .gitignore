@@ -20,3 +20,5 @@ dconf/
 secret/
 VirtualBox/
 QtProject.conf
+mimeapps.list
+vscode-sqltools/
