@@ -1,0 +1,11 @@
+if [ -f ~/.config/zsh/functions/x ]; then
+    . ~/.config/zsh/functions/x
+fi
+
+if [ -f ~/.config/zsh/functions/minor ]; then
+    . ~/.config/zsh/functions/minor
+fi
+
+if [ -f ~/.config/zsh/funcitons/led ]; then
+    . ~/.config/zsh/functions/led
+fi
