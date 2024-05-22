@@ -1,5 +1,5 @@
 # Ignore all current files and directories
-*
+/*
 !i3/
 !polybar/
 !nvim/
@@ -11,4 +11,5 @@
 !rofi/
 !.gitignore
 !Vim/
-Vim/vim/plugged/*
+Vim/vim/plugged/
+Vim/vim/view/
