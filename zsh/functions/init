@@ -1,11 +1,11 @@
-if [ -f ~/.dotfiles/zsh/functions/x ]; then
-    . ~/.dotfiles/zsh/functions/x
+if [ -f ~/.config/zsh/functions/x ]; then
+    . ~/.config/zsh/functions/x
 fi
 
-if [ -f ~/.dotfiles/zsh/functions/minor ]; then
-    . ~/.dotfiles/zsh/functions/minor
+if [ -f ~/.config/zsh/functions/minor ]; then
+    . ~/.config/zsh/functions/minor
 fi
 
-if [ -f ~/.dotfiles/zsh/funcitons/led ]; then
-    . ~/.dotfiles/zsh/functions/led
+if [ -f ~/.config/zsh/funcitons/led ]; then
+    . ~/.config/zsh/functions/led
 fi

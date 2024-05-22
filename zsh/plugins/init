@@ -1,11 +1,11 @@
-if [ -f  ~/.dotfiles/zsh/plugins/bash.command-not-found ]; then
-    . ~/.dotfiles/zsh/plugins/bash.command-not-found
+if [ -f  ~/.config/zsh/plugins/bash.command-not-found ]; then
+    . ~/.config/zsh/plugins/bash.command-not-found
 fi
 
-if [ -f ~/.dotfiles/zsh/plugins/vi-mode/zsh-vi-mode.zsh ]; then
-    . ~/.dotfiles/zsh/plugins/vi-mode/zsh-vi-mode.zsh
+if [ -f ~/.config/zsh/plugins/vi-mode/zsh-vi-mode.zsh ]; then
+    . ~/.config/zsh/plugins/vi-mode/zsh-vi-mode.zsh
 fi
 
-if [ -f ~/.dotfiles/zsh/plugins/command-time ]; then
-    . ~/.dotfiles/zsh/plugins/command-time 
+if [ -f ~/.config/zsh/plugins/command-time ]; then
+    . ~/.config/zsh/plugins/command-time
 fi
