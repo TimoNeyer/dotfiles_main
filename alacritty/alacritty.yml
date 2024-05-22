@@ -1,6 +1,5 @@
 window:
   opacity: 0.9
-  transparent: true
   padding:
     x: 5
     y: 5
@@ -19,8 +18,6 @@ colors:
     bright_foreground: '0xffffff'
     dim_foreground:    '0xe3e3e3'
     background: '0x1f1f1f'
-    bright_background: '0x686868' # not sure
-    dim_background:    '0x1f1f1f' # not sure
 
   cursor:
     text: '0x191622'
