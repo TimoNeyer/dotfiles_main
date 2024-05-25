@@ -140,12 +140,14 @@
     "sway/window": {
         "max-length": 30,
         "rewrite": {
-            "(.*)Mozilla Firefox": "Firefox: $1"
+            "(.*)Mozilla Firefox": "Firefox: $1",
+            "(.*)Visual Studio Code": "code: $1"
         }
     },
 
     "sway/mode":{
-        "tooltip": false
+        "tooltip": false,
+        "format": "[{}]"
     },
 
 	"tray": {

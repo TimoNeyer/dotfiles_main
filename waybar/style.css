@@ -14,9 +14,16 @@
     }
 }
 
+@keyframes blink-charging {
+    to {
+        color: @green;
+    }
+}
+
 
 @define-color black	    #282828;
-@define-color red	    #cc241d;
+@define-color white     #fdfdfd;
+@define-color red       #cc241d;
 @define-color darkblue2 #0c2553;
 @define-color yellow	#d79921;
 @define-color darkblue1 #003559;
@@ -24,11 +31,11 @@
 @define-color darkblue0	#061a40;
 @define-color bryellow	#fabd2f;
 @define-color darkblue	#091b3d;
-@define-color white	    #ebdbb2;
 @define-color bg2	    #504945;
 @define-color grey      #847F7C;
 @define-color shade     #1a4dac;
 @define-color shade2    #174396;
+@define-color green     #008631;
 
 
 @define-color warning 	@bryellow;
@@ -110,14 +117,20 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning.discharging {
-    color: @warning;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
-	animation-name: blink-warining;
-	animation-duration: 1s;
+	animation-name: blink-warning;
+	animation-duration: 5s;
 }
 
+#battery.charging {
+    animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-charging;
+	animation-duration: 1s;
+}
 /* And now modules themselves in their respective order */
 
 /* Current sway mode (resize etc) */
