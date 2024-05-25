@@ -185,11 +185,11 @@ mode "resize" {
 # systemctl
 mode "system" {
         bindsym l exec --no-startup-id $lock, mode "default"
-        bindsym e exec --no-startup-id "i3-msg exit", mode "default"
-        bindsym s exec --no-startup-id "xsecurelock && systemctl suspend", mode "default"
-        bindsym h exec --no-startup-id "xsecurelock && systemctl hibernate", mode "default"
-        bindsym r exec --no-startup-id "xsecurelock && systemctl reboot", mode "default"
-        bindsym Shift+s exec --no-startup-id "xsecurelock && systemctl poweroff", mode "default"
+        bindsym e exec --no-startup-id "swaymsg exit", mode "default"
+        bindsym s exec --no-startup-id "systemctl suspend", mode "default"
+        bindsym h exec --no-startup-id "systemctl hibernate", mode "default"
+        bindsym r exec --no-startup-id "systemctl reboot", mode "default"
+        bindsym Shift+s exec --no-startup-id "systemctl poweroff", mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -218,7 +218,8 @@ input type:touchpad {
 }
 
 # quick locking of screen
-bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock
+bindsym $l2+l exec  swaylock -C ~/.config/sway/lock
+bindsym $mod+Ctrl+e swaymsg exit
 
 # set enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
