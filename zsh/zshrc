@@ -39,6 +39,7 @@ export EDITOR=vim
 export VISUAL=vim
 export venv="/tmp"
 export XDG_CONFIG_HOME=~/.config
+export GPG_TTY=$(tty)
 
 # settings
 setopt PROMPT_SUBST
