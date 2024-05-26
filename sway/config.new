@@ -8,10 +8,9 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+d exec rofi -show run -theme main
+bindsym $mod1+d exec ~/.config/rofi/launcher
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
-bindsym $mod+y exec ~/.config/rofi/powermenu.sh
 
 # basic configuration
 default_orientation vertical
@@ -24,7 +23,6 @@ mouse_warping output
 focus_on_window_activation urgent
 focus_wrapping force
 focus_follows_mouse yes
-font pango:Cantarell 10
 
 # focus switching
 bindsym $mod1+j focus down
@@ -107,7 +105,20 @@ mode "resize" {
       bindsym Escape mode "default"
       bindsym $mod1+r mode "default"
 }
+mode "system" {
+      bindsym l exec --no-startup-id $lock, mode "default"
+      bindsym e exec --no-startup-id "swaymsg exit", mode "default"
+      bindsym s exec --no-startup-id "systemctl suspend", mode "default"
+      bindsym h exec --no-startup-id "systemctl hibernate", mode "default"
+      bindsym r exec --no-startup-id "systemctl reboot", mode "default"
+      bindsym Shift+s exec --no-startup-id "systemctl poweroff", mode "default"
 
+      # back to normal: Enter or Escape
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+      bindsym $mod1+y mode "default"
+}
+bindsym $mod1+y mode "system"
 bindsym $mod1+r mode "resize"
 
 # Inputs
@@ -143,8 +154,6 @@ bindsym $mod1+F1 exec amixer -D pulse sset Master toggle
 bindsym $mod1+F2 exec amixer sset Master 5%-
 bindsym $mod1+F3 exec amixer sset Master 5%+
 bindsym $mod1+F4 exec amixer -D pulse sset Capture toggle
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 exec_always --no-startup-id amixer -D pulse sset Capture nocap
 exec_always --no-startup-id amixer -D pulse sset Master off
@@ -158,7 +167,3 @@ output "eDP-1" {
 output "*" {
   background "~/Pictures/parrot-fly-grey.png" fill
 }
-
-# mark and switch
-bindsym $mod1+m ~/.config/sway/imark.sh
-bindsym $mod1+o ~/.config/sway/igo.sh
