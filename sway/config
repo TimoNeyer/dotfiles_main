@@ -8,10 +8,10 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+d exec rofi -show run -theme main
+bindsym $mod1+d exec rofi -show run -theme rounded-nord-dark
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
-bindsym $mod+y exec ~/.config/rofi/powermenu.sh
+bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
 
 # basic configuration
 default_orientation vertical
