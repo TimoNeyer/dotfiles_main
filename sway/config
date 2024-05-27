@@ -29,7 +29,8 @@
     bindsym $mod+q kill
 
     # app launcher
-    bindsym $mod+d exec ~/.config/rofi/launchers/type-7/launcher.sh
+    bindsym $mod+d exec rofi -show run -theme rounded-nord-dark
+    bindsym $mod+y exec ~/.config/rofi/powermenu.sh
 
     # lock
     bindsym Mod4+l exec  swaylock -C ~/.config/sway/lock
@@ -160,23 +161,6 @@
             bindsym $mod+r mode "default"
     }
 
-    # systemctl
-    mode "system" {
-            bindsym l exec --no-startup-id $lock, mode "default"
-            bindsym e exec --no-startup-id "i3-msg exit", mode "default"
-            bindsym s exec --no-startup-id "xsecurelock && systemctl suspend", mode "default"
-            bindsym h exec --no-startup-id "xsecurelock && systemctl hibernate", mode "default"
-            bindsym r exec --no-startup-id "xsecurelock && systemctl reboot", mode "default"
-            bindsym Shift+s exec --no-startup-id "xsecurelock && systemctl poweroff", mode "default"
-
-            # back to normal: Enter or Escape
-            bindsym Return mode "default"
-            bindsym Escape mode "default"
-            bindsym $mod+y mode "default"
-    }
-
-
-    bindsym $mod+y mode "system"
     bindsym $mod+r mode "resize"
 
 ### enviroment
@@ -194,7 +178,8 @@
     exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
     exec_always nm-applet
     exec_always --no-startup-id swayidle -w timeout 400 '/home/user/.local/bin/swayexit lock' timeout 1200 'sudo systemctl suspend' before-sleep '/home/user/.local/bin/swayexit lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
-    exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,control
+    exec discord --start-minimized
+    exec telegram-desktop -startintray
 
 
 ### design
@@ -250,3 +235,7 @@
         mode 3840x2160@59.997002Hz
         pos 0 0
     }
+
+# mark and switch
+bindsym $mod+m ~/.config/sway/imark.sh
+bindsym $mod+o ~/.config/sway/igo.sh
