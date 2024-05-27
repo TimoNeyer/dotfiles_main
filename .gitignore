@@ -1,14 +1,5 @@
 # Ignore all current files and directories
 /*
-!i3/
-!polybar/
-!nvim/
-!alacritty/
-!hypr/
-!waybar/
-!waybar/scripts/
-!sway/
-!rofi/
 !.gitignore
 !Vim/
 Vim/vim/plugged/
