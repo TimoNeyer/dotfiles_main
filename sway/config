@@ -49,6 +49,16 @@ bindsym $mod1+v layout splitv
 bindsym $mod1+n layout splith
 bindsym $mod1+Shift+t floating toggle
 
+# move container
+bindsym $mod1+Shift+j move down
+bindsym $mod1+Shift+k move up
+bindsym $mod1+Shift+l move right
+bindsym $mod1+Shift+h move left
+bindsym $mod1+Shift+Down move down
+bindsym $mod1+Shift+Up move up
+bindsym $mod1+Shift+Right move right
+bindsym $mod1+Shift+Left move left
+
 # workspaces
 set $ws1 "1"
 set $ws2 "2"
