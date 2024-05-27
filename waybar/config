@@ -140,7 +140,8 @@
     "sway/window": {
         "max-length": 30,
         "rewrite": {
-            "(.*)Mozilla Firefox": "Firefox: $1"
+            "(.*)Mozilla Firefox": "Firefox: $1",
+            "(.*)- ([A-Z][a-z]*)": "$2: $1"
         }
     },
 
