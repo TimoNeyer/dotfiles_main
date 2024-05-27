@@ -140,9 +140,7 @@
     "sway/window": {
         "max-length": 30,
         "rewrite": {
-            "(.*)Mozilla Firefox": "Firefox: $1",
-            "(.*)Visual Studio Code": "code: $1",
-            "(.*)-([A-Z][a-z]*)": "$2: $1"
+            "(.*)- *([A-Z][a-z]*)": "$2: $1"
         }
     },
 
@@ -152,8 +150,8 @@
     },
 
 	"tray": {
-		"icon-size": 18
-		//"spacing": 10
+		"icon-size": 18,
+		"spacing": 10
 	},
 
     "disk": {
