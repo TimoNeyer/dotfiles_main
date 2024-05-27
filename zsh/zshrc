@@ -40,12 +40,17 @@ export VISUAL=vim
 export venv="/tmp"
 export XDG_CONFIG_HOME=~/.config
 export GPG_TTY=$(tty)
+export T_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
 # settings
 setopt PROMPT_SUBST
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd
 add-zsh-hook preexec preexec
+
+# startup
+if [[ ! -d /tmp/trash ]]; then mkdir /tmp/trash; fi
 
 #####################################################
 # Auto completion / suggestion
@@ -60,9 +65,9 @@ fi
 
 if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
   source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-#  zstyle ':autocomplete:tab:*' insert-unambiguous yes
-#  zstyle ':autocomplete:tab:*' widget-style menu-select
-#  zstyle ':autocomplete:*' min-input 2
+  zstyle ':autocomplete:tab:*' insert-unambiguous yes
+  zstyle ':autocomplete:tab:*' widget-style menu-select
+  zstyle ':autocomplete:*' min-input 2
   bindkey $key[Up] up-line-or-history
   bindkey $key[Down] down-line-or-history
 fi

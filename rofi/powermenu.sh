@@ -56,12 +56,12 @@ run_cmd() {
 	selected="$(confirm_exit $1)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
+			systemctl poweroff && swaylock -C ~/.config/sway/lock
 		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
+			systemctl reboot && swaylock -C ~/.config/sway/lock
 		elif [[ $1 == '--suspend' ]]; then
 			amixer set Master mute
-			systemctl suspend
+			systemctl suspend && swaylock -C ~/.config/sway/lock
 		elif [[ $1 == '--logout' ]]; then
             swaymsg exit
 		fi
