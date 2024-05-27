@@ -11,6 +11,7 @@
 
 # Current Theme
 theme="$HOME/.config/rofi/powermenu.rasi"
+confirm="$HOME/.config/rofi/confirm.rasi"
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
@@ -36,13 +37,13 @@ rofi_cmd() {
 confirm_cmd() {
 	rofi -dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
-		-theme ${dir}/shared/confirm.rasi
+        -mesg "${1:2:10}?" \
+        -theme  $confirm
 }
 
 # Ask for confirmation
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+	echo -e "$yes\n$no" | confirm_cmd $1
 }
 
 # Pass variables to rofi dmenu
@@ -52,7 +53,7 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-	selected="$(confirm_exit)"
+	selected="$(confirm_exit $1)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
 			systemctl poweroff
