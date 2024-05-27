@@ -17,7 +17,7 @@ bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
 default_orientation vertical
 workspace_layout tabbed
 title_align left
-for_window [all] title_window_icon on
+for_window [title=".*"] title_format "%title"
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -132,7 +132,9 @@ input type:touchpad {
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec_always nm-applet
-exec_always --no-startup-id swayidle -w timeout 400 '/home/user/.local/bin/swayexit lock' timeout 1200 'sudo systemctl suspend' before-sleep '/home/user/.local/bin/swayexit lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
+exec_always --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
+exec discord --start-minimized
+exec telegram-desktop -startintray
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
