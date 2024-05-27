@@ -17,7 +17,7 @@ bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
 default_orientation vertical
 workspace_layout tabbed
 title_align left
-for_window [title=".*"] title_format "%title"
+for_window [title=".*Bitwarden — Mozilla Firefox"] floating enable
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -131,8 +131,8 @@ input type:touchpad {
 
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
-exec_always nm-applet
-exec_always --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
+exec nm-applet
+exec --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
 exec discord --start-minimized
 exec telegram-desktop -startintray
 
