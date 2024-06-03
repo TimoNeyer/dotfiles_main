@@ -1,5 +1,6 @@
 # Ignore all current files and directories
 /*
+!.gitignore
 !i3/
 !polybar/
 !nvim/
@@ -9,8 +10,8 @@
 !waybar/scripts/
 !sway/
 !rofi/
-!.gitignore
 !Vim/
 Vim/vim/plugged/
 Vim/vim/view/
 !zsh/
+!packages.list
