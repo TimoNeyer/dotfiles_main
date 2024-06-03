@@ -6,6 +6,11 @@ padding = { x = 0, y = 0 }
 normal = { family = "JetBrains Mono Medium", style = "Medium" }
 bold = { family = "JetBrains Mono Medium", style = "Medium" }
 
+[keyboard]
+bindings = [
+    { key = "Return", mods = "Control", action = "SpawnNewInstance" }
+]
+
 [colors.primary]
 foreground = "0xe3e3e3"
 bright_foreground = "0xffffff"
