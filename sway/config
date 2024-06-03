@@ -12,6 +12,7 @@ bindsym $mod1+d exec rofi -show run -theme rounded-nord-dark
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
+bindsym $mod1+Ctrl+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
 # basic configuration
 default_orientation vertical
@@ -135,6 +136,7 @@ exec nm-applet
 exec --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
 exec discord --start-minimized
 exec telegram-desktop -startintray
+exec dunst --startup_notification "Notification daemon started successfully"
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
