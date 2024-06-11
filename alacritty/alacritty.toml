@@ -8,7 +8,9 @@ bold = { family = "JetBrains Mono Medium", style = "Medium" }
 
 [keyboard]
 bindings = [
-    { key = "Return", mods = "Control", action = "SpawnNewInstance" }
+    { key = "Return", mods = "Control", action = "SpawnNewInstance" },
+    { key = "j", mods = "Control", action = "ToggleViMode" },
+    { key = "e",  mods = "Control", chars = "ehlo" }
 ]
 
 [colors.primary]
