@@ -25,7 +25,7 @@ set cursorline
 set cursorcolumn
 
 " Set shift width to 4 spaces.
-set shiftwidth=4
+set shiftwidth=2
 
 " Show color column at 80 characters width
 set colorcolumn=80
@@ -37,7 +37,7 @@ set ttyfast
 set hidden
 
 " Set tab width to 4 columns.
-set tabstop=4
+set tabstop=2
 
 " Use space characters instead of tabs.
 set expandtab
@@ -90,6 +90,10 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " when searching case insensitive
 set ic
 
+" set default splitting orientation
+set splitright
+set splitbelow
+
 " }}}
 
 " PLUGINS ---------------------------------------------------------------- {{{
@@ -102,6 +106,9 @@ set ic
         Plug 'jiangmiao/auto-pairs'
         Plug 'preservim/nerdcommenter'
         Plug 'airblade/vim-gitgutter'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+        Plug 'nanotee/zoxide.vim'
     call plug#end()
 
 
@@ -140,19 +147,23 @@ set ic
     nnoremap <c-k> <c-w>k
     nnoremap <c-h> <c-w>h
     nnoremap <c-l> <c-w>l
-
+    nnoremap <S-j> <c-w>-
+    nnoremap <S-k> <c-w>+
+    nnoremap <S-h> <c-w>>
+    nnoremap <S-l> <c-w><
 
     " shortcuts editing
     nnoremap O o<esc>
     nnoremap Q :q
     nnoremap W :wq
-    nnoremap dl d$
 
     " mappings plugins
       " Nerdtree
         nnoremap <F3> :NERDTreeToggle<cr>
       " MardownPreview
         nnoremap <F4> :MarkdownPreviewToggle
+      " fzf
+        nnoremap <c-o> :FZF<cr>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -164,6 +175,8 @@ augroup END
 augroup filetype_py
   autocmd!
   autocmd FileType py setlocal foldmethod=indent
+  command -range Comment <line1>,<line2>s/^/#/
+  command -range Uncomment <line1>,<line2>s/^#//
 augroup END
 
 augroup remember_folds
@@ -186,7 +199,7 @@ augroup END
       set statusline=
       set statusline+=\ \%F\ %M\ %Y\ %R
       set statusline+=%=
-      set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+      set statusline+=\ ascii:\ %b\ row:\ %l\ col:\ %c\ percent:\ %p%%
       set laststatus=2
 
 " }}}
