@@ -29,6 +29,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # applications
+alias vi='vim'
 alias svi='sudo vim'
 alias svim='sudo vim'
 alias ping='fping -c 10'
@@ -45,6 +46,8 @@ alias snxd='snx -d'
 alias vpn='protonvpn-cli'
 alias bat='batcat'
 alias imv='imv-wayland'
+alias vo='vim $(fzf)'
+alias e='vo'
 
 # helpful
 alias ipa='ip a'
@@ -55,12 +58,7 @@ alias mute='amixer set Capture nocap'
 alias unmute='amixer set Capture cap'
 alias soundoff='amixer set Master off'
 alias soundon='amixer set Master on'
-alias prog='cd /var/global/programming'
 alias readmail='vim /var/mail/main'
-alias vihelp="md ~/.dotfiles/zsh/plugins/vi-mode/README.md"
-alias lock='xsecurelock 2>&1 > /dev/null'
-alias vault='xset s 30 10'
 alias doascheck='doas -C /etc/doas.conf && echo "config ok" || echo "config error"'
-#alias sudo=doas
-alias uni='cd /var/global/uni/S2'
-alias latexcheat='firefox --new-window /var/global/uni/Liste\ mathematischer\ Symbole\ –\ Wikipedia.html'
+alias sudo='doas'
+alias cd='z'
