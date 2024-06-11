@@ -1,6 +1,5 @@
 [window]
 opacity = 0.7
-padding = { x = 0, y = 0 }
 
 [font]
 normal = { family = "JetBrains Mono Medium", style = "Medium" }
@@ -9,8 +8,6 @@ bold = { family = "JetBrains Mono Medium", style = "Medium" }
 [keyboard]
 bindings = [
     { key = "Return", mods = "Control", action = "SpawnNewInstance" },
-    { key = "j", mods = "Control", action = "ToggleViMode" },
-    { key = "e",  mods = "Control", chars = "ehlo" }
 ]
 
 [colors.primary]
