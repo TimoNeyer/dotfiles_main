@@ -2,17 +2,17 @@
 #
 
 /*
-!alacritty/*
+!alacritty/
 !dunst/
-!hypr/*
-!i3/*
-!neofetch/*
-!nomacs/*
-!nvim/*
-!polybar/*
-!rofi/*
-!sway/*
-!waybar/*
+!hypr/
+!i3/
+!neofetch/
+!nomacs/
+!nvim/
+!polybar/
+!rofi/
+!sway/
+!waybar/
 !zsh/
 !Vim
 Vim/vim/plugged/

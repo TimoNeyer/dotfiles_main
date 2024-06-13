@@ -1,0 +1,8 @@
+# .zsh_plugins.txt
+
+# prompt
+zsh-users/zsh-syntax-highlighting
+z-shell/F-Sy-H branch=main
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+jeffreytse/zsh-vi-mode

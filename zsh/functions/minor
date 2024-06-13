@@ -62,6 +62,10 @@ fuck() {
     fi
 }
 
+git_branch() {
+    GIT_BRANCH=$(git branch 2> /dev/null | sed -nr 's/^\* (.*)$/\(\1\)/p')
+}
+
 preexec () {
    set -A ELAPSED
    (( $#ELAPSED > 1000 )) && set -A ELAPSED $ELAPSED[-1000,-1]
@@ -72,4 +76,5 @@ preexec () {
 precmd() {
     _command_time_precmd
     get_status
+    git_branch
 }
