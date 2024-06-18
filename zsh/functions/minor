@@ -10,12 +10,11 @@ function md () {
 function mdpdf () {
     if [ -f "$2" ]; then
         echo Error: output file exists
-        exit 1
     elif [ ! -f "$1" ]; then
        echo Error: input file not found
-       exit 1
+    else
+        pandoc --from=markdown --to=pdf -o $2 $1
     fi
-    pandoc --from=markdown --to=pdf -o $2 $1
 }
 
 function sound () {
