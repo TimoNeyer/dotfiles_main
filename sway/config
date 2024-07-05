@@ -8,11 +8,11 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+d exec rofi -show run -theme rounded-nord-dark
+bindsym $mod1+Space exec rofi -show run -theme rounded-nord-dark
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
-bindsym $mod1+Ctrl+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
+bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
 # basic configuration
 default_orientation vertical
@@ -87,7 +87,7 @@ bindsym $mod1+0 workspace $ws10
 # switch workspaces relative
 bindsym $mod1+Control+l workspace next
 bindsym $mod1+Control+h workspace prev
-bindsym $mod1+Space workspace back_and_forth
+bindsym $mod1+d     workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod1+Shift+1 move container to workspace $ws1
@@ -133,8 +133,8 @@ input type:touchpad {
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
-exec --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
-exec discord --start-minimized
+exec_always --no-startup-id killall swayidle
+exec_always --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
 
@@ -165,7 +165,6 @@ exec_always --no-startup-id amixer -D pulse sset Master off
 
 # screens
 output "eDP-1" {
-  pos 0 0
   res 1920x1280
 }
 
@@ -174,5 +173,5 @@ output "*" {
 }
 
 # mark and switch
-bindsym $mod1+m ~/.config/sway/imark.sh
-bindsym $mod1+o ~/.config/sway/igo.sh
+bindsym $mod1+m exec "$HOME/.config/sway/imark.sh"
+bindsym $mod1+o exec "$HOME/.config/sway/igo.sh"
