@@ -8,7 +8,7 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+d exec tofi-drun -c ~/.config/tofi/fullscreen | xargs swaymsg exec --
+bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen | xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
@@ -87,7 +87,7 @@ bindsym $mod1+0 workspace $ws10
 # switch workspaces relative
 bindsym $mod1+Control+l workspace next
 bindsym $mod1+Control+h workspace prev
-bindsym $mod1+Space workspace back_and_forth
+bindsym $mod1+d workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod1+Shift+1 move container to workspace $ws1
