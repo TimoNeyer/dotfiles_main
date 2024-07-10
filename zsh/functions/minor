@@ -52,8 +52,7 @@ fuck() {
     read -r response
     if [[ $response =~ ^([Yy][Ee][Ss]|[Yy]|)$ ]]  # Matches "yes", "y", or empty response
     then
-        bash -c "doas $last_command"
-        echo "sudo $last_command"
+        bash -c "sudo $last_command"
         return 0
     else
         echo "Aborted."

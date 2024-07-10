@@ -48,7 +48,7 @@ alias bat='batcat'
 alias imv='imv-wayland'
 alias vo='vim $(fzf)'
 alias e='vo'
-alias code='code-oss'
+#alias code='code-oss'
 
 # helpful
 alias ipa='ip a'
