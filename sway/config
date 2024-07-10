@@ -8,7 +8,7 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+Space exec tofi-run -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
+bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
@@ -118,7 +118,7 @@ mode "resize" {
       bindsym Escape mode "default"
       bindsym $mod1+r mode "default"
 }
-
+include ~/.config/sway/jail
 bindsym $mod1+r mode "resize"
 
 # Inputs
