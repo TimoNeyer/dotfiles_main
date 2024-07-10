@@ -114,8 +114,10 @@ set splitbelow
       Plug 'nanotee/zoxide.vim'
       Plug 'octol/vim-cpp-enhanced-highlight'
       Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+      Plug 'ziglang/zig'
+      Plug 'LnL7/vim-nix'
+      Plug 'rhysd/vim-llvm'
     call plug#end()
-
 
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
@@ -167,25 +169,23 @@ set splitbelow
   hi link ALEInfo SpellBad
   hi link ALEInfoSign Error
 
-    let g:ale_sign_error = '✗'
-    let g:ale_sign_warning = '⚠'
-    let g:ale_sign_info = 'ℹ'
-    let g:ale_sign_style_error = 'S'
+  let g:ale_sign_error = '✗'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_sign_info = 'ℹ'
+  let g:ale_sign_style_error = 'S'
+
+  let g:zig_fmt_parse_errors = 0
 
 " }}}
 
     " shortcuts navigation
     inoremap jj <esc>
+    nnoremap <c-l> <c-w>l
     nnoremap <c-j> <c-w>j
     nnoremap <c-k> <c-w>k
     nnoremap <c-h> <c-w>h
 
     " Window resizing
-    nnoremap <S-J> <c-w>-
-    nnoremap <S-k> <c-w>+
-    nnoremap <S-h> <c-w>>
-    nnoremap <S-l> <c-w><
-
     " Misc
     nnoremap <Space> :
       " Nerdtree

@@ -112,3 +112,4 @@ error-message {
     border: 2px;
     padding: 1em;
 }
+@theme "/usr/share/rofi/themes/Monokai.rasi"

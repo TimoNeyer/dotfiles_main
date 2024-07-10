@@ -1,55 +1,68 @@
 [window]
-opacity = 0.7
+dynamic_title = false
 
 [font]
-normal = { family = "JetBrains Mono Medium", style = "Medium" }
-bold = { family = "JetBrains Mono Medium", style = "Medium" }
+normal = { family = "Terminus", style = "Regular" }
+bold = { family = "Terminus", style = "Bold" }
 
 [keyboard]
 bindings = [
     { key = "Return", mods = "Control", action = "SpawnNewInstance" },
 ]
 
+# # Default colors
+# [colors.primary]
+# background = '#2D2A2E'
+# foreground = '#fff1f3'
+#
+# # Normal colors
+# [colors.normal]
+# black   = '#2c2525'
+# red     = '#fd6883'
+# green   = '#adda78'
+# yellow  = '#f9cc6c'
+# blue    = '#f38d70'
+# magenta = '#a8a9eb'
+# cyan    = '#85dacc'
+# white   = '#fff1f3'
+#
+# # Bright colors
+# [colors.bright]
+# black   = '#72696a'
+# red     = '#fd6883'
+# green   = '#adda78'
+# yellow  = '#f9cc6c'
+# blue    = '#f38d70'
+# magenta = '#a8a9eb'
+# cyan    = '#85dacc'
+# white   = '#fff1f3'
+
+# Colors (Nordic)
+
 [colors.primary]
-foreground = "0xe3e3e3"
-bright_foreground = "0xffffff"
-dim_foreground = "0xe3e3e3"
-background = "0x1f1f1f"
-
-[colors.cursor]
-text = "0x191622"
-cursor = "0xf8f8f2"
-
-[colors.search]
-matches = { foreground = "0xb2b2b2", background = "0xb26818" }
-focused_match = { foreground = "CellBackground", background = "CellForeground" }
+background = '#242933'
+foreground = '#BBBDAF'
 
 [colors.normal]
-black = "0x000000"
-red = "0xb21818"
-green = "0x18b218"
-yellow = "0xb26818"
-blue = "0x174396"
-magenta = "0xb218b2"
-cyan = "0x18b2b2"
-white = "0xb2b2b2"
+black = '#191C1D'
+red = '#BD6062'
+green = '#A3D6A9'
+yellow = '#F0DFAF'
+blue = '#8FB4D8'
+magenta = '#C7A9D9'
+cyan = '#B6D7A8'
+white = '#BDC5BD'
 
 [colors.bright]
-black = "0x686868"
-red = "0xff5454"
-green = "0x54ff54"
-yellow = "0xffff54"
-blue = "0x5454ff"
-magenta = "0xff54ff"
-cyan = "0x54ffff"
-white = "0xffffff"
+black = '#727C7C'
+red = '#D18FAF'
+green = '#B7CEB0'
+yellow = '#BCBCBC'
+blue = '#E0CF9F'
+magenta = '#C7A9D9'
+cyan = '#BBDA97'
+white = '#BDC5BD'
 
-[colors.dim]
-black = "0x000000"
-red = "0xb21818"
-green = "0x18b218"
-yellow = "0xb26818"
-blue = "0x1818b2"
-magenta = "0xb218b2"
-cyan = "0x18b2b2"
-white = "0xb2b2b2"
+[colors.selection]
+text = '#000000'
+background = '#F0DFAF'

@@ -2,6 +2,10 @@
 # zsh configuration with antidote
 #
 
+if [[ "$TERM" == "xterm" ]]; then
+    return 0;
+else
+
 # activate antidote
 source /usr/share/zsh-antidote/antidote.zsh
 antidote load ~/.config/zsh/antidote.txt
@@ -12,7 +16,7 @@ RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
 
 
 # Export PATH$
-export PATH=~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env
+export PATH='~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env'
 
 #####################################################
 # get enviroment
@@ -51,4 +55,8 @@ add-zsh-hook precmd precmd
 add-zsh-hook preexec preexec
 
 # startup
-if [[ ! -d /tmp/trash ]]; then mkdir /tmp/trash; fi
+if [[ ! -d /tmp/trash ]]; then
+    mkdir /tmp/trash; fi
+fi
+check_installed_pkg
+

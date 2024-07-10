@@ -7,7 +7,6 @@
 !hypr/
 !i3/
 !neofetch/
-!nomacs/
 !nvim/
 !polybar/
 !rofi/
@@ -18,3 +17,4 @@
 Vim/vim/plugged/
 Vim/vim/view
 !tofi/
+!screenlock/

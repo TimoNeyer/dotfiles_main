@@ -8,11 +8,11 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+d exec tofi-drun -c ~/.config/tofi/fullscreen | xargs swaymsg exec --
+bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
-bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
-bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
-bindsym $mod1+Ctrl+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
+bindsym $mod2+l exec ~/.config/screenlock/wayland.sh
+bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
+bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
 # basic configuration
 default_orientation vertical
@@ -87,7 +87,7 @@ bindsym $mod1+0 workspace $ws10
 # switch workspaces relative
 bindsym $mod1+Control+l workspace next
 bindsym $mod1+Control+h workspace prev
-bindsym $mod1+Space workspace back_and_forth
+bindsym $mod1+d     workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod1+Shift+1 move container to workspace $ws1
@@ -118,7 +118,7 @@ mode "resize" {
       bindsym Escape mode "default"
       bindsym $mod1+r mode "default"
 }
-
+include ~/.config/sway/jail
 bindsym $mod1+r mode "resize"
 
 # Inputs
@@ -130,13 +130,18 @@ input type:touchpad {
   natural_scroll enabled
 }
 
+input type:pointer {
+    pointer_accel 0.5
+}
+
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
-exec --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend' before-sleep 'swaylock -C ~/.config/sway/lock; sleep 1' after-resume 'swaymsg "output * dpms on"' &
-exec discord --start-minimized
+exec_always --no-startup-id killall swayidle
+exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
+exec_always setxkbmap -layout us,de -option grp:caps_toggle
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -164,19 +169,18 @@ exec_always --no-startup-id amixer -D pulse sset Capture nocap
 exec_always --no-startup-id amixer -D pulse sset Master off
 
 ### outputs
-    output "HDMI-A-5" {
-        background "/usr/share/backgrounds/active/pexels-semws-2670898.jpg" fill
-        mode 1920x1080@60.0Hz
-        pos 3840 0
-        transform 90
-    }
+output "HDMI-A-1" {
+    background "/usr/share/backgrounds/active/pexels-fabiano-rodrigues-794857-1662298.jpg" fill
+    mode 1920x1080@60.0Hz
+    pos 3840 0
+}
 
-    output "DP-4" {
-        background "/usr/share/backgrounds/active/pexels-fabiano-rodrigues-794857-1662298.jpg" fill
-        mode 3840x2160@59.997002Hz
-        pos 0 0
-    }
+output "DP-2" {
+    background "/usr/share/backgrounds/active/pexels-fabiano-rodrigues-794857-1662298.jpg" fill
+    mode 3840x2160@59.997002Hz
+    pos 0 0
+}
 
 # mark and switch
-bindsym $mod1+m ~/.config/sway/imark.sh
-bindsym $mod1+o ~/.config/sway/igo.sh
+bindsym $mod1+m exec "$HOME/.config/sway/imark.sh"
+bindsym $mod1+o exec "$HOME/.config/sway/igo.sh"

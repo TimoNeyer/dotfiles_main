@@ -13,14 +13,14 @@
         "custom/arrow10",
         "sway/mode",
         "sway/window",
-        "hypr/window"
+        "hyprland/window"
 	],
 
     "modules-center": [
 		"custom/arrow11",
         "custom/wssep",
         "sway/workspaces",
-        "hypr/workspaces",
+        "hyprland/workspaces",
         "custom/wssep",
         "custom/arrow10"
     ],
@@ -149,11 +149,11 @@
         "tooltip": false
     },
 
-    "hypr/mode": {
+    "hyprland/mode": {
         "tooltip": false
     },
 
-    "hypr/window": {
+    "hyprland/window": {
         "max-length": 30,
          "rewrite": {
             "(.*)Mozilla Firefox": "Firefox: $1"
