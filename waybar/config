@@ -37,9 +37,7 @@
 		"clock#date",
 		"custom/arrow1",
 		"clock#time",
-        "custom/lock",
-        "custom/reboot",
-        "custom/poweroff"
+        "custom/lock"
 	],
 
 	// Modules
