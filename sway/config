@@ -130,6 +130,13 @@ input type:touchpad {
   natural_scroll enabled
 }
 
+input type:mouse {
+    natural_scroll enabled
+    dwt enabled
+    accel_profile "flat"
+    pointer_accel 0.1
+}
+
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
