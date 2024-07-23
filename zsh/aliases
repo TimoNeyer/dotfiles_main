@@ -1,5 +1,5 @@
 # basic aliases
-alias reload:='source ~/.zshrc'
+alias updatezsh='source ~/.zshrc'
 alias t='alacritty &'
 alias c='clear'
 alias ll='ls -CF'
@@ -29,12 +29,14 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # applications
+alias vi='vim'
 alias svi='sudo vim'
 alias svim='sudo vim'
 alias ping='fping -c 10'
 alias vid='mpv'
 alias pic='imv-wayland'
 alias pcal='python3'
+alias cal='mate-calculator &'
 alias ping4='fping -4'
 alias ping6='fping -6'
 alias py='python3'
@@ -46,6 +48,7 @@ alias bat='batcat'
 alias imv='imv-wayland'
 alias vo='vim $(fzf)'
 alias e='vo'
+#alias code='code-oss'
 
 # helpful
 alias ipa='ip a'
@@ -58,22 +61,5 @@ alias soundoff='amixer set Master off'
 alias soundon='amixer set Master on'
 alias readmail='vim /var/mail/main'
 alias doascheck='doas -C /etc/doas.conf && echo "config ok" || echo "config error"'
-alias f='fuck'
+#alias sudo='doas'
 alias cd='z'
-
-# soft aliases
-alias -s txt=vim
-alias -s md=vim
-alias -s toml=vim
-alias -s yml=vim
-alias -s json=vim
-alias -s py=vim
-alias -s conf=vim
-alias -s sh=vim
-alias -s zsh=vim
-
-# global aliases
-alias -g nvim=vim
-alias -g nano=vim
-alias -g vi=vim
-alias -g cat=bat

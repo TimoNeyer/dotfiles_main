@@ -147,6 +147,11 @@
 	background: @focused;
 }
 
+#workspaces button.active {
+  color: @white;
+  background: @black
+}
+
 /* Contains an urgent window */
 #workspaces button.urgent {
 	color: @white;

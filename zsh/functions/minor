@@ -10,12 +10,11 @@ function md () {
 function mdpdf () {
     if [ -f "$2" ]; then
         echo Error: output file exists
-        exit 1
     elif [ ! -f "$1" ]; then
        echo Error: input file not found
-       exit 1
+    else
+        pandoc --from=markdown --to=pdf -o $2 $1
     fi
-    pandoc --from=markdown --to=pdf -o $2 $1
 }
 
 function sound () {
@@ -46,7 +45,7 @@ get_status() {
   set -A ELAPSED $ELAPSED $(( SECONDS-_start ))
 }
 
-function fuck() {
+fuck() {
     local last_command=$(fc -n -l -1 -1)
     echo "Executing: sudo $last_command"
     echo -n "Continue? (Y/n) "
@@ -61,14 +60,8 @@ function fuck() {
     fi
 }
 
-function git_branch() {
+git_branch() {
     GIT_BRANCH=$(git branch 2> /dev/null | sed -nr 's/^\* (.*)$/\(\1\)/p')
-}
-
-function ukeyring() {
-  read -rs pass
-  export $(echo -n $pass | gnome-keyring-daemon --replace --unlock)
-  unset pass
 }
 
 preexec () {
