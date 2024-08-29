@@ -50,7 +50,7 @@ fuck() {
     echo "Executing: sudo $last_command"
     echo -n "Continue? (Y/n) "
     read -r response
-    if [[ $response =~ ^([Yy][Ee][Ss]|[Yy]|)$ ]]  # Matches "yes", "y", or empty response
+    if [[ $response =~ ^([Yy][Ee][Ss]|[Yy]|)$ ]]
     then
         bash -c "sudo $last_command"
         return 0
@@ -58,6 +58,16 @@ fuck() {
         echo "Aborted."
         return 1
     fi
+}
+
+cl() {
+    $@ | wl-copy
+}
+
+cll() {
+    last_command=$(fc -n -l -1 -1)
+    echo "executed: $last_command"
+    $last_command | wl-copy
 }
 
 git_branch() {

@@ -176,16 +176,12 @@ set splitbelow
 
     " shortcuts navigation
     inoremap jj <esc>
+    nnoremap <c-l> <c-w>l
     nnoremap <c-j> <c-w>j
     nnoremap <c-k> <c-w>k
     nnoremap <c-h> <c-w>h
 
     " Window resizing
-    nnoremap <S-J> <c-w>-
-    nnoremap <S-k> <c-w>+
-    nnoremap <S-h> <c-w>>
-    nnoremap <S-l> <c-w><
-
     " Misc
     nnoremap <Space> :
       " Nerdtree

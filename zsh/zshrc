@@ -12,7 +12,7 @@ RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
 
 
 # Export PATH$
-export PATH=~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env
+export PATH='$HOME/software/executables:~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env'
 
 #####################################################
 # get enviroment
