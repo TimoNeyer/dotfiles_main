@@ -61,7 +61,7 @@ run_cmd() {
 			systemctl reboot && swaylock -C ~/.config/sway/lock
 		elif [[ $1 == '--suspend' ]]; then
 			amixer set Master mute
-			systemctl suspend && swaylock -C ~/.config/sway/lock
+			systemctl suspend -i && swaylock -C ~/.config/sway/lock
 		elif [[ $1 == '--logout' ]]; then
             swaymsg exit
 		fi
