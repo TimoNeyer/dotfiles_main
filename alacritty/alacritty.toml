@@ -2,8 +2,8 @@
 opacity = 0.7
 
 [font]
-normal = { family = "JetBrains Mono Medium", style = "Medium" }
-bold = { family = "JetBrains Mono Medium", style = "Medium" }
+normal = { family = "Terminus", style = "Regular" }
+bold = { family = "Terminus", style = "Regular" }
 
 [keyboard]
 bindings = [
