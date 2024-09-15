@@ -114,6 +114,7 @@ set splitbelow
       Plug 'nanotee/zoxide.vim'
       Plug 'octol/vim-cpp-enhanced-highlight'
       Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+      Plug 'ziglang/zig'
     call plug#end()
 
 
@@ -167,10 +168,12 @@ set splitbelow
   hi link ALEInfo SpellBad
   hi link ALEInfoSign Error
 
-    let g:ale_sign_error = '✗'
-    let g:ale_sign_warning = '⚠'
-    let g:ale_sign_info = 'ℹ'
-    let g:ale_sign_style_error = 'S'
+  let g:ale_sign_error = '✗'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_sign_info = 'ℹ'
+  let g:ale_sign_style_error = 'S'
+
+  let g:zig_fmt_parse_errors = 0
 
 " }}}
 
