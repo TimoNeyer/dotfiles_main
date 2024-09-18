@@ -10,7 +10,7 @@ bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
-bindsym $mod2+l exec swaylock -C ~/.config/sway/lock
+bindsym $mod2+l exec hyprlock --immediate
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
 bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
@@ -138,7 +138,7 @@ input type:pointer {
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
 exec_always --no-startup-id killall swayidle
-exec_always --no-startup-id swayidle -w timeout 400 'swaylock -C ~/.config/sway/lock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
+exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
 
