@@ -11,118 +11,122 @@
 --  leader + s -> system
 --
 
-local opt = { noremap = true, silent = true }
 local terminal = "term://zsh"
+
+local function map(mode, keybind, target, description)
+	vim.keymap.set(mode, keybind, target, { noremap = true, silent = true, desc = description })
+end
 
 --
 -- Handy helper stuff
 --
 
 -- Set Esc to remove highlights
-vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>", opt)
+map("n", "<Esc>", "<cmd>noh<CR>", "Remove search highlights")
 
 -- Enter command mode
-vim.keymap.set("n", "<leader>c", ":", opt)
+map("n", "<leader>c", ": ", "enter command mode")
 
 -- Set save and quit with Control
-vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", opt)
-vim.keymap.set("n", "<C-q>", "<cmd>wq<CR>", opt)
+map("n", "<C-s>", "<cmd>w<CR>", "save file")
+map("n", "<C-q>", "<cmd>wq<CR>", "quit file")
 
 -- Do not yank when deleting single char
-vim.keymap.set("n", "x", '"_x', opt)
+map("n", "x", '"_x', "")
 
 -- Improve searching in buffer
-vim.keymap.set("n", "n", "nzzzv", opt)
-vim.keymap.set("n", "N", "Nzzzv", opt)
+map("n", "n", "nzzzv", "")
+map("n", "N", "Nzzzv", "")
 
 -- Improve vertival scroll
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
-vim.keymap.set("n", "<C-u>", "<C-d>zz", opt)
+map("n", "<C-d>", "<C-d>zz", "")
+map("n", "<C-u>", "<C-d>zz", "")
 
 -- Toggle line wrapping
-vim.keymap.set("n", "<leader>tlw", "<cmd>set wrap!<CR>", opt)
+map("n", "<leader>stw", "<cmd>set wrap!<CR>", "Toggle wrapping of line")
 
 -- Set jj to escape
-vim.keymap.set("i", "jj", "<Esc>", opt)
+map("i", "jj", "<Esc>", "Enter normal mode")
 
 -- Set overwrite to leader
-vim.keymap.set("n", "<leader>w", ":w", opt)
-vim.keymap.set("n", "<leader>ww", ":w<CR>", opt)
-vim.keymap.set("n", "<leader>q", ":q<CR>", opt)
-vim.keymap.set("n", "<leader>wq", ":wq<CR>", opt)
-vim.keymap.set("n", "<leader>e", ":e", opt)
+map("n", "<leader>w", ":w", "begin write")
+map("n", "<leader>ww", ":w<CR>", "write file")
+map("n", "<leader>q", ":q<CR>", "quit file")
+map("n", "<leader>wq", ":wq<CR>", "save and quit")
+map("n", "<leader>e", ":e", "edit")
 
 -- Easier exit
-vim.keymap.set("n", "<leader>sq", ":wqa<CR>", opt)
-vim.keymap.set("n", "<leader>sQ", ":qa<CR>", opt)
+map("n", "<leader>sq", ":wqa<CR>", "write and quit all")
+map("n", "<leader>sQ", ":qa!<CR>", "quit all (force)")
+map("n", "<leader>sqq", ":qa<CR>", "quit all")
 
 -- Toggle vertical column
-vim.keymap.set("n", "<leader>scv", "<cmd> set cursorcolumn!<CR>", opt)
-vim.keymap.set("n", "<leader>sch", "<cmd> set cursorline!<CR>", opt)
+map("n", "<leader>stc", "<cmd> set cursorcolumn!<CR>", "toggle cursor column")
+map("n", "<leader>stl", "<cmd> set cursorline!<CR>", "toggle cursor line")
 
 -- Toggle linenumbers
-vim.keymap.set("n", "<leader>sln", "<cmd> set linenumber<CR>", opt)
-vim.keymap.set("n", "<leader>slr", "<cmd> set  relativelinenumber<CR>", opt)
+map("n", "<leader>stn", "<cmd> set linenumber<CR>", "toggle linenumber")
+map("n", "<leader>str", "<cmd> set  relativelinenumber<CR>", "toggle relative linenumber")
 
 --
 -- Improve visual mode
 --
 
 -- Indent without leaving
-vim.keymap.set("v", "<", "<gv", opt)
-vim.keymap.set("v", ">", ">gv", opt)
+map("v", "<", "<gv", "")
+map("v", ">", ">gv", "")
 
 -- replace without changing registers
-vim.keymap.set("v", "p", '"_dP"', opt)
+map("v", "p", '"_dP"', "")
 
 --
 -- Window Keymappings
 --
 
 -- Window focus
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>", "Move focus to the left window")
+map("n", "<C-l>", "<C-w><C-l>", "Move focus to the right window")
+map("n", "<C-j>", "<C-w><C-j>", "Move focus to the lower window")
+map("n", "<C-k>", "<C-w><C-k>", "Move focus to the upper window")
 
 -- Window resize
-vim.keymap.set("n", "<Up>", ":resize -2<CR>")
-vim.keymap.set("n", "<Down>", ":resize +2<CR>")
-vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>")
-vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>")
+map("n", "<Up>", ":resize -2<CR>", "resive window upwards")
+map("n", "<Down>", ":resize +2<CR>", "resize window downwards")
+map("n", "<Left>", ":vertical resize -2<CR>", "resize window left")
+map("n", "<Right>", ":vertical resize +2<CR>", "resize window right")
 
 -- Window open/close
-vim.keymap.set("n", "<leader>wv", "<C-w>v", opt)
-vim.keymap.set("n", "<leader>wh", "<C-w>h", opt)
-vim.keymap.set("n", "<leader>wc", ":close", opt)
+map("n", "<leader>wv", "<C-w>v", "split buffer vertical")
+map("n", "<leader>wh", "<C-w>h", "split buffer horizontal")
+map("n", "<leader>wc", ":close", "close buffer")
 
 --
 -- Terminal stuff
 --
 
-vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w><C-k>", { desc = "Move focus to the upper window" })
-vim.keymap.set("t", "<Up>", ":resize -2<CR>")
-vim.keymap.set("t", "<Down>", ":resize +2<CR>")
-vim.keymap.set("t", "<Left>", ":vertical resize -2<CR>")
-vim.keymap.set("t", "<Right>", ":vertical resize +2<CR>")
+map("t", "<C-h>", "<C-\\><C-N><C-w><C-h>", "Move focus to the left window")
+map("t", "<C-l>", "<C-\\><C-N><C-w><C-l>", "Move focus to the right window")
+map("t", "<C-j>", "<C-\\><C-N><C-w><C-j>", "Move focus to the lower window")
+map("t", "<C-k>", "<C-\\><C-N><C-w><C-k>", "Move focus to the upper window")
+map("t", "<C-Up>", ":resize -2<CR>")
+map("t", "<C-Down>", ":resize +2<CR>")
+map("t", "<C-Left>", ":vertical resize -2<CR>")
+map("t", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Open terminal
-vim.keymap.set("n", "<leader>ttn", ":e " .. terminal .. "<CR>", opt)
-vim.keymap.set("n", "<leader>ttv", ":vs " .. terminal .. "<CR>", opt)
-vim.keymap.set("n", "<leader>tth", ":sp " .. terminal .. "<CR>", opt)
+map("n", "<leader>ttn", ":e " .. terminal .. "<CR>", "Open terminal in new buffer")
+map("n", "<leader>ttv", ":vs " .. terminal .. "<CR>", "Open terminal vertical split")
+map("n", "<leader>tth", ":sp " .. terminal .. "<CR>", "Open terminal horizontal split")
 
 --
 -- Buffer Keymappings
 --
 
 -- Switch between Buffers
-vim.keymap.set("n", "<leader><Tab>", ":bnext<CR>", opt)
-vim.keymap.set("n", "<leader><S-Tab>", ":bprevious<CR>", opt)
-vim.keymap.set("n", "<leader>tn", ":enew<CR>", opt)
-vim.keymap.set("n", "<leader>tc", ":bd<CR>", opt)
+map("n", "<leader><Tab>", ":bnext<CR>", "switch to next buffer")
+map("n", "<leader><S-Tab>", ":bprevious<CR>", "switch to previous buffer")
+map("n", "<leader>tn", ":enew<CR>", "create new buffer")
+map("n", "<leader>tc", ":bd<CR>", "close current buffer")
 
 --
 -- Miscellaneous
@@ -171,3 +175,11 @@ vim.keymap.set("n", "<leader>tc", ":bd<CR>", opt)
 -- This is not Goto Definition, this is Goto Declaration.
 -- For example, in C this would take you to the header.
 -- map("<leader>lD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+-- map("<leader>ld", require("goto-preview").goto_preview_definition, "preview definition")
+-- map("<leader>ltd", require("goto-preview").goto_preview_type_definition, "preview type definition")
+-- map("<leader>li", require("goto-preview").goto_preview_implementation, "preview implementation")
+-- map("<leader>lD", require("goto-preview").goto_preview_declaration, "preview declaration")
+-- map("<leader>lc", require("goto-preview").close_all_win, "close all preview windows")
+
+-- project-manager
+-- vim.keymap.set( "n", "<leader>po", ":Telescope projects<CR>", { silent = true, noremap = true, desc = "search Projects" }),
