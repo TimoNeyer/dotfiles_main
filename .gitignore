@@ -5,3 +5,4 @@
 Vim/vim/plugged/
 Vim/vim/view/
 !zsh/
+zsh/antidote.zsh
