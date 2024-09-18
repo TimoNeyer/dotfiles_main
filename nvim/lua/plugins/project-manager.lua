@@ -21,6 +21,7 @@ return {
 				"go.mod",
 				"go.sum",
 				".venv",
+				"init.lua",
 			},
 			vim.keymap.set(
 				"n",
