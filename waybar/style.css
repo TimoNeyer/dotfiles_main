@@ -159,6 +159,11 @@
 	color: @white;
 	background: @focused;
 }
+/* Active (on hyprland) */
+#workspaces button.active{
+	color: @white;
+	background: @focused;
+}
 
 /* Contains an urgent window */
 #workspaces button.urgent {
