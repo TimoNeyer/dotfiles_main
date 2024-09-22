@@ -108,15 +108,22 @@ map("t", "<C-h>", "<C-\\><C-N><C-w><C-h>", "Move focus to the left window")
 map("t", "<C-l>", "<C-\\><C-N><C-w><C-l>", "Move focus to the right window")
 map("t", "<C-j>", "<C-\\><C-N><C-w><C-j>", "Move focus to the lower window")
 map("t", "<C-k>", "<C-\\><C-N><C-w><C-k>", "Move focus to the upper window")
-map("t", "<C-Up>", ":resize -2<CR>")
-map("t", "<C-Down>", ":resize +2<CR>")
-map("t", "<C-Left>", ":vertical resize -2<CR>")
-map("t", "<C-Right>", ":vertical resize +2<CR>")
+map("t", "<C-Up>", "<C-w>+")
+map("t", "<C-Down>", "<C-w>-")
+map("t", "<C-Left>", "<C-w>>")
+map("t", "<C-Right>", "<C-w><")
+map("t", "<Esc>", "<C-\\><C-N>")
 
 -- Open terminal
 map("n", "<leader>ttn", ":e " .. terminal .. "<CR>", "Open terminal in new buffer")
 map("n", "<leader>ttv", ":vs " .. terminal .. "<CR>", "Open terminal vertical split")
 map("n", "<leader>tth", ":sp " .. terminal .. "<CR>", "Open terminal horizontal split")
+map(
+	"n",
+	"<leader>ttt",
+	":sp " .. terminal .. " <CR><C-\\><C-N>:resize -20<CR>i",
+	"Open small terminal horizontal split"
+)
 
 --
 -- Buffer Keymappings
