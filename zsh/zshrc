@@ -2,6 +2,10 @@
 # zsh configuration with antidote
 #
 
+if [[ "$TERM" == "xterm" ]]; then
+    sh
+else
+
 # activate antidote
 source /usr/share/zsh-antidote/antidote.zsh
 antidote load ~/.config/zsh/antidote.txt
@@ -52,3 +56,5 @@ add-zsh-hook preexec preexec
 
 # startup
 if [[ ! -d /tmp/trash ]]; then mkdir /tmp/trash; fi
+
+fi
