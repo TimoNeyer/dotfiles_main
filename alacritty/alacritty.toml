@@ -1,9 +1,10 @@
 [window]
 opacity = 0.7
+dynamic_title = false
 
 [font]
 normal = { family = "Terminus", style = "Regular" }
-bold = { family = "Terminus", style = "Regular" }
+bold = { family = "Terminus", style = "Bold" }
 
 [keyboard]
 bindings = [
@@ -53,3 +54,12 @@ blue = "0x1818b2"
 magenta = "0xb218b2"
 cyan = "0x18b2b2"
 white = "0xb2b2b2"
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = "Beam"
+
+[mouse]
+hide_when_typing = true
