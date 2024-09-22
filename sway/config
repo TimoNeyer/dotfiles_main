@@ -11,7 +11,7 @@ bindsym $mod1+q kill
 bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec hyprlock --immediate
-bindsym $mod1+y exec ~/.config/rofi/powermenu.sh
+bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
 bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
 # basic configuration

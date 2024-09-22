@@ -1,13 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-## Author : Aditya Shakya (adi1090x)
-## Github : @adi1090x
-#
-## Rofi   : Power Menu
-#
-## Available Styles
-#
-## style-1   style-2   style-3   style-4   style-5
+LogFile=/tmp/powermenu.log
 
 # Current Theme
 theme="$HOME/.config/rofi/powermenu.rasi"
@@ -15,6 +8,21 @@ confirm="$HOME/.config/rofi/confirm.rasi"
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
+poweroff="systemctl poweroff"
+reboot="systemctl reboot"
+suspend_="systemctl suspend -i"
+lock_="hyprlock"
+
+echo $1 >> $LogFile
+
+if [[ "$1" == "sway" ]]; then
+    exit_="swaymsg exit"
+elif [[ "$1" == "hypr" ]]; then
+    exit_="hyprctl dispatch exit"
+else
+    echo "Failed to get exit function for powermenu! received $1" >> $LogFile
+    exit 1
+fi
 
 # Options
 shutdown='⏻'
@@ -56,14 +64,14 @@ run_cmd() {
 	selected="$(confirm_exit $1)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff && swaylock -C ~/.config/sway/lock
+		    $poweroff && $lock_
 		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot && swaylock -C ~/.config/sway/lock
+			$reboot && $lock_
 		elif [[ $1 == '--suspend' ]]; then
 			amixer set Master mute
-			systemctl suspend -i && swaylock -C ~/.config/sway/lock
+            $suspend_ && $lock_
 		elif [[ $1 == '--logout' ]]; then
-            swaymsg exit
+            $exit_
 		fi
 	else
 		exit 0
@@ -80,7 +88,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-        swaylock -C ~/.config/sway/lock
+        $lock_
         ;;
     $suspend)
 		run_cmd --suspend
