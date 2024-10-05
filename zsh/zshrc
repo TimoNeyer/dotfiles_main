@@ -3,7 +3,7 @@
 #
 
 if [[ "$TERM" == "xterm" ]]; then
-    sh
+    return 0;
 else
 
 # activate antidote

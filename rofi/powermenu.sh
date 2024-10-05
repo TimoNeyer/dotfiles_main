@@ -9,7 +9,7 @@ confirm="$HOME/.config/rofi/confirm.rasi"
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
 poweroff="systemctl poweroff"
-reboot="systemctl reboot"
+reboot_="systemctl reboot"
 suspend_="systemctl suspend -i"
 lock_="hyprlock"
 
@@ -64,9 +64,9 @@ run_cmd() {
 	selected="$(confirm_exit $1)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-		    $poweroff && $lock_
+		    $poweroff
 		elif [[ $1 == '--reboot' ]]; then
-			$reboot && $lock_
+			$reboot_
 		elif [[ $1 == '--suspend' ]]; then
 			amixer set Master mute
             $suspend_ && $lock_

@@ -19,6 +19,7 @@ default_orientation vertical
 workspace_layout tabbed
 title_align left
 for_window [title=".*Bitwarden — Mozilla Firefox"] floating enable
+for_window [title="cool-retro-term"] fullscreen enable
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -141,6 +142,7 @@ exec_always --no-startup-id killall swayidle
 exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
+exec cool-retro-term &
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577

@@ -58,8 +58,5 @@ white = "0xb2b2b2"
 [selection]
 save_to_clipboard = true
 
-[cursor]
-style = "Beam"
-
 [mouse]
 hide_when_typing = true
