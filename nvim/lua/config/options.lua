@@ -1,3 +1,7 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -26,7 +30,7 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
@@ -88,14 +92,14 @@ vim.opt.expandtab = true
 
 -- Terminal auto insert
 vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
-	callback = function(args)
-		if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
-			vim.cmd("startinsert")
-		end
-	end,
+  callback = function(args)
+    if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
+      vim.cmd("startinsert")
+    end
+  end,
 })
 
 -- Improve Terminal
 vim.api.nvim_create_autocmd("TermOpen", {
-	command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]],
+  command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]],
 })

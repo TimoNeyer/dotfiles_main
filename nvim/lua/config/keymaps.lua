@@ -1,3 +1,6 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 --
 -- NeoVim Keybindings
 --
@@ -14,7 +17,7 @@
 local terminal = "term://zsh"
 
 local function map(mode, keybind, target, description)
-	vim.keymap.set(mode, keybind, target, { noremap = true, silent = true, desc = description })
+  vim.keymap.set(mode, keybind, target, { noremap = true, silent = true, desc = description })
 end
 
 --
@@ -119,10 +122,10 @@ map("n", "<leader>ttn", ":e " .. terminal .. "<CR>", "Open terminal in new buffe
 map("n", "<leader>ttv", ":vs " .. terminal .. "<CR>", "Open terminal vertical split")
 map("n", "<leader>tth", ":sp " .. terminal .. "<CR>", "Open terminal horizontal split")
 map(
-	"n",
-	"<leader>ttt",
-	":sp " .. terminal .. " <CR><C-\\><C-N>:resize -20<CR>i",
-	"Open small terminal horizontal split"
+  "n",
+  "<leader>ttt",
+  ":sp " .. terminal .. " <CR><C-\\><C-N>:resize -20<CR>i",
+  "Open small terminal horizontal split"
 )
 
 --
