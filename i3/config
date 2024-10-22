@@ -8,7 +8,7 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+space exec rofi -show run
+bindsym $mod1+space exec ~/.config/rofi/launcher.sh
 bindsym $mod1+Shift+c restart
 bindsym $mod2+l exec ~/.config/screenlock/x.sh
 bindsym $mod1+y exec ~/.config/rofi/powermenu.sh i3
