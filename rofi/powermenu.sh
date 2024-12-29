@@ -32,6 +32,7 @@ reboot='↻'
 lock='🔒'
 suspend='⏾'
 logout='⎋'
+launcher='✔️'
 yes='✔️'
 no='❌'
 
@@ -40,14 +41,14 @@ rofi_cmd() {
     rofi -dmenu \
         -p "Goodbye" \
         -mesg "Uptime: $uptime" \
-        -theme ${theme}
+        -theme $theme
 }
 
 # Confirmation CMD
 confirm_cmd() {
     rofi -dmenu \
         -p 'Confirm' \
-        -mesg "${1:2:10}?" \
+        -mesg "${1:0:10}?" \
         -theme $confirm
 }
 
@@ -84,20 +85,27 @@ run_cmd() {
 chosen="$(run_rofi)"
 case ${chosen} in
 $shutdown)
-    /usr/bin/shutdown
+    if [[ "$(confirm_exit 'shutdown')" == "$yes" ]]; then
+        /usr/bin/shutdown --now
+    fi
     ;;
 $reboot)
-    /usr/bin/reboot
+    if [[ "$(confirm_exit 'reboot')" == "$yes" ]]; then
+        /usr/bin/reboot
+    fi
     ;;
 $lock)
     $lock_
     ;;
 $suspend)
     amixer set Master mute
-    systemctl suspend && "$lock_"
-    echo "systemctl suspend && $lock_" >>$LogFile
+    systemctl suspend
+    "$lock_"
     ;;
 $logout)
     $exit_
+    ;;
+$launcher)
+    ~/.config/rofi/launcher.sh
     ;;
 esac
