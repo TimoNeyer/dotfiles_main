@@ -6,11 +6,11 @@
 set $mod1 Mod1
 set $mod2 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec alacritty
+bindsym $mod1+Return exec ghostty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
-bindsym $mod2+l exec ~/.config/screenlock/wayland.sh
+bindsym $mod2+Ctrl+l exec ~/.config/screenlock/wayland.sh
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
 bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
@@ -19,7 +19,6 @@ default_orientation vertical
 workspace_layout tabbed
 title_align left
 for_window [title=".*Bitwarden — Mozilla Firefox"] floating enable
-for_window [title="cool-retro-term"] fullscreen enable
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -142,8 +141,7 @@ exec_always --no-startup-id killall swayidle
 exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
-exec cool-retro-term &
-exec_always setxkbmap -layout us,de -options grp:caps_toggle
+exec_always setxkbmap -layout us,de -option grp:caps_toggle
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
