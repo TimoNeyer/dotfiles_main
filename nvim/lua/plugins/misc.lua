@@ -52,4 +52,10 @@ return {
   {
     "rust-lang/rust.vim",
   },
+  {
+    "LnL7/vim-nix",
+  },
+  {
+    "rhysd/vim-llvm",
+  },
 }
