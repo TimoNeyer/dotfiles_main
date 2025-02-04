@@ -6,11 +6,11 @@
 set $mod1 Mod1
 set $mod2 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec ghostty
+bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
 bindsym $mod1+Shift+c reload
-bindsym $mod2+Ctrl+l exec ~/.config/screenlock/wayland.sh
+bindsym $mod2+l exec ~/.config/screenlock/wayland.sh
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
 bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
 
@@ -46,8 +46,8 @@ bindsym $mod1+f fullscreen toggle
 bindsym $mod1+s layout stacking
 bindsym $mod1+w layout tabbed
 bindsym $mod1+e layout toggle split
-bindsym $mod1+v layout splith
-bindsym $mod1+n layout splitv
+bindsym $mod1+v layout splitv
+bindsym $mod1+n layout splith
 bindsym $mod1+Shift+t floating toggle
 
 # move container
@@ -138,7 +138,7 @@ input type:pointer {
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
 exec_always --no-startup-id killall swayidle
-exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' timeout 1200 'sudo systemctl suspend'  after-resume 'swaymsg "output * dpms on"' &
+exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
