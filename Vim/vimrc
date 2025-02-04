@@ -115,6 +115,8 @@ set splitbelow
       Plug 'octol/vim-cpp-enhanced-highlight'
       Plug 'mg979/vim-visual-multi', {'branch': 'master'}
       Plug 'ziglang/zig'
+      Plug 'LnL7/vim-nix'
+      Plug 'rhysd/vim-llvm'
     call plug#end()
 
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
