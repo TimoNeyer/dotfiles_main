@@ -152,7 +152,7 @@
 		"format": "DSK: {percentage_used}%",
 		"states": {
 			"warning": 75,
-			"critical": 85
+			"critical": 90
 		},
 		"path": "/"
 	},
