@@ -46,8 +46,9 @@ bindsym $mod1+f fullscreen toggle
 bindsym $mod1+s layout stacking
 bindsym $mod1+w layout tabbed
 bindsym $mod1+e layout toggle split
-bindsym $mod1+v layout splitv
-bindsym $mod1+n layout splith
+# Note: both are correct as splitting horizontally splits on horizontal axis
+bindsym $mod1+v layout splith
+bindsym $mod1+n layout splitv
 bindsym $mod1+Shift+t floating toggle
 
 # move container
