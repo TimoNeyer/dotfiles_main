@@ -60,19 +60,25 @@ fuck() {
     fi
 }
 
-cl() {
-    $@ | wl-copy
-}
-
-cll() {
-    last_command=$(fc -n -l -1 -1)
-    echo "executed: $last_command"
-    $last_command | wl-copy
-}
-
 git_branch() {
     GIT_BRANCH=$(git branch 2> /dev/null | sed -nr 's/^\* (.*)$/\(\1\)/p')
 }
+
+check_installed_pkg () {
+    if [[ -f /tmp/$USER-alias-verified ]]; then
+        return
+    fi
+    cat .config/zsh/aliases \
+        | sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" \
+        | while read -r prog; do
+            if ! [[ "$(command -v $prog)" =~ alias ]]; then
+                command -v $prog > /dev/null \
+                    || echo -e "\e[1;31mWARNING\e[0m $prog not installed"
+            fi
+        done
+    touch /tmp/$USER-alias-verified
+}
+
 
 preexec () {
    set -A ELAPSED

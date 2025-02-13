@@ -55,6 +55,8 @@ add-zsh-hook precmd precmd
 add-zsh-hook preexec preexec
 
 # startup
-if [[ ! -d /tmp/trash ]]; then mkdir /tmp/trash; fi
-
+if [[ ! -d /tmp/trash ]]; then
+    mkdir /tmp/trash; fi
 fi
+check_installed_pkg
+

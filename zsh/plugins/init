@@ -1,5 +1,5 @@
 if [ -f  ~/.config/zsh/plugins/bash.command-not-found ]; then
-#    . ~/.config/zsh/plugins/bash.command-not-found
+    . ~/.config/zsh/plugins/bash.command-not-found
 fi
 
 if [ -f ~/.config/zsh/plugins/command-time ]; then
