@@ -1,7 +1,13 @@
 " Colorscheme:
 colorscheme molokai
 
+set guicursor=n-v-c:block-Cursor,n-v-c:blinkon0,i:blinkwait10
+
 " VARIABLES ------------------------------------------------------------ {{{
+
+" Fix some terminal related stuff
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
@@ -22,10 +28,10 @@ set noerrorbells visualbell t_vb=0
 set number relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
-set cursorline
+" set cursorline
 
 " Highlight cursor line underneath the cursor vertically.
-" set cursorcolumn
+set nocursorcolumn
 
 " Set shift width to 4 spaces.
 set shiftwidth=2
@@ -78,7 +84,6 @@ set hlsearch
 
 " Set the commands to save in history default number is 20.
 set history=1000
-
 
 " Enable auto completion menu after pressing TAB.
 set wildmenu
@@ -153,6 +158,7 @@ set splitbelow
     \   'python': ['autopep8', 'isort'],
     \   'c': ['clang-format'],
     \   'cpp': ['clang-format'],
+    \   'zig': ['zls']
     \}
     let g:ale_statusline_format = ['E: %d', 'W: %d', 'Ok']
     let g:ale_set_highlights = 1
