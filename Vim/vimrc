@@ -126,8 +126,8 @@ set splitbelow
 
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
-    let g:mkdp_auto_start = 1
-    let g:mkdp_auto_close = 0
+    let g:mkdp_auto_start = 0
+    let g:mkdp_auto_close = 1
 
     " ALE
     let g:ale_enabled = 1
@@ -197,7 +197,7 @@ set splitbelow
       " Nerdtree
         nnoremap <F3> :NERDTreeToggle<cr>
       " MardownPreview
-        nnoremap <F4> :MarkdownPreviewToggle
+        nnoremap <F4> :MarkdownPreviewToggle<cr>
       " fzf
         nnoremap <c-o> :FZF<cr>
 " }}}
