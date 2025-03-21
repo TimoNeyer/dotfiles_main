@@ -143,6 +143,7 @@ exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
 exec dunst --startup_notification "Notification daemon started successfully"
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
+exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
