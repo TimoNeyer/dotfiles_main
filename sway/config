@@ -141,7 +141,7 @@ exec nm-applet
 exec_always --no-startup-id killall swayidle
 exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
-exec dunst --startup_notification "Notification daemon started successfully"
+exec_always dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
 exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 
