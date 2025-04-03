@@ -46,8 +46,8 @@ bindsym $mod1+f fullscreen toggle
 bindsym $mod1+s layout stacking
 bindsym $mod1+w layout tabbed
 bindsym $mod1+e layout toggle split
-bindsym $mod1+v layout splitv
-bindsym $mod1+n layout splith
+bindsym $mod1+v layout splith
+bindsym $mod1+n layout splitv
 bindsym $mod1+Shift+t floating toggle
 
 # move container
@@ -140,7 +140,7 @@ exec nm-applet
 exec_always --no-startup-id killall swayidle
 exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
-exec dunst --startup_notification "Notification daemon started successfully"
+exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
 
 # colors

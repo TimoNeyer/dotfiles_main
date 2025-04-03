@@ -1,16 +1,15 @@
 window:
   opacity: 0.9
-  transparent: true
   padding:
     x: 5
-    y: 5
+    y: 0
 
 font:
   normal:
-    family: "JetBrains Mono"
+    family: "JetBrains Mono Medium"
     style: Medium
   bold:
-    family: "JetBrains Mono"
+    family: "JetBrains Mono Medium"
     style: Medium
 
 colors:
@@ -19,8 +18,6 @@ colors:
     bright_foreground: '0xffffff'
     dim_foreground:    '0xe3e3e3'
     background: '0x1f1f1f'
-    #  bright_background: '0x686868' # not sure
-    dim_background:    '0x1f1f1f' # not sure
 
   cursor:
     text: '0x191622'
@@ -33,32 +30,3 @@ colors:
     focused_match:
       foreground: CellBackground
       background: CellForeground
-  normal:
-    black:   '0x000000'
-    red:     '0xb21818'
-    green:   '0x18b218'
-    yellow:  '0xb26818'
-    blue:    '0x1818b2'
-    magenta: '0xb218b2'
-    cyan:    '0x18b2b2'
-    white:   '0xb2b2b2'
-
-  bright:
-    black:   '0x686868'
-    red:     '0xff5454'
-    green:   '0x54ff54'
-    yellow:  '0xffff54'
-    blue:    '0x5454ff'
-    magenta: '0xff54ff'
-    cyan:    '0x54ffff'
-    white:   '0xffffff'
-
-  dim:
-    black:   '0x000000'
-    red:     '0xb21818'
-    green:   '0x18b218'
-    yellow:  '0xb26818'
-    blue:    '0x1818b2'
-    magenta: '0xb218b2'
-    cyan:    '0x18b2b2'
-    white:   '0xb2b2b2'
