@@ -20,5 +20,5 @@ zsh/antidote.zsh
 !pkgsv2
 !tofi/
 !ghostty
-!signature
 !screenlock/
+!dunst/
