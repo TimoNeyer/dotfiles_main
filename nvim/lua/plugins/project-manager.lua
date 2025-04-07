@@ -3,7 +3,7 @@ return {
   lazy = false,
   config = function()
     require("project_nvim").setup({
-      sync_root_with_cwd = true,
+      sync_root_with_cwd = false,
       respect_buf_cwd = true,
       update_focused_file = {
         enable = true,

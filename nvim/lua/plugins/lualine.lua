@@ -4,8 +4,7 @@ return {
     local mode = {
       "mode",
       fmt = function(str)
-        return " " .. str
-        -- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
+        return " " .. str:sub(1, 1)
       end,
     }
 
@@ -40,7 +39,6 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "onedark", -- Set theme based on environment variable
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

@@ -90,6 +90,10 @@ vim.opt.termguicolors = true
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
+-- Set spell checking
+vim.opt.spell = true
+vim.opt.spelllang = "en_us,de_de"
+
 -- Terminal auto insert
 vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
   callback = function(args)

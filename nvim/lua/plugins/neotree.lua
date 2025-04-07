@@ -87,8 +87,8 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+            added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
             deleted = "✖", -- this can only be used in the git_status source
             renamed = "󰁕", -- this can only be used in the git_status source
             -- Status type
@@ -287,7 +287,6 @@ return {
       },
       git_status = {
         window = {
-          position = "float",
           mappings = {
             ["A"] = "git_add_all",
             ["gu"] = "git_unstage_file",
@@ -308,6 +307,12 @@ return {
       },
     })
 
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        vim.defer_fn(function()
+          vim.cmd("Neotree git_status show bottom")
+        end, 20)
+      end,
+    })
   end,
 }

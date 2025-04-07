@@ -12,16 +12,16 @@ return {
     },
     bottom = {
       -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
-      --       {
-      --         ft = "terminal",
-      --         title = "Terminal",
-      --         open = "terminal zsh",
-      --         size = { height = 0.3 },
-      --         filter = function(buf)
-      --           return not vim.bo[buf].buftype == "terminal"
-      --         end,
-      --         pinned = true,
-      --       },
+      {
+        ft = "toggleterm",
+        title = "Terminal",
+        open = "terminal zsh",
+        size = { height = 0.3 },
+        filter = function(buf)
+          return not vim.bo[buf].buftype == "terminal"
+        end,
+        pinned = true,
+      },
       { ft = "qf", title = "QuickFix" },
       "Trouble",
     },
@@ -35,6 +35,7 @@ return {
         end,
         size = { height = 0.5 },
         pinned = true,
+        open = "Neotree show top",
       },
       {
         title = "Neo-Tree Git",
@@ -44,7 +45,7 @@ return {
         end,
         size = { height = 0.25 },
         pinned = true,
-        open = "Neotree position=right git_status",
+        open = "Neotree  git_status show bottom",
       },
       {
         title = "Neo-Tree Buffers",
@@ -54,9 +55,12 @@ return {
         end,
         size = { height = 0.25 },
         pinned = true,
-        open = "Neotree position=top buffers",
+        open = "Neotree buffers show bottom",
       },
       "neo-tree",
+    },
+    right = {
+      { title = "Grug Far", ft = "grug-far", size = { width = 0.4 } },
     },
   },
 }
