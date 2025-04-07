@@ -17,14 +17,5 @@ return {
 
     -- see below for full list of optional dependencies 👇
   },
-  opts = {
-    workspaces = {
-      {
-        name = "Obsidian",
-        path = "~/Obsidian",
-      },
-    },
-
     -- see below for full list of options 👇
-  },
 }

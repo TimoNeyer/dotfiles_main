@@ -14,7 +14,7 @@ return {
   {
     -- Hints keybinds
     "folke/which-key.nvim",
-    enabled = false,
+    enabled = true,
   },
   {
     -- Autoclose parentheses, brackets, quotes, etc.
@@ -45,9 +45,6 @@ return {
   },
   {
     "Bekaboo/deadcolumn.nvim",
-  },
-  {
-    import = "lazyvim.plugins.extras.lsp.none-ls",
   },
   {
     "rust-lang/rust.vim",

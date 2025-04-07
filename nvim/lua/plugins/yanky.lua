@@ -5,7 +5,5 @@ return {
   opts = {
     highlight = { timer = 150 },
   },
-  keys = {
-    
-  },
+  keys = {},
 }

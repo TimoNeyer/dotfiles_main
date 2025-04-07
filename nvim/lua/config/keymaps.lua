@@ -14,8 +14,6 @@
 --  leader + s -> system
 --
 
-local terminal = "term://zsh"
-
 local function map(mode, keybind, target, description)
   vim.keymap.set(mode, keybind, target, { noremap = true, silent = true, desc = description })
 end
@@ -25,14 +23,16 @@ end
 --
 
 -- Set Esc to remove highlights
-map("n", "<Esc>", "<cmd>noh<CR>", "Remove search highlights")
+map("n", "<Esc>", "<cmd>noh<CR><Esc>", "Remove search highlights")
 
--- Enter command mode
-map("n", "<leader>c", ": ", "enter command mode")
+-- basic copy paste behaviour
+map({ "n", "i", "v" }, "<C-c>", '"+y', "Save to system clipboard")
+map({ "n", "i", "v" }, "<C-v>", '"+p', "Paste system clipboard")
 
 -- Set save and quit with Control
 map("n", "<C-s>", "<cmd>w<CR>", "save file")
 map("n", "<C-q>", "<cmd>wq<CR>", "quit file")
+map("n", "<C-S-u>", "<cmd>wqa<CR>", "quit all")
 
 -- Do not yank when deleting single char
 map("n", "x", '"_x', "")
@@ -52,16 +52,10 @@ map("n", "<leader>stw", "<cmd>set wrap!<CR>", "Toggle wrapping of line")
 map("i", "jj", "<Esc>", "Enter normal mode")
 
 -- Set overwrite to leader
-map("n", "<leader>w", ":w", "begin write")
 map("n", "<leader>ww", ":w<CR>", "write file")
 map("n", "<leader>q", ":q<CR>", "quit file")
 map("n", "<leader>wq", ":wq<CR>", "save and quit")
 map("n", "<leader>e", ":e", "edit")
-
--- Easier exit
-map("n", "<leader>sq", ":wqa<CR>", "write and quit all")
-map("n", "<leader>sQ", ":qa!<CR>", "quit all (force)")
-map("n", "<leader>sqq", ":qa<CR>", "quit all")
 
 -- Toggle vertical column
 map("n", "<leader>stc", "<cmd> set cursorcolumn!<CR>", "toggle cursor column")
@@ -116,17 +110,6 @@ map("t", "<C-Down>", "<C-w>-")
 map("t", "<C-Left>", "<C-w>>")
 map("t", "<C-Right>", "<C-w><")
 map("t", "<Esc>", "<C-\\><C-N>")
-
--- Open terminal
-map("n", "<leader>ttn", ":e " .. terminal .. "<CR>", "Open terminal in new buffer")
-map("n", "<leader>ttv", ":vs " .. terminal .. "<CR>", "Open terminal vertical split")
-map("n", "<leader>tth", ":sp " .. terminal .. "<CR>", "Open terminal horizontal split")
-map(
-  "n",
-  "<leader>ttt",
-  ":sp " .. terminal .. " <CR><C-\\><C-N>:resize -20<CR>i",
-  "Open small terminal horizontal split"
-)
 
 --
 -- Buffer Keymappings
@@ -193,3 +176,16 @@ map("n", "<leader>tc", ":bd<CR>", "close current buffer")
 
 -- project-manager
 -- vim.keymap.set( "n", "<leader>po", ":Telescope projects<CR>", { silent = true, noremap = true, desc = "search Projects" }),
+
+vim.keymap.set({ "n", "x" }, "<leader>ss", function()
+  local search = vim.fn.getreg("/")
+  -- surround with \b if "word" search (such as when pressing `*`)
+  if search and vim.startswith(search, "\\<") and vim.endswith(search, "\\>") then
+    search = "\\b" .. search:sub(3, -3) .. "\\b"
+  end
+  require("grug-far").open({
+    prefills = {
+      search = search,
+    },
+  })
+end, { desc = "grug-far: Search using @/ register value or visual selection" })
