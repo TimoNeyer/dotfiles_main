@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -89,6 +89,10 @@ vim.opt.termguicolors = true
 -- Set tabs to spaces
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
+
+-- Set spell checking
+-- vim.opt.spell = true
+-- vim.opt.spelllang = "en_us,de_de"
 
 -- Terminal auto insert
 vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
