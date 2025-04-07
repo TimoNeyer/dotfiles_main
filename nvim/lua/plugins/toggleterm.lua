@@ -28,8 +28,13 @@ return {
       desc = "ToggleTerm (vertical root_dir)",
     },
     {
-      "<leader>ttg",
+      "<leader>ttG",
       '<cmd>TermExec cmd="lazygit"<CR>',
+      { noremap = true, silent = true },
+    },
+    {
+      "<leader>ttb",
+      '<cmd>TermExec cmd="btop"<CR>',
       { noremap = true, silent = true },
     },
   },
@@ -43,7 +48,9 @@ return {
       end
     end,
     open_mapping = [[<c-\>]],
-    -- on_open = fun(t: Terminal), -- function to run when the terminal opens
+    on_open = function(term)
+      term:send("fastfetch")
+    end, -- function to run when the terminal opens
     -- on_close = fun(t: Terminal), -- function to run when the terminal closes
     -- on_stdout = fun(t: Terminal, job: number, data: string[], name: string) -- callback for processing output on stdout
     -- on_stderr = fun(t: Terminal, job: number, data: string[], name: string) -- callback for processing output on stderr
@@ -59,7 +66,7 @@ return {
     direction = "horizontal" or "vertical" or "float",
     -- direction = "vertical",
     close_on_exit = true, -- close the terminal window when the process exits
-    -- shell = vim.o.shell, -- change the default shell
+    shell = "zsh", -- change the default shell
     -- This field is only relevant if direction is set to 'float'
     -- float_opts = {
     --   -- The border key is *almost* the same as 'nvim_open_win'

@@ -1,0 +1,9 @@
+*.local
+*.local/
+*.vscode
+.venv/
+venv/
+*.bin
+*.out
+*.[oa]
+

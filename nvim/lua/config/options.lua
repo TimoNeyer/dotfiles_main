@@ -29,10 +29,10 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
-
+--vim.schedule(function()
+--  vim.opt.clipboard = "unnamedplus"
+--end)
+vim.opt.clipboard = ""
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -90,20 +90,9 @@ vim.opt.termguicolors = true
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
+-- stop excessinve insert mode deletions
+vim.opt.backspace = { "indent", "eol", "start" }
+
 -- Set spell checking
 -- vim.opt.spell = true
--- vim.opt.spelllang = "en_us,de_de"
-
--- Terminal auto insert
-vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
-  callback = function(args)
-    if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
-      vim.cmd("startinsert")
-    end
-  end,
-})
-
--- Improve Terminal
-vim.api.nvim_create_autocmd("TermOpen", {
-  command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]],
-})
+-- vim.opt.spelllang = {"en_us","de_de"}
