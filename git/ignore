@@ -7,4 +7,5 @@ venv/
 *.out
 *.[oa]
 .vim/
-
+zig-out/
+.zig-cache/
