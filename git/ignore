@@ -1,9 +1,10 @@
 *.local
 *.local/
-*.vscode
+*.vscode/
 .venv/
 venv/
 *.bin
 *.out
 *.[oa]
+.vim/
 
