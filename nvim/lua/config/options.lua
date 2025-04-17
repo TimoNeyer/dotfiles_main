@@ -2,6 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- vim.lsp.set_log_level("debug")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -96,3 +98,38 @@ vim.opt.backspace = { "indent", "eol", "start" }
 -- Set spell checking
 -- vim.opt.spell = true
 -- vim.opt.spelllang = {"en_us","de_de"}
+
+vim.api.nvim_create_user_command("Random", function(opts)
+  local args = opts.fargs
+  local copy = false
+  local length = 32
+
+  for _, arg in ipairs(args) do
+    if arg == "copy=true" then
+      copy = true
+    elseif arg:match("^%d+$") then
+      length = tonumber(arg) or 32
+    end
+  end
+
+  local handle = io.popen("head -c " .. length * 4 .. " /dev/urandom | tr -dc '[:alnum:]' | head -c" .. length)
+  if not handle then
+    print("Unable to read /dev/urandom")
+    return
+  end
+  local output = handle:read("*a"):gsub("%s+", ""):sub(1, length)
+  handle:close()
+
+  if copy then
+    vim.fn.setreg("+", output)
+    print("Copied to clipboard: " .. output)
+  else
+    vim.api.nvim_put({ output }, "c", true, true)
+  end
+end, {
+  nargs = "*",
+  complete = function(_, line)
+    -- Optional completion suggestions
+    return { "copy=true", "copy=false", "16", "32", "64" }
+  end,
+})

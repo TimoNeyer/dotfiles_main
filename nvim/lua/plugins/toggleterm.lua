@@ -48,9 +48,7 @@ return {
       end
     end,
     open_mapping = [[<c-\>]],
-    on_open = function(term)
-      term:send("fastfetch")
-    end, -- function to run when the terminal opens
+    on_open = function(term) end, -- function to run when the terminal opens
     -- on_close = fun(t: Terminal), -- function to run when the terminal closes
     -- on_stdout = fun(t: Terminal, job: number, data: string[], name: string) -- callback for processing output on stdout
     -- on_stderr = fun(t: Terminal, job: number, data: string[], name: string) -- callback for processing output on stderr

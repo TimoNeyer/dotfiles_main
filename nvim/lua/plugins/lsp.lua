@@ -115,6 +115,7 @@ return {
     local servers = {
       clangd = {
         filetypes = { "c", "cpp", "h", "hpp", "c++", "h++", "cc", "hh" },
+        cmd = { "clangd", "clang-tidy" },
       },
       gopls = {},
       -- pyright = {},
