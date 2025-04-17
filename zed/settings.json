@@ -18,8 +18,8 @@
         "custom_digraphs": {}
     },
     "base_keymap": "VSCode",
-    "ui_font_size": 16,
-    "buffer_font_size": 16,
+    "ui_font_size": 14,
+    "buffer_font_size": 14,
     "theme": {
         "mode": "system",
         "light": "One Light",
@@ -55,8 +55,7 @@
     },
     "project_panel": {
         "button": true,
-        "dock": "left",
-        "git_status": true
+        "dock": "left"
     },
     "collaboration_panel": {
         "dock": "right"
@@ -67,5 +66,12 @@
     },
     "chat_panel": {
         "dock": "right"
-    }
+    },
+    "outline_panel": {
+        "dock": "right"
+    },
+    "git_panel": {
+        "dock": "right"
+    },
+    "redact_private_values": true
 }
