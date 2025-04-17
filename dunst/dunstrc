@@ -151,7 +151,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%s %p\n%b"
+    format = "<b>%a</b>\n%s %p\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -296,7 +296,7 @@
     foreground = "#000000"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
-    #new_icon = /path/to/icon
+    #new_icon = /usr/share/icons/notification.png
 
 [urgency_normal]
     background = "#282a36"
@@ -309,7 +309,7 @@
     background = "#ff5555"
     foreground = "#f8f8f2"
     frame_color = "#ff5555"
-    timeout = 0
+    timeout = 10
     # Icon for notifications with critical urgency, uncomment to enable
     #new_icon = /path/to/icon
 
