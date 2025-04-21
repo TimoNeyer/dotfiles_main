@@ -9,3 +9,4 @@ venv/
 .vim/
 zig-out/
 .zig-cache/
+.zed/
