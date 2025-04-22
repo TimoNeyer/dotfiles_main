@@ -10,7 +10,7 @@
 [includeIf "gitdir:~/.config/"]
   path = ~/.config/git/github-TimoNeyer.toml.local
 [includeif "gitdir:~/Documents/prg/"]
-    path = ~/.config/git/github-l3-ch13f.toml.local
+    path = ~/.config/git/github-L3-CH13F.toml.local
 [alias]
 	p = push
 	a = add
