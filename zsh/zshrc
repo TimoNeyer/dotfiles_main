@@ -59,3 +59,21 @@ if [[ ! -d /tmp/trash ]]; then
     mkdir /tmp/trash; fi
 fi
 check_installed_pkg
+
+# Auto-start or attach to tmux session
+if command -v tmux &> /dev/null; then
+  # Only auto-attach if not already inside tmux
+  if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]; then
+    # Session name (customize if you want)
+    SESSION_NAME="$USER-tmux-default"
+
+    # Try to attach or create new session
+    tmux has-session -t "$SESSION_NAME" 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+      exec tmux attach-session -t "$SESSION_NAME"
+    else
+      exec tmux new-session -s "$SESSION_NAME"
+    fi
+  fi
+fi
