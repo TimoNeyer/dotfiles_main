@@ -12,9 +12,9 @@ alias cat='bat'
 ###################
 # power management
 ###################
-alias reboot='/sbin/reboot'
-alias shutdown='/sbin/shutdown'
-alias halt='/sbin/halt'
+alias reboot='/bin/reboot'
+alias shutdown='/bin/shutdown'
+alias halt='/bin/halt'
 
 ###################
 # shortcuts
@@ -58,6 +58,7 @@ alias ping='fping -c 10'
 alias ping4='fping -4'
 alias ping6='fping -6'
 alias venv='python3 -m venv'
+alias rsync="rsync --exclude-from=$HOME/.config/git/ignore --exclude=.git/ --progress -AEXogrxh"
 
 ###################
 # application
@@ -79,6 +80,7 @@ alias unmute='amixer set Capture cap'
 alias soundoff='amixer set Master off'
 alias soundon='amixer set Master on'
 alias readmail='vim /var/mail/main'
+alias 'sudo'='sudo '
 
 ###################
 # miscelaneus
@@ -92,3 +94,9 @@ alias systemclt='systemctl'
 ###################
 alias ,sshe='ssh -O exit'
 alias ,cat='/usr/bin/cat'
+alias ,rsync='/usr/bin/rsync'
+
+###################
+# testing
+###################
+alias docker='echo use podman'
