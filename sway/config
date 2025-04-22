@@ -12,7 +12,7 @@ bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg e
 bindsym $mod1+Shift+c reload
 bindsym $mod2+l exec ~/.config/screenlock/wayland.sh
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
-bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
+bindsym $mod1+Shift+s exec ~/.config/sway/screenshot.sh
 
 # basic configuration
 default_orientation vertical
@@ -46,6 +46,7 @@ bindsym $mod1+f fullscreen toggle
 bindsym $mod1+s layout stacking
 bindsym $mod1+w layout tabbed
 bindsym $mod1+e layout toggle split
+# Note: both are correct as splitting horizontally splits on horizontal axis
 bindsym $mod1+v layout splith
 bindsym $mod1+n layout splitv
 bindsym $mod1+Shift+t floating toggle
@@ -140,8 +141,9 @@ exec nm-applet
 exec_always --no-startup-id killall swayidle
 exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
 exec telegram-desktop -startintray
-exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
+exec_always dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
+exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -168,17 +170,13 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 exec_always --no-startup-id amixer -D pulse sset Capture nocap
 exec_always --no-startup-id amixer -D pulse sset Master off
 
-### outputs
-output "HDMI-A-1" {
-    background "/usr/share/backgrounds/active/pexels-fabiano-rodrigues-794857-1662298.jpg" fill
-    mode 1920x1080@60.0Hz
-    pos 3840 0
+# screens
+output "eDP-1" {
+  res 1920x1280
 }
 
-output "DP-2" {
-    background "/usr/share/backgrounds/active/pexels-fabiano-rodrigues-794857-1662298.jpg" fill
-    mode 3840x2160@59.997002Hz
-    pos 0 0
+output "*" {
+  background "~/Pictures/parrot-fly-grey.png" fill
 }
 
 # mark and switch

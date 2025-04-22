@@ -1,6 +1,7 @@
 return {
   "ahmedkhalf/project.nvim",
   lazy = false,
+  enabled = false,
   config = function()
     require("project_nvim").setup({
       sync_root_with_cwd = false,
@@ -10,6 +11,11 @@ return {
         update_root = true,
       },
       patterns = {
+        ".project-root.local",
+        ".vim.local",
+        "LICENCE",
+        "README.md",
+        "Readme.md",
         ".git",
         "_darcs",
         ".hg",
@@ -22,8 +28,8 @@ return {
         "go.sum",
         ".venv",
         "init.lua",
+        "cargo.toml",
         "src/",
-        ".project-root.local",
       },
       vim.keymap.set(
         "n",

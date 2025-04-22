@@ -1,0 +1,60 @@
+# This is Git's per-user configuration file.
+[includeIf "hasconfig:remote.origin.url:github.com:*/**"]
+	path = ~/.config/git/github-TimoNeyer.toml.local
+[includeIf "hasconfig:remote.origin.url:gitlab.platywnies.de:*/**"]
+	path = ~/.config/git/gitlab.platypwnies-timo.neyer.toml
+[includeIf "hasconfig:remote.origin.url:gitlab.hpi.de:*/**"]
+	path = ~/.config/git/gitlab.hpi-timo.neyer.toml
+[includeIf "gitdir:~/pcg/"]
+    path = ~/.config/git/gitlab.hpi-timo.neyer.toml
+[includeIf "gitdir:~/.config/"]
+  path = ~/.config/git/github-TimoNeyer.toml.local
+[includeif "gitdir:~/Documents/prg/"]
+    path = ~/.config/git/github-L3-CH13F.toml.local
+[alias]
+	p = push
+	a = add
+	c = commit
+	cl = clone
+	pl = pull
+	sub = submodule
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all =  true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[merge]
+	conflictstyle = zdiff3
+[tag]
+	sort = version:refname
+# vim: ft=toml

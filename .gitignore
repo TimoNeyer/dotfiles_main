@@ -25,3 +25,4 @@ zsh/antidote.zsh
 !init.sh
 !tmux/
 tmux/plugins/
+!zed/

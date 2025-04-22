@@ -1,1 +1,157 @@
-/home/main/.dotfiles/i3config
+#
+# Sway configuratioin
+#
+
+# Basic keybinds
+set $mod1 Mod1
+set $mod2 Mod4
+floating_modifier $mod1
+bindsym $mod1+Return exec alacritty
+bindsym $mod1+q kill
+bindsym $mod1+space exec ~/.config/rofi/launcher.sh
+bindsym $mod1+Shift+c restart
+bindsym $mod2+l exec ~/.config/screenlock/x.sh
+bindsym $mod1+y exec ~/.config/rofi/powermenu.sh i3
+bindsym $mod1+r mode resize
+#bindsym $mod1+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iminute).png
+
+# basic configuration
+default_orientation vertical
+workspace_layout tabbed
+title_align left
+for_window [title=".*Bitwarden — Mozilla Firefox"] floating enable
+for_window [title="cool-retro-term"] fullscreen enable
+default_border pixel 5
+hide_edge_borders none
+mouse_warping output
+focus_on_window_activation urgent
+focus_wrapping force
+focus_follows_mouse yes
+font pango:Cantarell 10
+
+# focus switching
+bindsym $mod1+j focus down
+bindsym $mod1+k focus up
+bindsym $mod1+l focus right
+bindsym $mod1+h focus left
+bindsym $mod1+Left focus left
+bindsym $mod1+Down focus down
+bindsym $mod1+Up focus up
+bindsym $mod1+Right focus right
+bindsym $mod1+a focus parent
+bindsym $mod1+x focus child
+
+# change layout
+bindsym $mod1+Shift+n split h
+bindsym $mod1+Shift+v split v
+bindsym $mod1+f fullscreen toggle
+bindsym $mod1+s layout stacking
+bindsym $mod1+w layout tabbed
+bindsym $mod1+e layout toggle split
+bindsym $mod1+v layout splith
+bindsym $mod1+n layout splitv
+bindsym $mod1+Shift+t floating toggle
+
+# move container
+bindsym $mod1+Shift+j move down
+bindsym $mod1+Shift+k move up
+bindsym $mod1+Shift+l move right
+bindsym $mod1+Shift+h move left
+bindsym $mod1+Shift+Down move down
+bindsym $mod1+Shift+Up move up
+bindsym $mod1+Shift+Right move right
+bindsym $mod1+Shift+Left move left
+
+# workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod1+1 workspace $ws1
+bindsym $mod1+2 workspace $ws2
+bindsym $mod1+3 workspace $ws3
+bindsym $mod1+4 workspace $ws4
+bindsym $mod1+5 workspace $ws5
+bindsym $mod1+6 workspace $ws6
+bindsym $mod1+7 workspace $ws7
+bindsym $mod1+8 workspace $ws8
+bindsym $mod1+9 workspace $ws9
+bindsym $mod1+0 workspace $ws10
+
+# switch workspaces relative
+bindsym $mod1+Control+l workspace next
+bindsym $mod1+Control+h workspace prev
+bindsym $mod1+d     workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod1+Shift+1 move container to workspace $ws1
+bindsym $mod1+Shift+2 move container to workspace $ws2
+bindsym $mod1+Shift+3 move container to workspace $ws3
+bindsym $mod1+Shift+4 move container to workspace $ws4
+bindsym $mod1+Shift+5 move container to workspace $ws5
+bindsym $mod1+Shift+6 move container to workspace $ws6
+bindsym $mod1+Shift+7 move container to workspace $ws7
+bindsym $mod1+Shift+8 move container to workspace $ws8
+bindsym $mod1+Shift+9 move container to workspace $ws9
+bindsym $mod1+Shift+0 move container to workspace $ws10
+
+# modes
+mode "resize" {
+      bindsym h resize shrink width 10 px or 10 ppt
+      bindsym k resize grow height 10 px or 10 ppt
+      bindsym j resize shrink height 10 px or 10 ppt
+      bindsym l resize grow width 10 px or 10 ppt
+
+      bindsym Left resize shrink width 10 px or 10 ppt
+      bindsym Down resize grow height 10 px or 10 ppt
+      bindsym Up resize shrink height 10 px or 10 ppt
+      bindsym Right resize grow width 10 px or 10 ppt
+
+      # back to normal: Enter or Escape or $mod1+d
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+      bindsym $mod1+r mode "default"
+}
+
+# enviroment
+exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
+exec nm-applet
+exec dunst --startup_notification "Notification daemon started successfully"
+exec_always setxkbmap -layout us,de -options grp:caps_toggle
+exec_always ~/.config/polybar/launch.sh
+exec_always xinput set-props 11 306 1
+
+# colors
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# scratchpad
+bindsym $mod1+Ctrl+minus move scratchpad
+bindsym $mod1+minus scratchpad show
+
+# Brightnesscontrol
+bindsym $mod1+F5 exec brightnessctl s 5%- 'amdgpu_bl0'
+bindsym $mod1+F6 exec brightnessctl s +5% 'amdgpu_bl0'
+
+bindsym $mod1+F1 exec amixer -D pulse sset Master toggle
+bindsym $mod1+F2 exec amixer sset Master 5%-
+bindsym $mod1+F3 exec amixer sset Master 5%+
+bindsym $mod1+F4 exec amixer -D pulse sset Capture toggle
+
+exec_always --no-startup-id amixer -D pulse sset Capture nocap
+exec_always --no-startup-id amixer -D pulse sset Master off
+
+# mark and switch
+bindsym $mod1+m exec "$HOME/.config/i3/imark.sh"
+bindsym $mod1+o exec "$HOME/.config/i3/igo.sh"

@@ -11,7 +11,8 @@ return {
       enabled = false,
     },
     bottom = {
-      -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
+
+      -- toggleterm / lazyterm at the bottom with a height of 30% of the screen
       {
         ft = "toggleterm",
         title = "Terminal",
@@ -60,7 +61,14 @@ return {
       "neo-tree",
     },
     right = {
-      { title = "Grug Far", ft = "grug-far", size = { width = 0.4 } },
+      {
+        title = "Grug Far",
+        ft = "grug-far",
+        size = {
+          width = 0.15,
+          size = 1,
+        },
+      },
     },
   },
 }

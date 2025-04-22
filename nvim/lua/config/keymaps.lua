@@ -27,12 +27,27 @@ map("n", "<Esc>", "<cmd>noh<CR><Esc>", "Remove search highlights")
 
 -- basic copy paste behaviour
 map({ "n", "i", "v" }, "<C-c>", '"+y', "Save to system clipboard")
-map({ "n", "i", "v" }, "<C-v>", '"+p', "Paste system clipboard")
+map({ "n", "i", "v" }, "<C-v>", function()
+  local mode = vim.fn.mode()
+
+  if mode == "i" then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-r>+", true, false, true), "n", false)
+  elseif mode == "v" or mode == "V" or mode == "\22" then
+    -- Replace visual selection with clipboard contents
+    vim.cmd('normal! "+p')
+  else
+    -- Normal mode paste
+    vim.cmd('normal! "+p')
+  end
+end, "Paste system clipboard")
 
 -- Set save and quit with Control
 map("n", "<C-s>", "<cmd>w<CR>", "save file")
 map("n", "<C-q>", "<cmd>wq<CR>", "quit file")
-map("n", "<C-S-u>", "<cmd>wqa<CR>", "quit all")
+map("n", "<C-S-q>", "<cmd>wqa<CR>", "quit all")
+
+-- better text editing
+map("i", "<C-BS>", "<C-W>", "Delete work backwards")
 
 -- Do not yank when deleting single char
 map("n", "x", '"_x', "")
@@ -43,7 +58,7 @@ map("n", "N", "Nzzzv", "")
 
 -- Improve vertival scroll
 map("n", "<C-d>", "<C-d>zz", "")
-map("n", "<C-u>", "<C-d>zz", "")
+map("n", "<C-u>", "<C-u>zz", "")
 
 -- Toggle line wrapping
 map("n", "<leader>stw", "<cmd>set wrap!<CR>", "Toggle wrapping of line")
@@ -116,10 +131,12 @@ map("t", "<Esc>", "<C-\\><C-N>")
 --
 
 -- Switch between Buffers
-map("n", "<leader><Tab>", ":bnext<CR>", "switch to next buffer")
-map("n", "<leader><S-Tab>", ":bprevious<CR>", "switch to previous buffer")
+map({ "n", "v", "i" }, "<leader><Tab>", ":bnext<CR>", "switch to next buffer")
+map({ "n", "v", "i" }, "<leader><S-Tab>", ":bprevious<CR>", "switch to previous buffer")
 map("n", "<leader>tn", ":enew<CR>", "create new buffer")
 map("n", "<leader>tc", ":bd<CR>", "close current buffer")
+map("n", "<Tab>", ":bnext<CR>", "switch to next buffer")
+map("n", "<S-Tab>", ":bprevious<CR>", "switch to previous buffer")
 
 --
 -- Miscellaneous

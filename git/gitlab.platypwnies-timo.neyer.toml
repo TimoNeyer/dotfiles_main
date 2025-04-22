@@ -1,0 +1,5 @@
+[user]
+	email = timo.neyer@student.hpi.uni-potsdam.de
+	name = timo.neyer
+[commit]
+	gpgsign = false

@@ -2,6 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- vim.lsp.set_log_level("debug")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -29,10 +31,10 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
-
+--vim.schedule(function()
+--  vim.opt.clipboard = "unnamedplus"
+--end)
+vim.opt.clipboard = ""
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -90,20 +92,44 @@ vim.opt.termguicolors = true
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
+-- stop excessinve insert mode deletions
+vim.opt.backspace = { "indent", "eol", "start" }
+
 -- Set spell checking
-vim.opt.spell = true
-vim.opt.spelllang = "en_us,de_de"
+-- vim.opt.spell = true
+-- vim.opt.spelllang = {"en_us","de_de"}
 
--- Terminal auto insert
-vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
-  callback = function(args)
-    if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
-      vim.cmd("startinsert")
+vim.api.nvim_create_user_command("Random", function(opts)
+  local args = opts.fargs
+  local copy = false
+  local length = 32
+
+  for _, arg in ipairs(args) do
+    if arg == "copy=true" then
+      copy = true
+    elseif arg:match("^%d+$") then
+      length = tonumber(arg) or 32
     end
-  end,
-})
+  end
 
--- Improve Terminal
-vim.api.nvim_create_autocmd("TermOpen", {
-  command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]],
+  local handle = io.popen("head -c " .. length * 4 .. " /dev/urandom | tr -dc '[:alnum:]' | head -c" .. length)
+  if not handle then
+    print("Unable to read /dev/urandom")
+    return
+  end
+  local output = handle:read("*a"):gsub("%s+", ""):sub(1, length)
+  handle:close()
+
+  if copy then
+    vim.fn.setreg("+", output)
+    print("Copied to clipboard: " .. output)
+  else
+    vim.api.nvim_put({ output }, "c", true, true)
+  end
+end, {
+  nargs = "*",
+  complete = function(_, line)
+    -- Optional completion suggestions
+    return { "copy=true", "copy=false", "16", "32", "64" }
+  end,
 })

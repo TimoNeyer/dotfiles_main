@@ -14,16 +14,10 @@
     }
 }
 
-@keyframes blink-charging {
-    to {
-        color: @green;
-    }
-}
-
 
 @define-color black	    #282828;
-@define-color white     #fdfdfd;
-@define-color red       #cc241d;
+@define-color white	    #fdfdfd;
+@define-color red	    #cc241d;
 @define-color darkblue2 #0c2553;
 @define-color yellow	#d79921;
 @define-color darkblue1 #003559;
@@ -35,7 +29,6 @@
 @define-color grey      #847F7C;
 @define-color shade     #1a4dac;
 @define-color shade2    #174396;
-@define-color green     #008631;
 
 
 @define-color warning 	@bryellow;
@@ -44,16 +37,16 @@
 @define-color unfocused	@bg2;
 @define-color focused	@grey;
 @define-color inactive	@darkblue1;
-@define-color sound	    @darkblue1;
-@define-color network	@shade;
+@define-color sound	    @darkblue;
+@define-color network	@darkblue1;
 @define-color memory	@shade2;
 @define-color cpu	    @shade;
 @define-color temp	    @darkblue3;
 @define-color layout	@bryellow;
 @define-color disk      @darkblue2;
-@define-color date	    @shade;
+@define-color date	    @darkblue1;
 @define-color time	    @darkblue;
-@define-color battery   @darkblue;
+@define-color battery   @darkblue2;
 @define-color tray      @bg2;
 
 /* Reset all styles */
@@ -117,20 +110,14 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning.discharging {
+    color: @warning;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
-	animation-name: blink-warning;
-	animation-duration: 5s;
-}
-
-#battery.charging {
-    animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-name: blink-charging;
+	animation-name: blink-warining;
 	animation-duration: 1s;
 }
+
 /* And now modules themselves in their respective order */
 
 /* Current sway mode (resize etc) */
@@ -156,11 +143,6 @@
 
 /* Active (on focused output) */
 #workspaces button.focused {
-	color: @white;
-	background: @focused;
-}
-/* Active (on hyprland) */
-#workspaces button.active{
 	color: @white;
 	background: @focused;
 }
@@ -269,7 +251,7 @@
 #custom-arrow3 {
 	font-size: 11pt;
 	color: @battery;
-	background: @sound;
+	background: @temp;
 }
 
 #custom-arrow4 {

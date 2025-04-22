@@ -68,7 +68,7 @@ return {
         },
       },
 
-      highlights = {
+      highlights_ = {
         separator = {
           bg = require("onedarkpro.helpers").get_colors().bg,
         },

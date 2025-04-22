@@ -102,10 +102,6 @@ set ic
 set splitright
 set splitbelow
 
-" spelling server
-set spell
-set spelllang=en_us
-
 " }}}
 
 " PLUGINS ---------------------------------------------------------------- {{{
