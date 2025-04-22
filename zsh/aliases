@@ -79,6 +79,7 @@ alias unmute='amixer set Capture cap'
 alias soundoff='amixer set Master off'
 alias soundon='amixer set Master on'
 alias readmail='vim /var/mail/main'
+alias y='yazi-script'
 
 ###################
 # miscelaneus

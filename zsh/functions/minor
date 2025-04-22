@@ -69,15 +69,15 @@ git_stats() {
 
     local changes=""
     if ! git diff --quiet --ignore-submodules --; then
-        changes=" ✗"  
+        changes=" ✗"
     fi
- 
+
     if ! git diff --cached --quiet --ignore-submodules --; then
-        changes+="●"  
+        changes+="●"
     fi
 
     if [[ -n $(git ls-files --others --exclude-standard) ]]; then
-        changes+="+"  
+        changes+="+"
     fi
 
     local ahead behind
@@ -85,8 +85,8 @@ git_stats() {
     behind=$(git rev-list --count HEAD..@{upstream} 2>/dev/null || echo 0)
 
     local sync_status=""
-    [[ "$ahead" -gt 0 ]] && sync_status=" ↑$ahead"  
-    [[ "$behind" -gt 0 ]] && sync_status+=" ↓$behind"  
+    [[ "$ahead" -gt 0 ]] && sync_status=" ↑$ahead"
+    [[ "$behind" -gt 0 ]] && sync_status+=" ↓$behind"
 
     GIT_BRANCH="($branch$sync_status$changes)"
 }
@@ -105,6 +105,15 @@ check_installed_pkg () {
             fi
         done
     touch /tmp/$USER-alias-verified
+}
+
+function yazi-script() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
 

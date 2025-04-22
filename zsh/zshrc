@@ -59,4 +59,3 @@ if [[ ! -d /tmp/trash ]]; then
     mkdir /tmp/trash; fi
 fi
 check_installed_pkg
-
