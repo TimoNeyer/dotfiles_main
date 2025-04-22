@@ -20,28 +20,28 @@ export PATH='~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/
 
 #####################################################
 # get enviroment
-if [ -f ~/.config/zsh/env ]; then
-    . ~/.config/zsh/env
+if [ -f ~/.config/zsh/env.zsh ]; then
+    . ~/.config/zsh/env.zsh
 fi
 
 # get functions
-if [  -f ~/.config/zsh/functions/init ]; then
-    . ~/.config/zsh/functions/init
+if [  -f ~/.config/zsh/functions/init.zsh ]; then
+    . ~/.config/zsh/functions/init.zsh
 fi
 
 # get plugins
-if [  -f ~/.config/zsh/plugins/init ]; then
-    . ~/.config/zsh/plugins/init
+if [  -f ~/.config/zsh/plugins/init.zsh ]; then
+    . ~/.config/zsh/plugins/init.zsh
 fi
 
 # get aliases
-if [  -f ~/.config/zsh/aliases ]; then
-    . ~/.config/zsh/aliases
+if [  -f ~/.config/zsh/aliases.zsh ]; then
+    . ~/.config/zsh/aliases.zsh
 fi
 
 # get keybinds
-if [ -f ~/.config/zsh/keybinds ]; then
-    . ~/.config/zsh/keybinds
+if [ -f ~/.config/zsh/keybinds.zsh ]; then
+    . ~/.config/zsh/keybinds.zsh
 fi
 
 #####################################################

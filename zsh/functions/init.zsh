@@ -1,15 +1,15 @@
-if [ -f ~/.config/zsh/functions/x ]; then
-    . ~/.config/zsh/functions/x
+if [ -f ~/.config/zsh/functions/x.zsh ]; then
+    . ~/.config/zsh/functions/x.zsh
 fi
 
-if [ -f ~/.config/zsh/functions/minor ]; then
-    . ~/.config/zsh/functions/minor
+if [ -f ~/.config/zsh/functions/minor.zsh ]; then
+    . ~/.config/zsh/functions/minor.zsh
 fi
 
-if [ -f ~/.config/zsh/functions/led ]; then
-    . ~/.config/zsh/functions/led
+if [ -f ~/.config/zsh/functions/led.zsh ]; then
+    . ~/.config/zsh/functions/led.zsh
 fi
 
-if [ -f ~/.config/zsh/functions/wlr-randr ]; then
-    . ~/.config/zsh/functions/wlr-randr
+if [ -f ~/.config/zsh/functions/wlr-randr.zsh ]; then
+    . ~/.config/zsh/functions/wlr-randr.zsh
 fi
