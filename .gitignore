@@ -23,3 +23,5 @@ zsh/antidote.zsh
 !screenlock/
 !dunst/
 !init.sh
+!tmux/
+tmux/plugins/
