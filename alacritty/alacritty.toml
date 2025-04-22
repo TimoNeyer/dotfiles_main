@@ -1,68 +1,22 @@
 [window]
-dynamic_title = false
+dynamic_title = true
+dynamic_padding = true
+decorations = 'None'
+
 
 [font]
 normal = { family = "Terminus", style = "Regular" }
 bold = { family = "Terminus", style = "Bold" }
+italic = {family = "Terminus", style = "italic"}
 
 [keyboard]
 bindings = [
     { key = "Return", mods = "Control", action = "SpawnNewInstance" },
 ]
 
-# # Default colors
-# [colors.primary]
-# background = '#2D2A2E'
-# foreground = '#fff1f3'
-#
-# # Normal colors
-# [colors.normal]
-# black   = '#2c2525'
-# red     = '#fd6883'
-# green   = '#adda78'
-# yellow  = '#f9cc6c'
-# blue    = '#f38d70'
-# magenta = '#a8a9eb'
-# cyan    = '#85dacc'
-# white   = '#fff1f3'
-#
-# # Bright colors
-# [colors.bright]
-# black   = '#72696a'
-# red     = '#fd6883'
-# green   = '#adda78'
-# yellow  = '#f9cc6c'
-# blue    = '#f38d70'
-# magenta = '#a8a9eb'
-# cyan    = '#85dacc'
-# white   = '#fff1f3'
-
-# Colors (Nordic)
-
-[colors.primary]
-background = '#242933'
-foreground = '#BBBDAF'
-
-[colors.normal]
-black = '#191C1D'
-red = '#BD6062'
-green = '#A3D6A9'
-yellow = '#F0DFAF'
-blue = '#8FB4D8'
-magenta = '#C7A9D9'
-cyan = '#B6D7A8'
-white = '#BDC5BD'
-
-[colors.bright]
-black = '#727C7C'
-red = '#D18FAF'
-green = '#B7CEB0'
-yellow = '#BCBCBC'
-blue = '#E0CF9F'
-magenta = '#C7A9D9'
-cyan = '#BBDA97'
-white = '#BDC5BD'
-
-[colors.selection]
-text = '#000000'
-background = '#F0DFAF'
+[general]
+import = [
+    '~/.config/alacritty/colors.d/nord.toml'
+    # '~/.config/alacritty/colors.d/nordic.toml'
+    # '~/.config/alacritty/colors.d/default.toml'
+]
