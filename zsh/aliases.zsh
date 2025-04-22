@@ -93,3 +93,11 @@ alias systemclt='systemctl'
 ###################
 alias ,sshe='ssh -O exit'
 alias ,cat='/usr/bin/cat'
+
+
+###################
+# ensure packages
+# are installed
+###################
+alias ,ensure-tmux-installed='tmux'
+alias ,ensure-yazi-installed='yazi'
