@@ -28,3 +28,6 @@ zsh/antidote.zsh
 tmux/plugins/
 !zed/
 !git/
+!CONTRIBUTING
+!LICENSE
+!SECURITY.md
