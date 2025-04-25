@@ -96,7 +96,7 @@ check_installed_pkg () {
     if [[ -f /tmp/$USER-alias-verified ]]; then
         return
     fi
-    cat .config/zsh/aliases \
+    cat .config/zsh/aliases.zsh \
         | sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" \
         | while read -r prog; do
             if ! [[ "$(command -v $prog)" =~ alias ]]; then
@@ -116,6 +116,23 @@ function yazi-script() {
 	rm -f -- "$tmp"
 }
 
+tmux-initializer () {
+if command -v tmux &> /dev/null; then
+  if [[ "$#" -eq 2 ]]; then
+    SESSION_NAME="$2"
+  else
+    SESSION_NAME="$USER-tmux-default"
+  fi
+  if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]; then
+    tmux has-session -t "$SESSION_NAME" 2>/dev/null
+    if [ $? -eq 0 ]; then
+      exec tmux attach-session -t "$SESSION_NAME"
+    else
+      exec tmux new-session -s "$SESSION_NAME"
+    fi
+  fi
+fi
+}
 
 preexec () {
    set -A ELAPSED
