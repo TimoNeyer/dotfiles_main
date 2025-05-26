@@ -125,7 +125,7 @@ bindsym $mod1+r mode "resize"
 # Inputs
 input "type:keyboard" {
   xkb_layout us,de
-  xkb_options grp:caps_switch
+  xkb_options compose:caps
 }
 input type:touchpad {
   natural_scroll enabled
