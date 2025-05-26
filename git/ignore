@@ -10,3 +10,4 @@ venv/
 zig-out/
 .zig-cache/
 .zed/
+__pycache__/
