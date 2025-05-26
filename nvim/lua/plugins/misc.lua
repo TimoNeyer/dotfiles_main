@@ -55,4 +55,7 @@ return {
   {
     "rhysd/vim-llvm",
   },
+  {
+    "lervag/vimtex",
+  },
 }

@@ -99,6 +99,8 @@ vim.opt.backspace = { "indent", "eol", "start" }
 -- vim.opt.spell = true
 -- vim.opt.spelllang = {"en_us","de_de"}
 
+vim.g.vimtex_view_method = "zathura"
+
 vim.api.nvim_create_user_command("Random", function(opts)
   local args = opts.fargs
   local copy = false
