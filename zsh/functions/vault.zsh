@@ -7,6 +7,7 @@ SELECTED_VAULT=
 cryfs-vault-open() {
     cryfs \
         -o allow_root \
+        --unmount-idle 5 \
         $(jq -r --arg p "$SELECTED_VAULT" '.[$p].e' "$CONFIG_PATH") \
         $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m' "$CONFIG_PATH")
 }
