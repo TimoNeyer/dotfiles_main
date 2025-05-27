@@ -1,7 +1,7 @@
 #!/bin/env sh
 
 DEFAULT_VAULT=cert
-CONFIG_PATH=~/.config/zsh/functions/vaults.json
+CONFIG_PATH="$HOME/.config/zsh/functions/vaults.json.local"
 SELECTED_VAULT=
 
 cryfs-vault-open() {
@@ -14,7 +14,7 @@ cryfs-vault-open() {
 
 cryfs-vault-close() {
     cryfs-unmount \
-        $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m // empty' "$CONFIG_PATH")
+        $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m' "$CONFIG_PATH")
 }
 
 vault() {
