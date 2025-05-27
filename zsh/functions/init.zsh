@@ -13,3 +13,7 @@ fi
 if [ -f ~/.config/zsh/functions/wlr-randr.zsh ]; then
     . ~/.config/zsh/functions/wlr-randr.zsh
 fi
+
+if [ -f ~/.config/zsh/functions/vault.zsh ]; then
+    . ~/.config/zsh/functions/vault.zsh
+fi
