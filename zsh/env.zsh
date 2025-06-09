@@ -10,11 +10,20 @@ export MOZ_ENABLE_WAYLAND=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#999999"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
-setopt appendhistory
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export LC_ALL=en_US.UTF-8
+
+if [[ -z "$ANON_SHELL" ]]; then
+  export HISTFILE=~/.zsh_history
+  export HISTSIZE=100000
+  export SAVEHIST=100000
+  setopt appendhistory
+else
+  export HISTFILE=/dev/zero
+  export HISTSIZE=0
+  export SAVEHIST=0
+fi
+

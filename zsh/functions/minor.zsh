@@ -13,7 +13,44 @@ function mdpdf () {
     elif [ ! -f "$1" ]; then
        echo Error: input file not found
     else
-        pandoc --from=markdown --to=pdf -o $2 $1
+      DATA_DIR="$(mktemp -d -p /tmp mdpdf.XXXXXXXX)"
+        mkdir $DATA_DIR
+        pandoc \
+          --from=markdown \
+          --to=pdf \
+          --data-dir $DATA_DIR \
+          -o $2 $1
+        rm -r $DATA_DIR
+    fi
+}
+
+function anonymous () {
+    local anon=""
+    if [[ -z "$HISTFILE" ]]; then
+        echo "no histfile, assuming in anon"
+        anon=true
+    elif [[ -n "$ANON_SHELL" ]]; then
+        anon=true
+    fi
+    if [[ "$#" -eq 1 ]]; then
+        if [[ "$1" = "exit" ]]; then
+            if [[ -n "$anon" ]]; then
+                exit
+            else
+                echo "error: not in anon"
+                return 1
+            fi
+        elif [[ "$1" = "enter" ]]; then
+            unset HISTFILE
+            export ANON_SHELL="true"
+            $SHELL
+        fi
+    elif [[ "$#" -eq 0 ]] && [[ -z "$anon" ]]; then
+            unset HISTFILE
+            export ANON_SHELL="true"
+            $SHELL
+    else
+        echo "error: unkown command: $@"
     fi
 }
 
@@ -61,6 +98,10 @@ fuck() {
 }
 
 git_stats() {
+    if [[ -n "$NO_GIT_STATUS_LOAD" ]]; then
+      GIT_BRANCH="[off]"
+      return 0
+    fi
     GIT_BRANCH=""
     git rev-parse --is-inside-work-tree &>/dev/null || return
 
