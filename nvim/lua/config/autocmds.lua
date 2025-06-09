@@ -18,25 +18,24 @@ vim.api.nvim_create_autocmd("TermOpen", {
   command = [[setlocal nonumber norelativenumber winhl=Normal:NormalFloat]],
 })
 
--- static session management
+-- static session management, remember to ignore .vim.local/ in git!
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    local full_path = vim.fn.getcwd() .. "/" .. session_file
-    if vim.fn.filereadable(full_path) == 1 then
-      vim.cmd("source " .. vim.fn.fnameescape(full_path))
-    end
-  end,
-})
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  callback = function()
-    local cwd = vim.fn.getcwd()
+    -- Get the first argument passed to nvim (file or dir)
+    local arg = vim.fn.argv(0)
 
-    -- Create .vim.local directory if it doesn't exist
-    if vim.fn.isdirectory(session_dir) == 0 then
-      vim.fn.mkdir(session_dir, "p")
+    -- If no argument passed, fallback to current working directory
+    local target_dir = arg ~= "" and vim.fn.fnamemodify(arg, ":p") or vim.fn.getcwd()
+
+    -- If it's a file, get its directory
+    if vim.fn.isdirectory(target_dir) == 0 then
+      target_dir = vim.fn.fnamemodify(target_dir, ":h")
     end
 
-    -- Save the session
-    vim.cmd("mksession! " .. vim.fn.fnameescape(cwd .. "/" .. session_file))
+    local session_file = target_dir .. session_dir .. session_file
+
+    if vim.fn.filereadable(session_file) == 1 then
+      vim.cmd("source " .. vim.fn.fnameescape(session_file))
+    end
   end,
 })

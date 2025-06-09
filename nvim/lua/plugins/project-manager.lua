@@ -1,7 +1,7 @@
 return {
   "ahmedkhalf/project.nvim",
   lazy = false,
-  enabled = false,
+  enabled = true,
   config = function()
     require("project_nvim").setup({
       sync_root_with_cwd = false,

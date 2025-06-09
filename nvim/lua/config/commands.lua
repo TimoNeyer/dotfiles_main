@@ -1,3 +1,8 @@
+-----------------------------
+-- Vim command definitions
+-----------------------------
+
+-- Copy or write a random string
 vim.api.nvim_create_user_command("Random", function(opts)
   local args = opts.fargs
   local copy = false
@@ -28,7 +33,6 @@ vim.api.nvim_create_user_command("Random", function(opts)
 end, {
   nargs = "*",
   complete = function(_, line)
-    -- Optional completion suggestions
     return { "copy=true", "copy=false", "16", "32", "64" }
   end,
 })
