@@ -9,7 +9,7 @@
 {
     "vim_mode": true,
     "vim": {
-        "default_mode": "insert",
+        "default_mode": "normal",
         "use_system_clipboard": "never",
         "use_multiline_find": true,
         "use_smartcase_find": true,
@@ -21,9 +21,9 @@
     "ui_font_size": 14,
     "buffer_font_size": 14,
     "theme": {
-        "mode": "system",
-        "light": "One Light",
-        "dark": "One Dark"
+        "mode": "dark",
+        "dark": "Tokyo Night Storm",
+        "light": "One Light"
     },
     "telemetry": {
         "diagnostics": false,
