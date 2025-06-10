@@ -7,6 +7,15 @@ function md () {
     pandoc $@ | lynx -stdin;
 }
 
+function set-title () {
+    if [[ "$#" -eq 1 ]]; then
+        print -Pn "\e]2;${1}\a"
+    else
+        echo "usage: set-title [Title]"
+        return 1
+    fi
+}
+
 function mdpdf () {
     if [ -f "$2" ]; then
         echo Error: output file exists

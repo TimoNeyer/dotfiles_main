@@ -3,59 +3,73 @@
 #
 
 if [[ "$TERM" == "xterm" ]]; then
-    return 0;
+    return 0
 else
 
-# activate antidote
-source /usr/share/zsh-antidote/antidote.zsh
-antidote load ~/.config/zsh/antidote.txt
+    # activate antidote
+    source /usr/share/zsh-antidote/antidote.zsh
+    antidote load ~/.config/zsh/antidote.txt
 
-# Set the prompt
-PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f❯❯ '
-RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
+    # Set the prompt
+    PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f❯❯ '
+    RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
 
+    # Export PATH$
+    export PATH='~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env'
 
-# Export PATH$
-export PATH='~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env'
+    #####################################################
+    # get enviroment
+    if [ -f ~/.config/zsh/env.zsh ]; then
+        . ~/.config/zsh/env.zsh
+    fi
 
-#####################################################
-# get enviroment
-if [ -f ~/.config/zsh/env.zsh ]; then
-    . ~/.config/zsh/env.zsh
-fi
+    # get functions
+    if [ -f ~/.config/zsh/functions/init.zsh ]; then
+        . ~/.config/zsh/functions/init.zsh
+    fi
 
-# get functions
-if [  -f ~/.config/zsh/functions/init.zsh ]; then
-    . ~/.config/zsh/functions/init.zsh
-fi
+    # get plugins
+    if [ -f ~/.config/zsh/plugins/init.zsh ]; then
+        . ~/.config/zsh/plugins/init.zsh
+    fi
 
-# get plugins
-if [  -f ~/.config/zsh/plugins/init.zsh ]; then
-    . ~/.config/zsh/plugins/init.zsh
-fi
+    # get aliases
+    if [ -f ~/.config/zsh/aliases.zsh ]; then
+        . ~/.config/zsh/aliases.zsh
+    fi
 
-# get aliases
-if [  -f ~/.config/zsh/aliases.zsh ]; then
-    . ~/.config/zsh/aliases.zsh
-fi
+    # get keybinds
+    if [ -f ~/.config/zsh/keybinds.zsh ]; then
+        . ~/.config/zsh/keybinds.zsh
+    fi
 
-# get keybinds
-if [ -f ~/.config/zsh/keybinds.zsh ]; then
-    . ~/.config/zsh/keybinds.zsh
-fi
+    #####################################################
+    # definitions
+    if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 
-#####################################################
-# definitions
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+    # settings
+    setopt PROMPT_SUBST
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd precmd
+    add-zsh-hook preexec preexec
 
-# settings
-setopt PROMPT_SUBST
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd precmd
-add-zsh-hook preexec preexec
-
-# startup
-if [[ ! -d /tmp/trash ]]; then
-    mkdir /tmp/trash; fi
+    # startup
+    if [[ ! -d /tmp/trash ]]; then
+        mkdir /tmp/trash
+    fi
 fi
 check_installed_pkg
+
+# auto set tmux
+if command -v tmux >/dev/null && [ -z "$TMUX" ] && [[ -z $TERM_PROGRAM ]] && [[ -z "$VSCODE_PID" ]]; then
+    session_name="sh-$(date +%y%m%d-%H%M)"
+
+    print -Pn "\e]2;${session_name}\a"
+
+    if ! tmux has-session -t "$session_name" 2>/dev/null; then
+        tmux new-session -s "$session_name"
+    else
+        tmux attach-session -t "tmp-$(date +%c%N | b2sum | head -c 16)"
+    fi
+    exit
+fi
