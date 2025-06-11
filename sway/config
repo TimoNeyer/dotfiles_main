@@ -148,6 +148,7 @@ exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 exec_always --no-startup-id kwalletd6
 exec_always --no-startup-id env XDG_CURRENT_DESKTOP=KDE xdg-desktop-portal &
 exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec_always tmux start-server
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
