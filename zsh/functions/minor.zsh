@@ -146,7 +146,8 @@ check_installed_pkg () {
     if [[ -f /tmp/$USER-alias-verified ]]; then
         return
     fi
-    cat .config/zsh/aliases.zsh \
+    # do not use aliases here
+    /usr/bin/cat .config/zsh/aliases.zsh \
         | sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" \
         | while read -r prog; do
             if ! [[ "$(command -v $prog)" =~ alias ]]; then
