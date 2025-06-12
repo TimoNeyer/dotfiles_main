@@ -61,7 +61,7 @@ fi
 check_installed_pkg
 
 # auto set tmux
-if command -v tmux >/dev/null && [ -z "$TMUX" ] && [[ -z $ALACRITTY_SOCKET ]]; then
+if command -v tmux >/dev/null && [ -z "$TMUX" ] && [[ -n "$ALACRITTY_SOCKET" ]]; then
     session_name="sh-$(date +%y%m%d-%H%M)"
 
     print -Pn "\e]2;${session_name}\a"
