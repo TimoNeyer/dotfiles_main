@@ -69,7 +69,7 @@ run_cmd() {
         if [[ $1 == '--shutdown' ]]; then
             $poweroff
         elif [[ $1 == '--reboot' ]]; then
-            $reboot_
+            systemctl reboot
         elif [[ $1 == '--suspend' ]]; then
             amixer set Master mute
             $suspend_ && $lock_
