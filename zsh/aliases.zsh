@@ -8,6 +8,7 @@ alias c='clear'
 alias ll='ls -l'
 alias la='ls -la'
 alias cat='bat'
+alias sudo='doas'
 
 ###################
 # power management
