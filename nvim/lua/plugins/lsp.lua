@@ -179,6 +179,9 @@ return {
           },
         },
       },
+      nasm = {
+        filetypes = { "asm" },
+      },
     }
 
     -- Ensure the servers and tools above are installed
