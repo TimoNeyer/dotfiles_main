@@ -58,18 +58,3 @@ else
         mkdir /tmp/trash
     fi
 fi
-check_installed_pkg
-
-# auto set tmux
-if command -v tmux >/dev/null && [ -z "$TMUX" ] && [[ -n "$ALACRITTY_SOCKET" ]]; then
-    session_name="sh-$(date +%y%m%d-%H%M)"
-
-    print -Pn "\e]2;${session_name}\a"
-
-    if ! tmux has-session -t "$session_name" 2>/dev/null; then
-        tmux new-session -s "$session_name"
-    else
-        tmux attach-session -t "tmp-$(date +%c%N | b2sum | head -c 16)"
-    fi
-    exit
-fi
