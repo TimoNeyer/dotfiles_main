@@ -38,15 +38,17 @@ link_git() {
     cmd ln -s $HOME/.config/git/config.git $HOME/.gitconfig
 }
 
-link_tmux() {
+init_tmux() {
     if [[ -f "$HOME/.tmux.conf" ]]; then
         echo "Moving existing ~/.tmux.conf to ~/.tmux.conf.bak"
         cmd mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
     fi
     cmd ln -s $HOME/.config/tmux/tmux.conf $HOME/.tmux.conf
+    git clone https://github.com/tmux-plugin/tpm.git ~/.config/tmux/plugins/tpm
 }
 
 cd $HOME
 link_vim
 link_zsh
 link_git
+init_tmux
