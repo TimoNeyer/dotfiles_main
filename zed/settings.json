@@ -11,7 +11,6 @@
     "vim": {
         "default_mode": "normal",
         "use_system_clipboard": "never",
-        "use_multiline_find": true,
         "use_smartcase_find": true,
         "toggle_relative_line_numbers": true,
         "highlight_on_yank_duration": 50,
@@ -22,19 +21,86 @@
     "buffer_font_size": 14,
     "theme": {
         "mode": "dark",
-        "dark": "Tokyo Night Storm",
+        "dark": "One Dark",
         "light": "One Light"
     },
     "telemetry": {
         "diagnostics": false,
         "metrics": false
     },
+    "completions": {
+        "lsp": true,
+        "lsp_fetch_timeout_ms": 0,
+        "words": "fallback"
+    },
     "format_on_save": "on",
     "autosave": "on_focus_change",
+    "diagnostics": {
+      "include_warnings": true,
+      "lsp_pull_diagnostics": {
+    	"enabled": true,
+    	"debounce_ms": 50
+      },
+      "inline": {
+        "enabled": true,
+        "update_debounce_ms": 0,
+        "max_severity": "error"
+      }
+    },
     "lsp": {
-        "diagnostics": {
-            "inline": {
-                "enabled": true
+        "rust-analyzer": {
+            "enable_lsp_tasks": true,
+            "initialization_options": {
+                "inlayHints": {
+                    "maxLength": null,
+                    "lifetimeElisionHints": {
+                        "enable": "skip_trivial",
+                        "useParameterNames": true
+                    },
+                    "closureReturnTypeHints": {
+                        "enable": "always"
+                    }
+                },
+                "completion": {
+                    "snippets": {
+                        "custom": {
+                            "Arc::new": {
+                                "postfix": "arc",
+                                "body": ["Arc::new(${receiver})"],
+                                "requires": "std::sync::Arc",
+                                "scope": "expr"
+                            },
+                            "Some": {
+                                "postfix": "some",
+                                "body": ["Some(${receiver})"],
+                                "scope": "expr"
+                            },
+                            "Ok": {
+                                "postfix": "ok",
+                                "body": ["Ok(${receiver})"],
+                                "scope": "expr"
+                            },
+                            "Rc::new": {
+                                "postfix": "rc",
+                                "body": ["Rc::new(${receiver})"],
+                                "requires": "std::rc::Rc",
+                                "scope": "expr"
+                            },
+                            "Box::pin": {
+                                "postfix": "boxpin",
+                                "body": ["Box::pin(${receiver})"],
+                                "requires": "std::boxed::Box",
+                                "scope": "expr"
+                            },
+                            "vec!": {
+                                "postfix": "vec",
+                                "body": ["vec![${receiver}]"],
+                                "description": "vec![]",
+                                "scope": "expr"
+                            }
+                        }
+                    }
+                }
             }
         }
     },
@@ -51,6 +117,17 @@
         },
         "Markdown": {
             "format_on_save": "off"
+        },
+        "Rust": {
+            "tab_size": 2,
+            "format_on_save": "language_server",
+            "show_completion_documentation": true,
+            "show_completions_on_input": true
+        }
+    },
+    "formatter": {
+        "code_actions": {
+            "source.organizeImports": true
         }
     },
     "project_panel": {
