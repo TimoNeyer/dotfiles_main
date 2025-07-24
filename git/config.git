@@ -6,6 +6,7 @@
 	cl = clone
 	pl = pull
 	sub = submodule
+  ss = status -s
 [init]
 	defaultBranch = main
 [filter "lfs"]
