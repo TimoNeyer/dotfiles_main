@@ -17,6 +17,15 @@ cryfs-vault-close() {
         $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m' "$CONFIG_PATH")
 }
 
+gocryptfs_vault_open() {
+  gocryptfs -nodev -noexec -nosuid -acl -i 15m -ro -allow_other  $(jq -r --arg p "$SELECTED_VAULT" '.[$p].e' "$CONFIG_PATH") $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m' "$CONFIG_PATH")
+}
+
+gocryptfs_vault_close() {
+  fusermount -u \
+        $(jq -r --arg p "$SELECTED_VAULT" '.[$p].m' "$CONFIG_PATH")
+}
+
 vault() {
     if [[ $# -eq 2 ]]; then
         SELECTED_VAULT="$2"
@@ -25,10 +34,10 @@ vault() {
     fi
     case $1 in
     "open")
-        cryfs-vault-open $SELECTED_VAULT
+        gocryptfs_vault_open $SELECTED_VAULT
         ;;
     "close")
-        cryfs-vault-close $SELECTED_VAULT
+        gocryptfs_vault_close $SELECTED_VAULT
         ;;
     *)
         echo "error: unkown option $1, [open|close] VAULTNAME"

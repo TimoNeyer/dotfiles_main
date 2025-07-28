@@ -27,3 +27,5 @@ else
   export SAVEHIST=0
 fi
 
+#export ZDOTDIR='~/.config/zsh'
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"

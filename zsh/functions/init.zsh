@@ -17,3 +17,11 @@ fi
 if [ -f ~/.config/zsh/functions/vault.zsh ]; then
     . ~/.config/zsh/functions/vault.zsh
 fi
+
+if [ -f ~/.config/zsh/functions/command-time.zsh ]; then
+    . ~/.config/zsh/functions/command-time.zsh
+fi
+
+if [ -f ~/.config/zsh/functions/zoxide.zsh ]; then
+    . ~/.config/zsh/functions/zoxide.zsh
+fi
