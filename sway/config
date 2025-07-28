@@ -18,7 +18,8 @@ bindsym $mod1+Shift+s exec ~/.config/sway/screenshot.sh
 default_orientation vertical
 workspace_layout tabbed
 title_align left
-for_window [title=".*Bitwarden — Mozilla Firefox"] floating enable
+for_window [title="Extension: .* Mozilla Firefox"] floating enable
+for_window [shell="xwayland"] title_format "[XWayland] %title"
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -196,5 +197,3 @@ output "*" {
 # mark and switch
 bindsym $mod1+m exec "$HOME/.config/sway/imark.sh"
 bindsym $mod1+o exec "$HOME/.config/sway/igo.sh"
-
-for_window [shell="xwayland"] title_format "[XWayland] %title"
