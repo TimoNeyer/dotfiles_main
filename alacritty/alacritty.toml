@@ -4,9 +4,9 @@ dynamic_padding = true
 
 
 [font]
-normal = { family = "Terminus", style = "Regular" }
-bold = { family = "Terminus", style = "Bold" }
-italic = {family = "Terminus", style = "italic"}
+normal = { family = "JetBrains Mono NF", style = "Regular" }
+bold = { family = "JetBrains Mono NF", style = "Bold" }
+italic = {family = "JetBrains Mono NF", style = "italic"}
 
 [keyboard]
 bindings = [

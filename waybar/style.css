@@ -72,7 +72,7 @@
 #waybar {
 	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
 	color: @white;
-    font-family: JetBrains Mono Medium;
+    font-family: JetBrainsMono Nerd Font;
 	font-size: 10pt;
 	/*font-weight: bold;*/
 }
