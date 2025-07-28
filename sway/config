@@ -25,7 +25,7 @@ mouse_warping output
 focus_on_window_activation urgent
 focus_wrapping force
 focus_follows_mouse yes
-font pango:Cantarell 10
+font JetBrains Mono:bold 10
 
 # focus switching
 bindsym $mod1+j focus down
@@ -136,11 +136,20 @@ input type:pointer {
     pointer_accel 0.1
 }
 
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    middle_emulation enabled
+}
+
 # enviroment
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
 exec_always --no-startup-id killall swayidle
-exec_always --no-startup-id swayidle -w timeout 400 'hyprlock' &
+exec swayidle -w \
+	timeout 1800 'swaylock -f' \
+	timeout 1805 'swaymsg "output * power off"' \
+		resume 'swaymsg "output * power on"'
 exec telegram-desktop -startintray
 exec_always dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec_always setxkbmap -layout us,de -option grp:caps_toggle
@@ -148,7 +157,7 @@ exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 exec_always --no-startup-id kwalletd6
 exec_always --no-startup-id env XDG_CURRENT_DESKTOP=KDE xdg-desktop-portal &
 exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-exec_always tmux start-server
+exec wl-paste -t text --watch clipman store --no-persist
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -187,3 +196,5 @@ output "*" {
 # mark and switch
 bindsym $mod1+m exec "$HOME/.config/sway/imark.sh"
 bindsym $mod1+o exec "$HOME/.config/sway/igo.sh"
+
+for_window [shell="xwayland"] title_format "[XWayland] %title"
