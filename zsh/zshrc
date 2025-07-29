@@ -14,8 +14,6 @@ else
     PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f❯❯ '
     RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
 
-    # Export PATH$
-    export PATH='~/.cargo/bin:~/.local/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/software/progs:$HOME/.cargo/env'
 
     #####################################################
     # get enviroment
@@ -26,6 +24,7 @@ else
     # get functions
     if [ -f ~/.config/zsh/functions/init.zsh ]; then
         . ~/.config/zsh/functions/init.zsh
+        add_paths $HOME/.nix-profile/bin $HOME/.cargo/bin $HOME/.cargo/env $HOME/.local/bin
     fi
 
     # get plugins

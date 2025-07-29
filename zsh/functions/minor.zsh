@@ -191,6 +191,13 @@ function zvm_config() {
   ZVM_VI_HIGHLIGHT_BACKGROUND=green
 }
 
+add_paths() {
+  for d in "$@"; do
+    [[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
+  done
+}
+
+
 preexec () {
    set -A ELAPSED
    (( $#ELAPSED > 1000 )) && set -A ELAPSED $ELAPSED[-1000,-1]

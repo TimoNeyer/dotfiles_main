@@ -3,7 +3,7 @@
 # replacemtents
 ###################
 alias cd='z'
-alias ls='eza --no-permissions --no-filesize --no-time --icons=auto --group-directories-first -gMo -w 50 --smart-group '
+alias ls='eza --no-permissions --no-time --icons=auto --group-directories-first -gMo -w 50 --smart-group '
 alias c='clear'
 alias ll='ls -l'
 alias la='ls -la'
