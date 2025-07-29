@@ -11,3 +11,6 @@ zig-out/
 .zig-cache/
 .zed/
 __pycache__/
+bin/
+build/
+test/
