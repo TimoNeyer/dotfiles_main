@@ -167,7 +167,7 @@ function yazi-script() {
 	rm -f -- "$tmp"
 }
 
-tmux-initializer () {
+function tmux-initializer () {
 if command -v tmux &> /dev/null; then
   if [[ "$#" -eq 2 ]]; then
     SESSION_NAME="$2"
@@ -183,6 +183,12 @@ if command -v tmux &> /dev/null; then
     fi
   fi
 fi
+}
+
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_ESCAPE_BINDKEY=jj
+  ZVM_VI_HIGHLIGHT_BACKGROUND=green
 }
 
 preexec () {
