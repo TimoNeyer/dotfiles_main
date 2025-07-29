@@ -1,6 +1,7 @@
 # Ignore all current files and directories
 /*
 !auditd/
+!atuin/
 !.gitignore
 !i3/
 !polybar/
