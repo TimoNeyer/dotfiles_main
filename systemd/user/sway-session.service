@@ -21,9 +21,7 @@ Environment=MOZ_ENABLE_WAYLAND=1
 Environment=_JAVA_AWT_WM_NONREPARENTING=1
 Environment=GTK_USE_PORTAL=1
 
-ExecStartPre=/usr/bin/bash -c '[[ -f ~/.config/zsh/env.zsh ]] && source ~/.config/zsh/env.zsh'
-
-ExecStart=~/.config/sway/scripts/startup.sh
+ExecStart=/usr/bin/sway -c ~/.config/sway/config
 
 Restart=on-failure
 
