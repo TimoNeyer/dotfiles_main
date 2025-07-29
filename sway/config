@@ -8,11 +8,14 @@ set $mod2 Mod4
 floating_modifier $mod1
 bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
-bindsym $mod1+Space exec tofi-drun -c ~/.config/tofi/fullscreen| xargs swaymsg exec --
+bindsym $mod1+Space exec ~/.config/sway/scripts/applauncher.sh
 bindsym $mod1+Shift+c reload
-bindsym $mod2+l exec ~/.config/screenlock/wayland.sh
+bindsym $mod2+l exec ~/.config/sway/scripts/lock.sh
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
-bindsym $mod1+Shift+s exec ~/.config/sway/screenshot.sh
+bindsym $mod1+Shift+s exec ~/.config/sway/scripts/screenshot.sh
+bindsym $mod1+o exec ~/.config/sway/scripts/sway-select.sh
+bindsym $mod1+m exec "~/.config/sway/scripts/sway-marker.sh mark"
+bindsym $mod1+g exec "~/.config/sway/scripts/sway-marker.sh go"
 
 # basic configuration
 default_orientation vertical
@@ -104,32 +107,15 @@ bindsym $mod1+Shift+9 move container to workspace $ws9
 bindsym $mod1+Shift+0 move container to workspace $ws10
 
 # modes
-mode "resize" {
-      bindsym h resize shrink width 10 px or 10 ppt
-      bindsym k resize grow height 10 px or 10 ppt
-      bindsym j resize shrink height 10 px or 10 ppt
-      bindsym l resize grow width 10 px or 10 ppt
-
-      bindsym Left resize shrink width 10 px or 10 ppt
-      bindsym Down resize grow height 10 px or 10 ppt
-      bindsym Up resize shrink height 10 px or 10 ppt
-      bindsym Right resize grow width 10 px or 10 ppt
-
-      # back to normal: Enter or Escape or $mod1+d
-      bindsym Return mode "default"
-      bindsym Escape mode "default"
-      bindsym $mod1+r mode "default"
-}
-include ~/.config/sway/jail
+include ~/.config/sway/modes/*.conf
 bindsym $mod1+r mode "resize"
+bindsym $mod1+Shift+x mode "jail"
+bindsym $mod1+Escape mode "normal"
 
 # Inputs
 input "type:keyboard" {
   xkb_layout us,de
   xkb_options compose:caps
-}
-input type:touchpad {
-  natural_scroll enabled
 }
 
 input type:pointer {
@@ -141,24 +127,24 @@ input type:touchpad {
     dwt enabled
     tap enabled
     middle_emulation enabled
+    natural_scroll enabled
 }
 
 # enviroment
-exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec nm-applet
-exec_always --no-startup-id killall swayidle
 exec swayidle -w \
 	timeout 1800 'swaylock -f' \
 	timeout 1805 'swaymsg "output * power off"' \
 		resume 'swaymsg "output * power on"'
 exec telegram-desktop -startintray
-exec_always dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
-exec_always setxkbmap -layout us,de -option grp:caps_toggle
 exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
-exec_always --no-startup-id kwalletd6
-exec_always --no-startup-id env XDG_CURRENT_DESKTOP=KDE xdg-desktop-portal &
-exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec "/usr/libexec/polkit-gnome-authentication-agent-1"
+exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec wl-paste -t text --watch clipman store --no-persist
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
+exec_always --no-startup-id killall swayidle
+exec_always ~/.config/sway/scripts/clamshell.sh
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -171,29 +157,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bindsym $mod1+Ctrl+minus move scratchpad
 bindsym $mod1+minus scratchpad show
 
-# Brightnesscontrol
-bindsym $mod1+F5 exec brightnessctl s 5%- 'amdgpu_bl0'
-bindsym $mod1+F6 exec brightnessctl s +5% 'amdgpu_bl0'
-
-bindsym $mod1+F1 exec amixer -D pulse sset Master toggle
-bindsym $mod1+F2 exec amixer sset Master 5%-
-bindsym $mod1+F3 exec amixer sset Master 5%+
-bindsym $mod1+F4 exec amixer -D pulse sset Capture toggle
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-
-exec_always --no-startup-id amixer -D pulse sset Capture nocap
-exec_always --no-startup-id amixer -D pulse sset Master off
-
 # screens
-output "eDP-1" {
-  res 1920x1280
-}
+include ~/.config/sway/personalized.local/*.conf
 
-output "*" {
-  background "~/Pictures/parrot-fly-grey.png" fill
-}
-
-# mark and switch
-bindsym $mod1+m exec "$HOME/.config/sway/imark.sh"
-bindsym $mod1+o exec "$HOME/.config/sway/igo.sh"

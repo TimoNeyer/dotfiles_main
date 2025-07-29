@@ -1,0 +1,1 @@
+/home/main/.config/screenlock/wayland.sh

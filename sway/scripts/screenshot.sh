@@ -1,5 +1,7 @@
 #!/bin/env sh
 
+set -e
+set -e pipefail
 
 TIME=$(date -Isecond)
 

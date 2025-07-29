@@ -99,4 +99,3 @@ alias ,cat='/usr/bin/cat'
 # are installed
 ###################
 alias ,ensure-tmux-installed='tmux'
-alias ,ensure-yazi-installed='yazi'

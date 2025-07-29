@@ -1,0 +1,31 @@
+[Unit]
+Description=Sway Wayland Session
+After=graphical-session.target
+Requires=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=exec
+Environment=DESKTOP_SESSION=sway
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_CURRENT_DESKTOP=sway
+Environment=XDG_SESSION_DESKTOP=sway
+Environment=XDG_SEAT=seat0
+Environment=XDG_CONFIG_HOME=~/.config
+Environment=GDK_BACKEND=wayland,x11
+Environment=QT_QPA_PLATFORM=wayland;xcb
+Environment=QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+Environment=SDL_VIDEODRIVER=wayland
+Environment=CLUTTER_BACKEND=wayland
+Environment=MOZ_ENABLE_WAYLAND=1
+Environment=_JAVA_AWT_WM_NONREPARENTING=1
+Environment=GTK_USE_PORTAL=1
+
+ExecStartPre=/usr/bin/bash -c '[[ -f ~/.config/zsh/env.zsh ]] && source ~/.config/zsh/env.zsh'
+
+ExecStart=~/.config/sway/scripts/startup.sh
+
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
