@@ -13,4 +13,5 @@ swaymsg --raw -t get_tree |
   tr -d '"' |
   wofi -d -i -E -M fuzzy -s ~/.config/wofi/sway-select/style.css -p "Select Window" |
   cut -f2 -d: |
-  xargs -I % [[ -n '%' ]] && swaymsg -- '[con_id=%] focus'
+  (xargs -I % [[ -n '%' ]] && swaymsg -- '[con_id=%] focus') ||
+  notify-send -u critical -t 5000 -a "Sway select" -c Sway "invalid request"
