@@ -198,7 +198,7 @@ function add_paths () {
 }
 
 function _set_title_alacritty_shell () {
-    print -Pn "\e]0;[Alacritty] %n@%m: %~\a"
+    print -Pn "\e]0;%n@%m: %~ — Alacritty\a"
 }
 
 
