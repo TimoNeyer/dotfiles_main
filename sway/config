@@ -142,9 +142,9 @@ exec "/usr/libexec/polkit-gnome-authentication-agent-1"
 exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec wl-paste -t text --watch clipman store --no-persist
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec ~/.config/sway/scripts/clamshell.sh
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec_always --no-startup-id killall swayidle
-exec_always ~/.config/sway/scripts/clamshell.sh
 
 # colors
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577

@@ -1,15 +1,20 @@
 #!/bin/env sh
 
+set -e
+set -o pipefail
+
 LAPTOP_OUTPUT="eDP-1"
 LID_STATE_FILE="/proc/acpi/button/lid/LID/state"
 
-read -r LS <"$LID_STATE_FILE"
+[[ ! -f "$LID_STATE_FILE" ]] && exit 0
 
-case "$LS" in
-*open) swaymsg output "$LAPTOP_OUTPUT" enable ;;
-*closed) swaymsg output "$LAPTOP_OUTPUT" disable ;;
-*)
-  echo "Could not get lid state" >&2
-  exit 1
-  ;;
-esac
+while true; do
+  sleep 5
+  if [[ "$(<"${LID_STATE_FILE}")" =~ closed ]]; then
+    if [[ "$(wlr-randr --json | jq -c '.[] | select((.name == "eDP-1" and .enabled == false) or .enabled == true) |  .name' | wc -l)" -eq 1 ]]; then
+      swaymsg output "$LAPTOP_OUTPUT" enable
+      notify-send -u normal -t 5000 -a "Clamshell Daemon" -c Display "Monitors detached and Lid closed
+Activating Laptop display"
+    fi
+  fi
+done
