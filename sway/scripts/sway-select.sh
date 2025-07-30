@@ -11,6 +11,6 @@ swaymsg --raw -t get_tree |
       )
       | "\(.name):\(.id)"' |
   tr -d '"' |
-  wofi -d -s ~/.config/wofi/sway-select/style.css -p "Select Window" |
+  wofi -d -i -E -M fuzzy -s ~/.config/wofi/sway-select/style.css -p "Select Window" |
   cut -f2 -d: |
-  xargs -I % swaymsg -- '[con_id=%] focus'
+  xargs -I % [[ -n '%' ]] && swaymsg -- '[con_id=%] focus'
