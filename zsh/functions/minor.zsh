@@ -191,10 +191,14 @@ function zvm_config() {
   ZVM_VI_HIGHLIGHT_BACKGROUND=green
 }
 
-add_paths() {
+function add_paths () {
   for d in "$@"; do
     [[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
   done
+}
+
+function _set_title_alacritty_shell () {
+    print -Pn "\e]0;[Alacritty] %n@%m: %~\a"
 }
 
 
@@ -209,4 +213,5 @@ precmd() {
     _command_time_precmd
     get_status
     git_stats
+    _set_title_alacritty_shell
 }
