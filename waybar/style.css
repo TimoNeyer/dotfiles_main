@@ -24,36 +24,33 @@
 @define-color black	    #282828;
 @define-color white     #fdfdfd;
 @define-color red       #cc241d;
-@define-color darkblue2 #0c2553;
-@define-color yellow	#d79921;
-@define-color darkblue1 #003559;
-@define-color darkblue3	#133980;
-@define-color darkblue0	#061a40;
 @define-color bryellow	#fabd2f;
-@define-color darkblue	#091b3d;
-@define-color bg2	    #504945;
+@define-color bg2	      #504945;
 @define-color grey      #847F7C;
-@define-color shade     #1a4dac;
-@define-color shade2    #174396;
 @define-color green     #008631;
+@define-color inactive  #003559;
+
+@define-color slot1     #091b3d;
+@define-color slot2     #0e2a5f;
+@define-color slot3     #133981;
+@define-color slot4     #1848a4;
+@define-color slot5     #1d58c6;
 
 
 @define-color warning 	@bryellow;
 @define-color critical	@red;
-@define-color mode	    @black;
 @define-color unfocused	@bg2;
-@define-color focused	@grey;
-@define-color inactive	@darkblue1;
-@define-color sound	    @darkblue1;
-@define-color network	@shade;
-@define-color memory	@shade2;
-@define-color cpu	    @shade;
-@define-color temp	    @darkblue3;
-@define-color layout	@bryellow;
-@define-color disk      @darkblue2;
-@define-color date	    @shade;
-@define-color time	    @darkblue;
-@define-color battery   @darkblue;
+@define-color focused	  @grey;
+@define-color inactive	@inactive;
+@define-color sound	    @slot2;
+@define-color network	  @slot3;
+@define-color memory	  @slot5;
+@define-color cpu	      @slot4;
+@define-color temp	    @slot3;
+@define-color disk      @slot4;
+@define-color date	    @slot2;
+@define-color time	    @slot1;
+@define-color battery   @slot1;
 @define-color tray      @bg2;
 
 /* Reset all styles */
@@ -212,11 +209,6 @@
 	color: @white;
 }
 
-#language {
-	background: @layout;
-	color: @black;
-}
-
 #disk {
 	background: @disk;
 	color: @white;
@@ -240,8 +232,11 @@
 
 #custom-lock {
 	font-size: 11pt;
-    background: @time;
-    color: @white;
+  background: @time;
+  color: @white;
+  padding-right: 11pt;
+  padding-left: 5pt;
+
 }
 
 #clock.date {
@@ -254,67 +249,67 @@
 	color: @white;
 }
 
-#custom-arrow1 {
+#custom-arrowClkDate {
 	font-size: 11pt;
 	color: @time;
 	background: @date;
 }
 
-#custom-arrow2 {
+#custom-arrowDateTem {
 	font-size: 11pt;
 	color: @date;
 	background: @temp;
 }
 
-#custom-arrow3 {
+#custom-arrowBatVol {
 	font-size: 11pt;
 	color: @battery;
 	background: @sound;
 }
 
-#custom-arrow4 {
+#custom-arrowTemCpu {
 	font-size: 11pt;
 	color: @temp;
 	background: @cpu;
 }
 
-#custom-arrow5 {
+#custom-arrowCpuMem {
 	font-size: 11pt;
 	color: @cpu;
 	background: @memory;
 }
 
-#custom-arrow6 {
+#custom-arrowMemEnd {
 	font-size: 11pt;
 	color: @memory;
 	background: transparent;
 }
 
-#custom-arrow7 {
+#custom-arrowDskTray {
 	font-size: 11pt;
 	color: @disk;
 	background: @tray;
 }
 
-#custom-arrow8 {
+#custom-arrowNetDsk {
 	font-size: 11pt;
 	color: @network;
 	background: @disk;
 }
 
-#custom-arrow9 {
+#custom-arrowVolNet {
 	font-size: 11pt;
 	color: @sound;
 	background: @network;
 }
 
-#custom-arrow10 {
+#custom-arrowWsEnd {
 	font-size: 11pt;
 	color: @unfocused;
 	background: transparent;
 }
 
-#custom-arrow11 {
+#custom-arrowWsStart {
 	font-size: 11pt;
 	color: @unfocused;
 	background: transparent;

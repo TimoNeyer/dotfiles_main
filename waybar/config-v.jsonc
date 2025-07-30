@@ -1,7 +1,0 @@
-{
-  "modules-left": ["cffi/niri-taskbar"],
-  // ...
-  "cffi/niri-taskbar": {
-    "module-path": "/your/path/to/libniri_taskbar.so"
-  }
-}

@@ -1,39 +1,40 @@
+// vim: ft=jsonc
 {
 	"layer": "top",
 	"position": "top",
 	"modules-left": [
 		"battery",
-		"custom/arrow3",
+		"custom/arrowBatVol",
 		"pulseaudio",
-		"custom/arrow9",
+		"custom/arrowVolNet",
 		"network",
-		"custom/arrow8",
+		"custom/arrowNetDsk",
 		"disk",
-		"custom/arrow7",
+		"custom/arrowDskTray",
 		"tray",
-		"custom/arrow10",
+		"custom/arrowWsEnd",
 		"sway/mode",
 		"hyprland/window",
 		"sway/window"
 	],
 	"modules-center": [
-		"custom/arrow11",
+		"custom/arrowWsStart",
 		"custom/wssep",
 		"sway/workspaces",
 		"hyprland/workspaces",
 		"custom/wssep",
-		"custom/arrow10"
+		"custom/arrowWsEnd"
 	],
 	"modules-right": [
-		"custom/arrow6",
+		"custom/arrowMemEnd",
 		"memory",
-		"custom/arrow5",
+		"custom/arrowCpuMem",
 		"cpu",
-		"custom/arrow4",
+		"custom/arrowTemCpu",
 		"temperature",
-		"custom/arrow2",
+		"custom/arrowDateTem",
 		"clock#date",
-		"custom/arrow1",
+		"custom/arrowClkDate",
 		"clock#time",
 		"custom/lock"
 	],
@@ -180,8 +181,8 @@
 		"tooltip": false
 	},
 	"custom/lock": {
-		"on-click": "~/.config/waybar/scripts/power.sh lock",
-		"format": "  ",
+		"on-click": "~/.config/rofi/powermenu.sh sway",
+		"format": "⏻",
 		"tooltip": false
 	},
 	// styling
@@ -189,47 +190,47 @@
 		"format": "|",
 		"tooltip": false
 	},
-	"custom/arrow1": {
+	"custom/arrowClkDate": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow2": {
+	"custom/arrowDateTem": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow3": {
+	"custom/arrowBatVol": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow4": {
+	"custom/arrowTemCpu": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow5": {
+	"custom/arrowCpuMem": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow6": {
+	"custom/arrowMemEnd": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow7": {
+	"custom/arrowDskTray": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow8": {
+	"custom/arrowNetDsk": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow9": {
+	"custom/arrowVolNet": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow10": {
+	"custom/arrowWsEnd": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/arrow11": {
+	"custom/arrowWsStart": {
 		"format": "",
 		"tooltip": false
 	}
