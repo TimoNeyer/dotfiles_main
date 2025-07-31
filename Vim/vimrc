@@ -1,8 +1,3 @@
-" Colorscheme:
-colorscheme molokai
-
-set guicursor=n-v-c:block-Cursor,n-v-c:blinkon0,i:blinkwait10
-
 " VARIABLES ------------------------------------------------------------ {{{
 
 " Fix some terminal related stuff
@@ -11,6 +6,9 @@ let &t_EI = "\e[2 q"
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
+
+set guicursor=n-v-c:block-Cursor,n-v-c:blinkon0,i:blinkwait10
+
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype off
@@ -122,6 +120,7 @@ set splitbelow
       Plug 'ziglang/zig'
       Plug 'LnL7/vim-nix'
       Plug 'rhysd/vim-llvm'
+      Plug 'nordtheme/vim'
     call plug#end()
 
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
@@ -184,49 +183,59 @@ set splitbelow
 
 " }}}
 
+" KEYMAPS --------------------------------------------------------------- {{{
+
     " shortcuts navigation
     inoremap jj <esc>
     nnoremap <c-l> <c-w>l
     nnoremap <c-j> <c-w>j
     nnoremap <c-k> <c-w>k
     nnoremap <c-h> <c-w>h
+    nnoremap x "_x
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+    nnoremap <c-d> <c-d>zz
+    nnoremap <c-u> <c-u>zz
+    nnoremap <Esc><Esc> <Esc>:noh<CR>
+    nnoremap p "_dP"
+    nnoremap <c-s> <cmd>w<CR>
+    nnoremap <c-q> <cmd>wqa<CR>
+    inoremap <c-bs> <c-w>
 
-    " Window resizing
-    " Misc
-    nnoremap <Space> :
-      " Nerdtree
-        nnoremap <F3> :NERDTreeToggle<cr>
-      " MardownPreview
-        nnoremap <F4> :MarkdownPreviewToggle<cr>
-      " fzf
-        nnoremap <c-o> :FZF<cr>
+    " Nerdtree
+    nnoremap <F3> :NERDTreeToggle<cr>
+    " MardownPreview
+    nnoremap <F4> :MarkdownPreviewToggle<cr>
+    " fzf
+    nnoremap <c-o> :FZF<cr>
+    nnoremap
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
+    augroup filetype_vim
+      autocmd!
+      autocmd FileType vim setlocal foldmethod=marker
+    augroup END
 
-augroup filetype_py
-  autocmd!
-  autocmd FileType py setlocal foldmethod=indent
-  command -range Comment <line1>,<line2>s/^/#/
-  command -range Uncomment <line1>,<line2>s/^#//
-augroup END
+    augroup filetype_py
+      autocmd!
+      autocmd FileType py setlocal foldmethod=indent
+      command -range Comment <line1>,<line2>s/^/#/
+      command -range Uncomment <line1>,<line2>s/^#//
+    augroup END
 
-augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent! loadview
-augroup END
+    augroup remember_folds
+        autocmd!
+        autocmd BufWinLeave * mkview
+        autocmd BufWinEnter * silent! loadview
+    augroup END
 
-augroup filetype_md
-    autocmd FileType md setlocal set tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType md setlocal let g:vim_markdown_new_list_item_indent = 0
-    autocmd FileType md setlocal set expandtab number ruler autoindent smartindent
-    autocmd Filetype md setlocal syntax off
-augroup END
+    augroup filetype_md
+        autocmd FileType md setlocal set tabstop=2 softtabstop=2 shiftwidth=2
+        autocmd FileType md setlocal let g:vim_markdown_new_list_item_indent = 0
+        autocmd FileType md setlocal set expandtab number ruler autoindent smartindent
+        autocmd Filetype md setlocal syntax off
+    augroup END
 
 " }}}
 
@@ -243,8 +252,10 @@ augroup END
 " COMMANDS ----------------------------------------------------------------{{{{{{
 
       command! Update :source ~/.vimrc
-      command! Py :!/usr/bin/python3 %
       command! W : w!
       command! Q : q!
 
 " }}}}}}
+
+" Colorscheme:
+colorscheme nord
