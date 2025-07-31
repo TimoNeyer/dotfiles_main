@@ -73,11 +73,6 @@ alias snxd='snx -d'
 alias ipa='ip a'
 alias con='nmcli'
 alias wificon='nmcli --ask dev wifi connect '
-alias mute='amixer set Capture nocap'
-alias unmute='amixer set Capture cap'
-alias soundoff='amixer set Master off'
-alias soundon='amixer set Master on'
-alias readmail='vim /var/mail/main'
 alias y='yazi-script'
 
 ###################
