@@ -16,6 +16,7 @@ bindsym $mod1+Shift+s exec ~/.config/sway/scripts/screenshot.sh
 bindsym $mod1+o exec ~/.config/sway/scripts/sway-select.sh
 bindsym $mod1+m exec "~/.config/sway/scripts/sway-marker.sh mark"
 bindsym $mod1+g exec "~/.config/sway/scripts/sway-marker.sh go"
+bindsym $mod1+c exec clipman pick -t wofi -T'-d -i -E -M fuzzy -s ~/.config/wofi/themes/nord.css -p "Clipbard"'
 
 # basic configuration
 default_orientation vertical
