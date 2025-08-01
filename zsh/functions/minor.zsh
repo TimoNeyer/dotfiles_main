@@ -107,8 +107,8 @@ fuck() {
 }
 
 git_stats() {
-    if [[ -n "$NO_GIT_STATUS_LOAD" ]]; then
-      GIT_BRANCH="[off]"
+    if [[ "$GIT_BRANCH" =~ "off" ]]; then
+      GIT_BRANCH='[off] '
       return 0
     fi
     GIT_BRANCH=""
@@ -138,6 +138,9 @@ git_stats() {
     [[ "$ahead" -gt 0 ]] && sync_status=" ↑$ahead"
     [[ "$behind" -gt 0 ]] && sync_status+=" ↓$behind"
 
+    if [[ -n "$GIT_BRANCH" ]]; then
+      GIT_BRANCH+=" "
+    fi
     GIT_BRANCH="($branch$sync_status$changes)"
 }
 
@@ -147,15 +150,14 @@ check_installed_pkg () {
         return
     fi
     # do not use aliases here
-    /usr/bin/cat .config/zsh/aliases.zsh \
-        | sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" \
-        | while read -r prog; do
-            if ! [[ "$(command -v $prog)" =~ alias ]]; then
-                command -v $prog > /dev/null \
-                    || echo -e "\e[1;31mWARNING\e[0m $prog not installed"
+    /usr/bin/cat .config/zsh/aliases.zsh | 
+      sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" |
+        while read -r prog; do
+            if ! [[ "$(command -v $prog)" =~ "alias" ]]; then
+                command -v $prog > /dev/null ||
+                  echo -e "\e[1;31mWARNING\e[0m $prog not installed"
             fi
         done
-    touch /tmp/$USER-alias-verified
 }
 
 function yazi-script() {
