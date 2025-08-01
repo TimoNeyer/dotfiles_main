@@ -10,7 +10,7 @@ fi
 
 # get functions
 if [ -d ~/.config/zsh/functions ]; then
-    for file in ~/.config/zsh/functions/*; do
+    for file in ~/.config/zsh/functions/*.zsh; do
       . $file
     done
 fi

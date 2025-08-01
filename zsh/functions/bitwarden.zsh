@@ -1,4 +1,4 @@
-function bitwarden-cli () {
+function bitwarden-cli() {
   if [ "$?" != "0" ]; then
     exit 1
   fi

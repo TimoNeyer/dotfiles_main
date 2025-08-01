@@ -1,22 +1,8 @@
-function cdl () {
-    cd "$@" ;
-    ls -CF
-}
-
-function md () {
+function md() {
     pandoc $@ | lynx -stdin;
 }
 
-function set-title () {
-    if [[ "$#" -eq 1 ]]; then
-        print -Pn "\e]2;${1}\a"
-    else
-        echo "usage: set-title [Title]"
-        return 1
-    fi
-}
-
-function mdpdf () {
+function mdpdf() {
     if [ -f "$2" ]; then
         echo Error: output file exists
     elif [ ! -f "$1" ]; then
@@ -33,7 +19,7 @@ function mdpdf () {
     fi
 }
 
-function anonymous () {
+function anonymous() {
     local anon=""
     if [[ -z "$HISTFILE" ]]; then
         echo "no histfile, assuming in anon"
@@ -63,26 +49,15 @@ function anonymous () {
     fi
 }
 
-function sound () {
-    amixer set Master $(( $( echo "scale=2; $@/100" | bc)* 65536))
-}
-
-function hex-encode()
-{
+function hex-encode() {
   echo "$@" | xxd -p
 }
 
-function hex-decode()
-{
+function hex-decode() {
   echo "$@" | xxd -p -r
 }
 
-function rot13()
-{
-  echo "$@" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
-}
-
-get_status() {
+function get_status() {
   if [[ $? -eq 0 ]]; then
     LAST_CMD_STATUS="%F{blue}●%f"  # Blue dot for success
   else
@@ -91,7 +66,7 @@ get_status() {
   set -A ELAPSED $ELAPSED $(( SECONDS-_start ))
 }
 
-fuck() {
+function fuck() {
     local last_command=$(fc -n -l -1 -1)
     echo "Executing: sudo $last_command"
     echo -n "Continue? (Y/n) "
@@ -106,7 +81,7 @@ fuck() {
     fi
 }
 
-git_stats() {
+function git_stats() {
     if [[ "$GIT_BRANCH" =~ "off" ]]; then
       GIT_BRANCH='[off] '
       return 0
@@ -145,7 +120,7 @@ git_stats() {
 }
 
 
-check_installed_pkg () {
+function check_installed_pkg() {
     if [[ -f /tmp/$USER-alias-verified ]]; then
         return
     fi
@@ -169,7 +144,7 @@ function yazi-script() {
 	rm -f -- "$tmp"
 }
 
-function tmux-initializer () {
+function tmux-initializer() {
 if command -v tmux &> /dev/null; then
   if [[ "$#" -eq 2 ]]; then
     SESSION_NAME="$2"
@@ -199,10 +174,10 @@ function add_paths () {
   done
 }
 
-function _set_title_alacritty_shell () {
-    print -Pn "\e]0;%n@%m: %~ — Alacritty\a"
+function _zsh_set_title_hook() {
+    command -v print > /dev/null &&  
+    print -Pn "\e]0;%n@%m: %~ — ${TERM}\a"
 }
-
 
 preexec () {
    set -A ELAPSED
@@ -215,5 +190,5 @@ precmd() {
     _command_time_precmd
     get_status
     git_stats
-    _set_title_alacritty_shell
+    _zsh_set_title_hook
 }

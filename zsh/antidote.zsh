@@ -8,3 +8,5 @@ fpath+=( "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jeffr
 source "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jeffreytse-SLASH-zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 fpath+=( "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-atuinsh-SLASH-atuin" )
 source "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-atuinsh-SLASH-atuin/atuin.plugin.zsh"
+fpath+=( "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-ajeetdsouza-SLASH-zoxide" )
+source "$HOME/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-ajeetdsouza-SLASH-zoxide/zoxide.plugin.zsh"
