@@ -1,0 +1,19 @@
+window {
+    background-color: rgba(0, 0, 0, 0.7); /* Dim full screen */
+}
+
+#outer-box {
+    margin: auto;
+    background: transparent;
+}
+
+#input {
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border: none;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 8px;
+    width: 50%;
+    text-align: center;
+}

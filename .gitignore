@@ -34,3 +34,5 @@ tmux/plugins/
 !CONTRIBUTING
 !LICENSE
 !SECURITY.md
+!kitty
+!wofi/
