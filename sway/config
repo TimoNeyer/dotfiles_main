@@ -6,7 +6,7 @@
 set $mod1 Mod1
 set $mod2 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec alacritty
+bindsym $mod1+Return exec kitty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec ~/.config/sway/scripts/applauncher.sh
 bindsym $mod1+Shift+c reload
@@ -24,6 +24,7 @@ workspace_layout tabbed
 title_align left
 for_window [title="Extension: .* Mozilla Firefox"] floating enable
 for_window [shell="xwayland"] title_format "[XWayland] %title"
+for_window [app_id="kitty"] title_format "%title - Kitty"
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
