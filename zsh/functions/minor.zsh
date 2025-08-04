@@ -175,8 +175,10 @@ function add_paths () {
 }
 
 function _zsh_set_title_hook() {
-    command -v print > /dev/null &&  
-    print -Pn "\e]0;%n@%m: %~ — ${TERM}\a"
+    command -v print > /dev/null || return
+    if [[ "$TERM" = "alacritty" ]]; then 
+      print -Pn "\e]0;%n@%m: %~ — Alacritty\a"
+    fi
 }
 
 preexec () {
