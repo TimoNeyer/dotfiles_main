@@ -16,15 +16,15 @@ bindsym $mod1+Shift+s exec ~/.config/sway/scripts/screenshot.sh
 bindsym $mod1+o exec ~/.config/sway/scripts/sway-select.sh
 bindsym $mod1+m exec "~/.config/sway/scripts/sway-marker.sh mark"
 bindsym $mod1+g exec "~/.config/sway/scripts/sway-marker.sh go"
-bindsym $mod1+c exec clipman pick -t wofi -T'-d -i -E -M fuzzy -s ~/.config/wofi/themes/nord.css -p "Clipbard"'
+bindsym $mod1+c exec clipman pick -t wofi -T"-d -i -E -M fuzzy -s $HOME/.config/wofi/sway-select/style.css -p Clipbard"
 
 # basic configuration
 default_orientation vertical
 workspace_layout tabbed
-title_align left
+title_align center 
 for_window [title="Extension: .* Mozilla Firefox"] floating enable
 for_window [shell="xwayland"] title_format "[XWayland] %title"
-for_window [app_id="kitty"] title_format "%title - Kitty"
+for_window [shell="(wayland)|(xdg_shell)"] title_format "%app_id %title"
 default_border pixel 5
 hide_edge_borders none
 mouse_warping output
@@ -148,15 +148,15 @@ exec ~/.config/sway/scripts/clamshell.sh
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec_always --no-startup-id killall swayidle
 
-# colors
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# colors                border      background  text        indicator   child_border
+client.focused          #4c7899     #285577     #ffffff     #2e9ef4     #285577
+client.focused_inactive #333333     #5f676a     #ffffff     #484e50     #5f676a
+client.unfocused        #333333     #222222     #888888     #292d2e     #222222
+client.urgent           #2f343a     #900000     #ffffff     #900000     #900000
+client.placeholder      #000000     #0c0c0c     #ffffff     #000000     #0c0c0c
 
 # scratchpad
-bindsym $mod1+Ctrl+minus move scratchpad
+bindsym $mod1+Ctrl+minus move __i3_scratch 
 bindsym $mod1+minus scratchpad show
 
 # screens
