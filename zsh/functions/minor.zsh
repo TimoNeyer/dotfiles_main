@@ -125,7 +125,7 @@ function check_installed_pkg() {
         return
     fi
     # do not use aliases here
-    /usr/bin/cat .config/zsh/aliases.zsh | 
+    /usr/bin/cat .config/zsh/aliases.zsh |
       sed -n "s/alias *[A-Za-z0-9_,\.]*='\([A-Za-z0-9_\/]*\)[ '].*/\1/p" |
         while read -r prog; do
             if ! [[ "$(command -v $prog)" =~ "alias" ]]; then
@@ -176,7 +176,8 @@ function add_paths () {
 
 function _zsh_set_title_hook() {
     command -v print > /dev/null || return
-    if [[ "$TERM" = "alacritty" ]]; then 
+    if [[ "$TERM" = "alacritty" ]]; then
+      echo "setting title"
       print -Pn "\e]0;%n@%m: %~ — Alacritty\a"
     fi
 }
