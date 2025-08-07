@@ -8,15 +8,16 @@ return {
     end,
   },
   {
-    "shaunsingh/nord.nvim",
-    config = function(_)
-      vim.g.nord_contrast = true
-      vim.g.nord_borders = true
-      vim.g.nord_disable_background = true
-      vim.g.nord_italic = true
-      vim.g.nord_uniform_diff_background = true
-      vim.g.nord_bold = true
-      require("nord").set()
+    "gbprod/nord.nvim",
+    lazy = false,
+    priority = 1000,
+    setup = function()
+      require("nord").setup({
+        on_colors = function(colors)
+          colors.polar_night.brighter = "#000000"
+        end,
+      })
+      vim.cmd.colorscheme("nord")
     end,
   },
   {
