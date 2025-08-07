@@ -9,7 +9,7 @@ swaymsg --raw -t get_tree |
         .name != null
         and (.name | test("(__i3.*)|(root)|(e?DP-[0-9])|(^[0-9]$)") | not) 
       )
-      | "\(.name):\(.id)"' |
+      | "[\(.app_id)] \(.name):\(.id)"' |
   tr -d '"' |
   wofi -d -i -E -M fuzzy -s ~/.config/wofi/sway-select/style.css -p "Select Window" |
   cut -f2 -d: |
