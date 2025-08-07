@@ -15,7 +15,7 @@ bindings = [
 
 [general]
 import = [
-    '~/.config/alacritty/colors.d/nord.toml'
-    # '~/.config/alacritty/colors.d/nordic.toml'
-    # '~/.config/alacritty/colors.d/default.toml'
+  '~/.config/alacritty/colors.d/nord.toml'
+  # '~/.config/alacritty/colors.d/nordic.toml'
+  # '~/.config/alacritty/colors.d/default.toml'
 ]
