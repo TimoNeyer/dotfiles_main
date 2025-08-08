@@ -36,6 +36,25 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+      -- Your custom parser config must be set here
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.sool = {
+        install_info = {
+          url = vim.fn.expand("~/.config/nvim/ts-sool"), -- local path to grammar repo
+          files = { "src/parser.c" }, -- add "src/scanner.c" if you have one
+          generate_requires_npm = true,
+          requires_generate_from_grammar = true,
+        },
+        filetype = "sool",
+      }
+
+      -- Set the filetype for .sool files
+      vim.filetype.add({
+        extension = { sool = "sool" },
+      })
+    end,
     opts = {
       ensure_installed = {
         "bash",
@@ -52,6 +71,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "sool",
       },
     },
   },

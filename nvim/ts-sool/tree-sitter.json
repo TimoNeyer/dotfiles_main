@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "sool",
+      "camelcase": "Sool",
+      "title": "simple oop language",
+      "scope": "source.sool",
+      "file-types": [
+        ".sool"
+      ],
+      "injection-regex": "^sool$",
+      "class-name": "TreeSitterSool"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Sool is a simple oop language for educational purposes",
+    "authors": [
+      {
+        "name": "L3-CH13F"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/TimoNeyer/lang.git"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
