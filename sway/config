@@ -27,7 +27,7 @@ for_window [title="Extension: .* Mozilla Firefox"] floating enable
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [shell="(wayland)|(xdg_shell)"] title_format "%app_id %title"
 default_border pixel 5
-hide_edge_borders none
+hide_edge_borders smart
 mouse_warping output
 focus_on_window_activation urgent
 focus_wrapping force
@@ -116,7 +116,7 @@ bindsym $mod1+Shift+x mode "jail"
 bindsym $mod1+Escape mode "normal"
 
 # Inputs
-input "type:keyboard" {
+input type:keyboard {
   xkb_layout us,de
   xkb_options compose:caps
 }
@@ -135,11 +135,10 @@ input type:touchpad {
 
 # enviroment
 exec nm-applet
-exec swayidle -w \
+exec --no-startup-id swayidle -w \
 	timeout 1800 'swaylock -f' \
 	timeout 1805 'swaymsg "output * power off"' \
 		resume 'swaymsg "output * power on"'
-exec telegram-desktop -startintray
 exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 exec "/usr/libexec/polkit-gnome-authentication-agent-1"
 exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
@@ -147,7 +146,6 @@ exec wl-paste -t text --watch clipman store --notify --no-persist
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec bash "$HOME/.config/sway/scripts/clamshell.sh"
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
-exec_always --no-startup-id killall swayidle
 exec "bash $HOME/.config/sway/scripts/bitwarden.sh server"
 
 # colors                border      background  text        indicator   child_border

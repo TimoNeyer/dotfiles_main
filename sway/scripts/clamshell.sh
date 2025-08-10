@@ -11,9 +11,7 @@ while true; do
   sleep 5
   if [[ "$(<"${LID_STATE_FILE}")" =~ open ]]; then
     if [[ -n "$(wlr-randr --json | jq -c '.[]
-      | select(
-        (.name == "eDP-1" and .enabled == false)
-        or (.name != "eDP-1" and .enabled == true))
+      | select(.enabled == false)
       |  isempty(.)')" ]]; then
       swaymsg output "$LAPTOP_OUTPUT" enable
       notify-send -u low -t 5000 -a "Clamshell Daemon" -c Display "Monitors detached and Lid closed
