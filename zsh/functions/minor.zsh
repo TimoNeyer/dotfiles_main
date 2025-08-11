@@ -57,15 +57,6 @@ function hex-decode() {
   echo "$@" | xxd -p -r
 }
 
-function get_status() {
-  if [[ $? -eq 0 ]]; then
-    LAST_CMD_STATUS="%F{blue}@%f"  # Blue dot for success
-  else
-    LAST_CMD_STATUS="%F{red}@%f"   # Red dot for error
-  fi
-  set -A ELAPSED $ELAPSED $(( SECONDS-_start ))
-}
-
 function fuck() {
     local last_command=$(fc -n -l -1 -1)
     echo "Executing: sudo $last_command"
@@ -80,45 +71,6 @@ function fuck() {
         return 1
     fi
 }
-
-function git_stats() {
-    if [[ "$GIT_BRANCH" =~ "off" ]]; then
-      GIT_BRANCH='[off] '
-      return 0
-    fi
-    GIT_BRANCH=""
-    git rev-parse --is-inside-work-tree &>/dev/null || return
-
-    local branch
-    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD)
-
-    local changes=""
-    if ! git diff --quiet --ignore-submodules --; then
-        changes=" ✗"
-    fi
-
-    if ! git diff --cached --quiet --ignore-submodules --; then
-        changes+="●"
-    fi
-
-    if [[ -n $(git ls-files --others --exclude-standard) ]]; then
-        changes+="+"
-    fi
-
-    local ahead behind
-    ahead=$(git rev-list --count @{upstream}..HEAD 2>/dev/null || echo 0)
-    behind=$(git rev-list --count HEAD..@{upstream} 2>/dev/null || echo 0)
-
-    local sync_status=""
-    [[ "$ahead" -gt 0 ]] && sync_status=" ↑$ahead"
-    [[ "$behind" -gt 0 ]] && sync_status+=" ↓$behind"
-
-    if [[ -n "$GIT_BRANCH" ]]; then
-      GIT_BRANCH+=" "
-    fi
-    GIT_BRANCH="($branch$sync_status$changes)"
-}
-
 
 function check_installed_pkg() {
     if [[ -f /tmp/$USER-alias-verified ]]; then
@@ -144,7 +96,7 @@ function yazi-script() {
 	rm -f -- "$tmp"
 }
 
-function tmux-initializer() {
+function _tmux-initializer() {
 if command -v tmux &> /dev/null; then
   if [[ "$#" -eq 2 ]]; then
     SESSION_NAME="$2"
@@ -168,30 +120,18 @@ function zvm_config() {
   ZVM_VI_HIGHLIGHT_BACKGROUND=green
 }
 
-function add_paths () {
+function _add_paths () {
   for d in "$@"; do
     [[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
   done
+  :
 }
 
 function _zsh_set_title_hook() {
     command -v print > /dev/null || return
     if [[ "$TERM" = "alacritty" ]]; then
-      echo "setting title"
       print -Pn "\e]0;%n@%m: %~ — Alacritty\a"
+    elif [[ "$TERM" = "xterm-kitty" ]]; then
+      kitten @ set-window-title "$(pwd)"
     fi
-}
-
-preexec () {
-   set -A ELAPSED
-   (( $#ELAPSED > 1000 )) && set -A ELAPSED $ELAPSED[-1000,-1]
-   typeset -ig _start=SECONDS
-   _command_time_preexec
-}
-
-precmd() {
-    _command_time_precmd
-    get_status
-    git_stats
-    _zsh_set_title_hook
 }
