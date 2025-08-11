@@ -102,7 +102,7 @@ return {
         [">"] = { action = "close", pair = "<>", neigh_pattern = "[^\\]." },
 
         ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\].", register = { cr = false } },
-        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^\\|<|&].", register = { cr = false } },
+        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^\\|<|&a-zA-Z].", register = { cr = false } },
         ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\].", register = { cr = false } },
       },
     },
