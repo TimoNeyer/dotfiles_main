@@ -4,7 +4,6 @@
 ###################
 alias cd='z'
 alias ls='eza --no-permissions --no-time --icons=auto --group-directories-first -gMo -w 50 --smart-group '
-alias c='clear'
 alias ll='ls -l'
 alias la='ls -la'
 alias cat='bat'
@@ -22,9 +21,6 @@ alias halt='/sbin/halt'
 ###################
 alias ..='cd ..'
 alias ...='cd ../../'
-alias h='history'
-alias j='jobs -l'
-alias e='exit'
 alias q='exit'
 
 ###################
@@ -65,15 +61,11 @@ alias venv='python3 -m venv'
 # shortcuts
 ###################
 alias vi='vim'
-alias svi='sudo vim'
 alias svim='sudo vim'
-alias pcal='python3'
 alias py='python3'
 alias snxd='snx -d'
-alias ipa='ip a'
 alias con='nmcli'
 alias wificon='nmcli --ask dev wifi connect '
-alias y='yazi-script'
 
 ###################
 # miscelaneus
@@ -86,11 +78,7 @@ alias systemclt='systemctl'
 # custom overrides
 ###################
 alias ,sshe='ssh -O exit'
-alias ,cat='/usr/bin/cat'
-
-
-###################
-# ensure packages
-# are installed
-###################
-alias ,ensure-tmux-installed='tmux'
+alias ,cat='command cat'
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh='kitten ssh'
+fi
