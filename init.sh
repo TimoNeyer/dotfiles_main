@@ -31,7 +31,6 @@ link_vim() {
   fi
   cmd ln -s $HOME/.config/Vim/vimrc $HOME/.vimrc
   echo Successfully linked vim configurations into home dir
-  cmd
 }
 
 link_zsh() {
@@ -60,6 +59,7 @@ init_tmux() {
   git clone https://github.com/tmux-plugin/tpm.git ~/.config/tmux/plugins/tpm
 }
 
+pushd >/dev/null
 cd $HOME
 link_vim
 install_vim_plugins
@@ -67,3 +67,4 @@ install_nvim_plugins
 link_zsh
 link_git
 init_tmux
+popd >/dev/null
