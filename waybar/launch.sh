@@ -1,4 +1,5 @@
 #/bin/bash
 
 killall waybar
-waybar & 2>&1 > /dev/null
+waybar -c ~/.config/waybar/config.jsonc &
+2>&1 >/dev/null

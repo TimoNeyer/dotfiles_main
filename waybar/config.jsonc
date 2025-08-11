@@ -46,13 +46,13 @@
 	},
 	"clock#date": {
 		"interval": 20,
-		"format": "{:%e %b %Y}",
+		"format": "{:%a %e %b %Y}",
 		"tooltip": true,
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
 			"mode": "year",
 			"mode-mon-col": 3,
-			"weeks-pos": "right",
+			"weeks-pos": "left",
 			"on-scroll": 1,
 			"format": {
 				"months": "<span color='#ffead3'><b>{}</b></span>",
@@ -101,7 +101,7 @@
 		"format": "VOL {volume}",
 		"format-muted": "VOL mt",
 		"scroll-step": 1,
-		"on-click": "amixer sset Master toggle",
+		"on-click": "pamixer -t",
 		"tooltip": false
 	},
 	"temperature": {
@@ -155,30 +155,8 @@
 			"warning": 75,
 			"critical": 90
 		},
-		"path": "/"
-	},
-	"custom/vpn": {
-		"exec": "~/.config/waybar/scripts/get-vpn.sh",
-		"interval": 5,
-		"format": "VPN {}",
-		"on-click": "~/.config/waybar/scripts/toggle-vpn.sh",
-		"tooltip": false
-	},
-	"custom/nm": {
-		"exec": "~/.config/waybar/scripts/get-ifname.sh",
-		"interval": 2,
-		"format": "NET {}",
-		"tooltip": false
-	},
-	"custom/poweroff": {
-		"on-click": "~/.config/waybar/scripts/power.sh shutdown",
-		"format": " ⏻ ",
-		"tooltip": false
-	},
-	"custom/restart": {
-		"on-click": "~/.config/waybar/scripts/power.sh restart",
-		"format": " ↪ ",
-		"tooltip": false
+		"path": "/",
+		"tooltip-format": "{used}G/{total}G on {path}"
 	},
 	"custom/lock": {
 		"on-click": "~/.config/rofi/powermenu.sh sway",
