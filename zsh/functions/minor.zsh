@@ -59,9 +59,9 @@ function hex-decode() {
 
 function get_status() {
   if [[ $? -eq 0 ]]; then
-    LAST_CMD_STATUS="%F{blue}●%f"  # Blue dot for success
+    LAST_CMD_STATUS="%F{blue}@%f"  # Blue dot for success
   else
-    LAST_CMD_STATUS="%F{red}●%f"   # Red dot for error
+    LAST_CMD_STATUS="%F{red}@%f"   # Red dot for error
   fi
   set -A ELAPSED $ELAPSED $(( SECONDS-_start ))
 }

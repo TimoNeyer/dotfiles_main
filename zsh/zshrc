@@ -36,6 +36,11 @@ if [ -f ~/.config/zsh/keybinds.zsh ]; then
     . ~/.config/zsh/keybinds.zsh
 fi
 
+# conditional loading
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh='kitten ssh'
+fi
+
 #####################################################
 # definitions
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
@@ -50,6 +55,6 @@ add-zsh-hook preexec preexec
 add_paths $HOME/.nix-profile/bin $HOME/.cargo/bin $HOME/.cargo/env $HOME/.local/bin
 
 # Set the prompt
-PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f|${ZVM_MODE}|❯❯ '
+PROMPT='%F{green}%n%F{blue}${LAST_CMD_STATUS}%F{blue}%F{cyan}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f|${ZVM_MODE}| > '
 RPROMPT='[%F{cyan}%T%f][${ZSH_COMMAND_TIME}]'
 
