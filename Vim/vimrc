@@ -208,7 +208,6 @@ set splitbelow
     nnoremap <F4> :MarkdownPreviewToggle<cr>
     " fzf
     nnoremap <c-o> :FZF<cr>
-    nnoremap
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
