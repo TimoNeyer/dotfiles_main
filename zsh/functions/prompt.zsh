@@ -38,7 +38,7 @@ function _git_stats() {
 
 function _set_prompt() {
   if [[ "$?" -eq 0 ]]; then
-    PROMPT="%F{blue}%n%f@%F{blue}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f|${ZVM_MODE}| > "
+    PROMPT="%F{blue}%n%f%F{#a0afc7}@%F{blue}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f|${ZVM_MODE}| > "
   else
     PROMPT="%F{blue}%n%F{red}@%F{blue}%m:%F{magenta}%~ %F{yellow}${GIT_BRANCH}%f|${ZVM_MODE}| > "
   fi
