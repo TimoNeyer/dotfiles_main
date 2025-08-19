@@ -6,7 +6,7 @@
 set $mod1 Mod1
 set $mod2 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec kitty
+bindsym $mod1+Return exec alacritty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec ~/.config/sway/scripts/applauncher.sh
 bindsym $mod1+Shift+c reload
