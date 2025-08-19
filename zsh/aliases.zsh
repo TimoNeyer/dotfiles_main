@@ -3,18 +3,12 @@
 # replacemtents
 ###################
 alias cd='z'
-alias ls='eza --no-permissions --no-time --icons=auto --group-directories-first -gMo -w 50 --smart-group '
+alias ls='eza --no-permissions --no-time --icons=auto --group-directories-first -gMo --smart-group '
 alias ll='ls -l'
 alias la='ls -la'
 alias cat='bat'
 alias sudo='doas'
-
-###################
-# power management
-###################
-alias reboot='/sbin/reboot'
-alias shutdown='/sbin/shutdown'
-alias halt='/sbin/halt'
+alias docker=podman
 
 ###################
 # shortcuts
@@ -48,9 +42,6 @@ alias egrep='egrep --color=auto'
 # applications
 # replacemtents
 ###################
-alias pic='imv-wayland'
-alias imv='imv-wayland'
-alias vid='mpv'
 alias ping='fping -c 10'
 alias ping4='fping -4'
 alias ping6='fping -6'
@@ -63,22 +54,13 @@ alias venv='python3 -m venv'
 alias vi='vim'
 alias svim='sudo vim'
 alias py='python3'
-alias snxd='snx -d'
 alias con='nmcli'
 alias wificon='nmcli --ask dev wifi connect '
-
-###################
-# miscelaneus
-###################
-alias ehlo='echo ehlo'
-alias meddl='echo meddl'
-alias systemclt='systemctl'
 
 ###################
 # custom overrides
 ###################
 alias ,sshe='ssh -O exit'
-alias ,cat='command cat'
 if [ "$TERM" = "xterm-kitty" ]; then
   alias ssh='kitten ssh'
 fi

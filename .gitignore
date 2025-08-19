@@ -7,6 +7,7 @@
 !polybar/
 !nvim/
 nvim/lazy-lock.json
+nvim/lazyvim.json
 !alacritty/
 !hypr/
 !waybar/
@@ -17,6 +18,7 @@ nvim/lazy-lock.json
 vim/vim/plugged/
 vim/vim/view/
 !zsh/
+!zi/
 zsh/antidote.zsh
 !tofi/
 !ghostty
