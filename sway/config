@@ -160,4 +160,9 @@ bindsym $mod1+Ctrl+minus move __i3_scratch
 bindsym $mod1+minus scratchpad show
 
 # screens
+output "*" {
+  background "~/Pictures/background/active" fill
+}
+
+# personalized stuff
 include ~/.config/sway/personalized.local/*.conf
