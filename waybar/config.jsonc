@@ -1,215 +1,228 @@
 // vim: ft=jsonc
 {
-	"layer": "top",
-	"position": "top",
-	"modules-left": [
-		"battery",
-		"custom/arrowBatVol",
-		"pulseaudio",
-		"custom/arrowVolNet",
-		"network",
-		"custom/arrowNetDsk",
-		"disk",
-		"custom/arrowDskTray",
-		"tray",
-		"custom/arrowWsEnd",
-		"sway/mode",
-		"hyprland/window",
-		"sway/window"
-	],
-	"modules-center": [
-		"custom/arrowWsStart",
-		"custom/wssep",
-		"sway/workspaces",
-		"hyprland/workspaces",
-		"custom/wssep",
-		"custom/arrowWsEnd"
-	],
-	"modules-right": [
-		"custom/arrowMemEnd",
-		"memory",
-		"custom/arrowCpuMem",
-		"cpu",
-		"custom/arrowTemCpu",
-		"temperature",
-		"custom/arrowDateTem",
-		"clock#date",
-		"custom/arrowClkDate",
-		"clock#time",
-		"custom/lock"
-	],
-	// Modules
-	"clock#time": {
-		"interval": 10,
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#date": {
-		"interval": 20,
-		"format": "{:%a %e %b %Y}",
-		"tooltip": true,
-		"tooltip-format": "<tt><small>{calendar}</small></tt>",
-		"calendar": {
-			"mode": "year",
-			"mode-mon-col": 3,
-			"weeks-pos": "left",
-			"on-scroll": 1,
-			"format": {
-				"months": "<span color='#ffead3'><b>{}</b></span>",
-				"days": "<span color='#ecc6d9'><b>{}</b></span>",
-				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-			}
-		},
-		"actions": {
-			"on-click-right": "mode",
-			"on-click-forward": "tz_up",
-			"on-click-backward": "tz_down",
-			"on-scroll-up": "shift_up",
-			"on-scroll-down": "shift_down"
-		}
-	},
-	"cpu": {
-		"interval": 5,
-		"tooltip": false,
-		"format": "CPU {usage}%",
-		"format-alt": "CPU {load}",
-		"states": {
-			"warning": 70,
-			"critical": 90
-		}
-	},
-	"memory": {
-		"interval": 5,
-		"format": "RAM {percentage}%",
-		"states": {
-			"warning": 50,
-			"critical": 70
-		},
-		"tooltip-format": "RAM {used:0.1f}G/{total:0.1f}G"
-	},
-	"network": {
-		"interval": 5,
-		"format-wifi": "WLN UP",
-		"format-ethernet": "ETH UP",
-		"format-disconnected": "NET DW",
-		"format-alt": "NET {ipaddr}/{cidr}",
-		"tooltip-format": "IF {ifname}, GW {gwaddr}"
-	},
-	"pulseaudio": {
-		"format": "VOL {volume}",
-		"format-muted": "VOL mt",
-		"scroll-step": 1,
-		"on-click": "pamixer -t",
-		"tooltip": false
-	},
-	"temperature": {
-		"critical-threshold": 90,
-		"interval": 5,
-		"format": "TEM {temperatureC}°",
-		"tooltip": false
-	},
-	"battery": {
-		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": " BAT {capacity}% "
-	},
-	"sway/workspaces": {
-		"all-outputs": false,
-		"disable-scroll": true
-	},
-	"sway/window": {
-		"max-length": 30,
-		"rewrite": {
-			"(.*) — Mozilla Firefox": "Firefox: $1",
-			"(.*)(?:-|—) *([A-Z][a-z]*)": "$2: $1"
-		}
-	},
-	"sway/mode": {
-		"tooltip": false,
-		"format": "[{}]"
-	},
-	"hyprland/workspaces": {
-		"tooltip": false,
-		"disable-scroll": true
-	},
-	"hyprland/window": {
-		"max-length": 30,
-		"rewrite": {
-			"(.*) — Mozilla Firefox": "Firefox: $1",
-			"(.*)(?:-|—) *([A-Z][a-z]*)": "$2: $1"
-		}
-	},
-	"tray": {
-		"icon-size": 18,
-		"spacing": 10
-	},
-	"disk": {
-		"interval": 60,
-		"format": "DSK: {percentage_used}%",
-		"states": {
-			"warning": 75,
-			"critical": 90
-		},
-		"path": "/",
-		"tooltip-format": "{used}G/{total}G on {path}"
-	},
-	"custom/lock": {
-		"on-click": "~/.config/rofi/powermenu.sh sway",
-		"format": "⏻",
-		"tooltip": false
-	},
-	// styling
-	"custom/wssep": {
-		"format": "|",
-		"tooltip": false
-	},
-	"custom/arrowClkDate": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowDateTem": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowBatVol": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowTemCpu": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowCpuMem": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowMemEnd": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowDskTray": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowNetDsk": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowVolNet": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowWsEnd": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/arrowWsStart": {
-		"format": "",
-		"tooltip": false
-	}
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "battery",
+    "custom/arrowBatVol",
+    "pulseaudio",
+    "custom/arrowVolNet",
+    "network",
+    "custom/arrowNetDsk",
+    "disk",
+    "custom/arrowDskTray",
+    "tray",
+    "custom/arrowWsEnd",
+    "sway/mode",
+    "hyprland/window",
+    "sway/window",
+    "niri/window"
+  ],
+  "modules-center": [
+    "custom/arrowWsStart",
+    "custom/wssep",
+    "sway/workspaces",
+    "hyprland/workspaces",
+    "niri/workspaces",
+    "custom/wssep",
+    "custom/arrowWsEnd"
+  ],
+  "modules-right": [
+    "custom/arrowMemEnd",
+    "memory",
+    "custom/arrowCpuMem",
+    "cpu",
+    "custom/arrowTemCpu",
+    "temperature",
+    "custom/arrowDateTem",
+    "clock#date",
+    "custom/arrowClkDate",
+    "clock#time",
+    "custom/lock"
+  ],
+  // Modules
+  "clock#time": {
+    "interval": 10,
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "clock#date": {
+    "interval": 20,
+    "format": "{:%a %e %b %Y}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "left",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "tooltip": false,
+    "format": "CPU {usage}%",
+    "format-alt": "CPU {load}",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "memory": {
+    "interval": 5,
+    "format": "RAM {percentage}%",
+    "states": {
+      "warning": 50,
+      "critical": 70
+    },
+    "tooltip-format": "RAM {used:0.1f}G/{total:0.1f}G"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "WLN UP",
+    "format-ethernet": "ETH UP",
+    "format-disconnected": "NET DW",
+    "format-alt": "NET {ipaddr}/{cidr}",
+    "tooltip-format": "IF {ifname}, GW {gwaddr}"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}",
+    "format-muted": "VOL mt",
+    "scroll-step": 1,
+    "on-click": "pamixer -t",
+    "tooltip": false
+  },
+  "temperature": {
+    "critical-threshold": 90,
+    "interval": 5,
+    "format": "TEM {temperatureC}°",
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": " BAT {capacity}% "
+  },
+  "sway/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": true
+  },
+  "sway/window": {
+    "max-length": 30,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "Firefox: $1",
+      "(.*)(?:-|—) *([A-Z][a-z]*)": "$2: $1"
+    }
+  },
+  "sway/mode": {
+    "tooltip": false,
+    "format": "[{}]"
+  },
+  "hyprland/workspaces": {
+    "tooltip": false,
+    "disable-scroll": true
+  },
+  "hyprland/window": {
+    "max-length": 30,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "Firefox: $1",
+      "(.*)(?:-|—) *([A-Z][a-z]*)": "$2: $1"
+    }
+  },
+  "niri/workspaces": {
+    "tooltip": false,
+    "disable-scroll": false
+  },
+  "niri/window": {
+    "max-length": 30,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "Firefox: $1",
+      "(.*)(?:-|—) *([A-Z][a-z]*)": "$2: $1"
+    }
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "disk": {
+    "interval": 60,
+    "format": "DSK: {percentage_used}%",
+    "states": {
+      "warning": 75,
+      "critical": 90
+    },
+    "path": "/",
+    "tooltip-format": "{used}G/{total}G on {path}"
+  },
+  "custom/lock": {
+    "on-click": "~/.config/rofi/powermenu.sh sway",
+    "format": "⏻",
+    "tooltip": false
+  },
+  // styling
+  "custom/wssep": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/arrowClkDate": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowDateTem": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowBatVol": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowTemCpu": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowCpuMem": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowMemEnd": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowDskTray": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowNetDsk": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowVolNet": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowWsEnd": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/arrowWsStart": {
+    "format": "",
+    "tooltip": false
+  }
 }
