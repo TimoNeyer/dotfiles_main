@@ -136,7 +136,7 @@ input type:touchpad {
 # enviroment
 exec nm-applet
 exec --no-startup-id swayidle -w \
-	timeout 1800 'swaylock -f' \
+	timeout 1800 'hyprlock' \
 	timeout 1805 'swaymsg "output * power off"' \
 		resume 'swaymsg "output * power on"'
 exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
