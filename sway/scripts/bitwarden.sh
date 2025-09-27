@@ -2,7 +2,7 @@
 
 # This should run the bw utility that is part of the official bitwarden desktop client flatpak.
 # If you want to set this to your own instance, use $CMD config server <url> once
-CMD="flatpak run --command=bw com.bitwarden.desktop"
+CMD="flatpak run --user --command=bw com.bitwarden.desktop"
 export BW_SESSION=""
 FIFO=""
 PID_FILE="/run/user/$(id -u)/bitwarden-cli.pid"
