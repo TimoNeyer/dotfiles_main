@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 LogFile=/tmp/powermenu.log
 
 # Current Theme
@@ -21,6 +23,9 @@ elif [[ "$1" == "hypr" ]]; then
 elif [[ "$1" == "i3" ]]; then
   exit_="i3-msg exit"
   lock_="$HOME/.config/screenlock/x.sh"
+elif [[ "$1" == "niri" ]]; then
+  exit_="niri msg exit"
+  lock_="$HOME/.config/screenlock/wayland.sh"
 else
   echo "Failed to get exit function for powermenu! received $1" >>$LogFile
   exit 1
@@ -71,7 +76,6 @@ run_cmd() {
     elif [[ $1 == '--reboot' ]]; then
       systemctl reboot
     elif [[ $1 == '--suspend' ]]; then
-      amixer set Master mute
       $suspend_ && $lock_
     elif [[ $1 == '--logout' ]]; then
       $exit_
@@ -98,7 +102,6 @@ $lock)
   $lock_
   ;;
 $suspend)
-  amixer set Master mute
   systemctl suspend
   "$lock_"
   ;;
