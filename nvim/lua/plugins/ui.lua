@@ -17,7 +17,7 @@ return {
           colors.polar_night.brighter = "#000000"
         end,
       })
-      vim.cmd.colorscheme("nord")
+      --vim.cmd.colorscheme("nord")
     end,
   },
   {
@@ -41,7 +41,14 @@ return {
     },
   },
   {
-    "3rd/image.nvim",
-    opts = {},
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
+    setup = function()
+      require("catppuccin").setup()
+      vim.cmd.colorscheme("catppuccin-frappe")
+    end,
   },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 }

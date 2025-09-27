@@ -38,7 +38,6 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight" } },
   checker = {
     enabled = false, -- check for plugin updates periodically
     notify = true, -- notify on update
@@ -60,4 +59,4 @@ require("lazy").setup({
   },
 })
 -- Set the colorscheme after plugins load
-vim.cmd([[colorscheme nord]])
+vim.cmd([[colorscheme catppuccin-frappe]])
