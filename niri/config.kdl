@@ -25,8 +25,10 @@ input {
 window-rule {
     match app-id="firefox"
     match title="Extension: .* Mozilla Firefox"
-    default-column-width { proportion 0.5; }
-    // Note: Niri doesn't have traditional floating windows
+}
+
+window-rule {
+    draw-border-with-background false
 }
 
 // Layout configuration
@@ -53,14 +55,14 @@ layout {
 }
 
 // Prefer no server-side decorations (similar to default_border pixel)
-//prefer-no-csd true
+prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 
 // Keybindings
 binds {
     // Basic application controls
-    "Alt+Return" { spawn "alacritty"; }
+    "Alt+Return" { spawn "alacritty" "-e" "zsh"; }
     "Alt+Q" { close-window; }
     "Alt+Space" { spawn "sh" "-c" "~/.config/niri/scripts/applauncher.sh"; }
     "Mod+L" { spawn "sh" "-c" "~/.config/niri/scripts/lock.sh"; }
