@@ -1,0 +1,4 @@
+theme = "catpuccin-frappe"
+
+[keys.insert]
+j = {j = "normal_mode" }
