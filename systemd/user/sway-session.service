@@ -21,7 +21,7 @@ Environment=MOZ_ENABLE_WAYLAND=1
 Environment=_JAVA_AWT_WM_NONREPARENTING=1
 Environment=GTK_USE_PORTAL=1
 
-ExecStart=/usr/bin/sway -c ~/.config/sway/config
+ExecStart=/usr/bin/sway
 
 Restart=on-failure
 

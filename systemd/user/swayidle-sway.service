@@ -4,6 +4,6 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swayidle -w timeout 1800 'hyprlock' timeout 1805 swaymsg output * power off' before-sleep 'hyprlock' resume 'swaymsg output * power on'
+ExecStart=/usr/bin/swayidle -w "timeout 1800 'hyprlock' timeout 1805 swaymsg output * power off' before-sleep 'hyprlock' resume 'swaymsg output * power on'"
 
 Restart=on-failure
