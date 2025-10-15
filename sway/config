@@ -135,11 +135,8 @@ input type:touchpad {
 
 # enviroment
 exec nm-applet
-exec --no-startup-id swayidle -w \
-	timeout 1800 'hyprlock' \
-	timeout 1805 'swaymsg "output * power off"' \
-		resume 'swaymsg "output * power on"'
-exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
+#exec --no-startup-id swayidle -w  timeout 1800 'hyprlock'  timeout 1805 'swaymsg "output * power off"'  resume 'swaymsg "output * power on"'
+#exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 exec "/usr/libexec/polkit-gnome-authentication-agent-1"
 exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec wl-paste -t text --watch clipman store --notify --no-persist
@@ -156,7 +153,7 @@ client.urgent           #2f343a     #900000     #ffffff     #900000     #900000
 client.placeholder      #000000     #0c0c0c     #ffffff     #000000     #0c0c0c
 
 # scratchpad
-bindsym $mod1+Ctrl+minus move __i3_scratch
+bindsym $mod1+Ctrl+minus move container scratchpad
 bindsym $mod1+minus scratchpad show
 
 # screens
