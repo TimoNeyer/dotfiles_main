@@ -45,9 +45,9 @@ setopt NO_BEEP                   # Disable beep on error
 setopt PROMPT_SUBST              # Enable parameter expansion, command substitution, and arithmetic expansion in prompts
 
 # ===== HISTORY CONFIGURATION =====
-HISTFILE="$HOME/.local/state/zsh/history.zsh"
-HISTSIZE=50000
-SAVEHIST=50000
+export HISTFILE="$HOME/.local/state/zsh/history.zsh"
+export HISTSIZE=50000
+export SAVEHIST=50000
 
 # ===== FZF CONFIGURATION =====
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -61,4 +61,4 @@ export FZF_DEFAULT_OPTS='
   --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
   --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-
+source "$HOME/.config/zsh/overrides.local"
