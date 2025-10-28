@@ -26,16 +26,16 @@ set noerrorbells visualbell t_vb=0
 set number relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
-" set cursorline
+set cursorline
 
 " Highlight cursor line underneath the cursor vertically.
-set nocursorcolumn
+" set nocursorcolumn
 
 " Set shift width to 4 spaces.
 set shiftwidth=2
 
 " Show color column at 80 characters width
-set colorcolumn=80
+" set colorcolumn=80
 
 " Rendering.
 set ttyfast
@@ -121,12 +121,31 @@ set splitbelow
       Plug 'LnL7/vim-nix'
       Plug 'rhysd/vim-llvm'
       Plug 'nordtheme/vim'
+      Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+      Plug 'vim-airline/vim-airline'
+      Plug 'joshdick/onedark.vim'
     call plug#end()
 
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
     let g:mkdp_auto_start = 0
     let g:mkdp_auto_close = 1
+
+    let g:airline#extensions#tabline#enabled = 1
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
+    let g:airline#extensions#ale#enabled = 1
+    let g:airline#extensions#whitespace = 1
+
+    let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+    let g:airline_section_x = '%{&filetype}'
+    let g:airline_section_y = '%{&fileencoding?&fileencoding:&encoding}'
+    let g:airline_section_z = '%l:%c %3p%%'
+    let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+    let g:airline_theme = 'onedark'
+
+
 
     " ALE
     let g:ale_enabled = 0
@@ -186,21 +205,26 @@ set splitbelow
 " KEYMAPS --------------------------------------------------------------- {{{
 
     " shortcuts navigation
-    inoremap jj <esc>
-    nnoremap <c-l> <c-w>l
-    nnoremap <c-j> <c-w>j
-    nnoremap <c-k> <c-w>k
-    nnoremap <c-h> <c-w>h
+    inoremap jj <Esc>
+    inoremap <C-BS> <C-W>
+
+    nnoremap <C-c> +y
+    nnoremap <C-v> +p
+    nnoremap <C-l> <C-W>l
+    nnoremap <C-j> <C-W>j
+    nnoremap <C-k> <C-W>k
+    nnoremap <C-h> <C-W>h
     nnoremap x "_x
     nnoremap n nzzzv
     nnoremap N Nzzzv
-    nnoremap <c-d> <c-d>zz
-    nnoremap <c-u> <c-u>zz
+    nnoremap <C-D> <C-D>zz
+    nnoremap <C-U> <C-U>zz
     nnoremap <Esc><Esc> <Esc>:noh<CR>
-    nnoremap p "_dP"
-    nnoremap <c-s> <cmd>w<CR>
-    nnoremap <c-q> <cmd>wqa<CR>
-    inoremap <c-bs> <c-w>
+    nnoremap <C-S> <cmd>w<CR>
+    nnoremap <C-Q> <cmd>wqa<CR>
+
+    vnoremap p "_dP"
+
 
     " Nerdtree
     nnoremap <F3> :NERDTreeToggle<cr>
@@ -238,16 +262,6 @@ set splitbelow
 
 " }}}
 
-" STATUS LINE ------------------------------------------------------------ {{{
-
-      set statusline=
-      set statusline+=\ \%F\ %M\ %Y\ %R
-      set statusline+=%=
-      set statusline+=\ ascii:\ %b\ row:\ %l\ col:\ %c\ percent:\ %p%%
-      set laststatus=2
-
-" }}}
-
 " COMMANDS ----------------------------------------------------------------{{{{{{
 
       command! Update :source ~/.vimrc
@@ -257,4 +271,4 @@ set splitbelow
 " }}}}}}
 
 " Colorscheme:
-colorscheme nord
+       colorscheme onedark
