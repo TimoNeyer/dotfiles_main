@@ -15,6 +15,12 @@ return {
     lazy = false,
   },
   {
+    "ziglang/zig",
+    config = function()
+      vim.g.zig_fmt_parse_errors = 0
+    end,
+  },
+  {
     "lervag/vimtex",
     init = function()
       -- VimTeX configuration goes here, e.g.
@@ -52,6 +58,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "zig",
       },
     },
   },
@@ -65,7 +72,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.pairs",
+    "mini-pairs/mini.pairs",
     opts = {
       modes = { insert = true, command = false, terminal = false },
       skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
