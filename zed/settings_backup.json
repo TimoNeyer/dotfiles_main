@@ -7,14 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "confirm_quit": true,
-    "agent_buffer_font_size": 16.0,
-    "agent_ui_font_size": 20.0,
-    "ui_font_family": ".ZedMono",
-    "buffer_font_weight": 420.0,
-    "code_actions_on_format": {
-        "source.organizeImports": true
-    },
     "disable_ai": true,
     "vim_mode": true,
     "vim": {
@@ -26,11 +18,11 @@
         "custom_digraphs": {}
     },
     "base_keymap": "VSCode",
-    "ui_font_size": 17.0,
-    "buffer_font_size": 20.0,
+    "ui_font_size": 14,
+    "buffer_font_size": 14,
     "theme": {
         "mode": "dark",
-        "dark": "Catppuccin Frappé",
+        "dark": "Nord",
         "light": "Nord Light"
     },
     "telemetry": {
@@ -45,16 +37,16 @@
     "format_on_save": "on",
     "autosave": "on_focus_change",
     "diagnostics": {
-        "include_warnings": true,
-        "lsp_pull_diagnostics": {
-            "enabled": true,
-            "debounce_ms": 50
-        },
-        "inline": {
-            "enabled": true,
-            "update_debounce_ms": 0,
-            "max_severity": "error"
-        }
+      "include_warnings": true,
+      "lsp_pull_diagnostics": {
+    	"enabled": true,
+    	"debounce_ms": 50
+      },
+      "inline": {
+        "enabled": true,
+        "update_debounce_ms": 0,
+        "max_severity": "error"
+      }
     },
     "lsp": {
         "rust-analyzer": {
@@ -128,11 +120,15 @@
             "format_on_save": "off"
         },
         "Rust": {
-            "formatter": "language_server",
             "tab_size": 2,
-            "format_on_save": "on",
+            "format_on_save": "language_server",
             "show_completion_documentation": true,
             "show_completions_on_input": true
+        }
+    },
+    "formatter": {
+        "code_actions": {
+            "source.organizeImports": true
         }
     },
     "project_panel": {
@@ -144,6 +140,9 @@
     },
     // Move some unnecessary panels to the right
     "notification_panel": {
+        "dock": "right"
+    },
+    "chat_panel": {
         "dock": "right"
     },
     "outline_panel": {
