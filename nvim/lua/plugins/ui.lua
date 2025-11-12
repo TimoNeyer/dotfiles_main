@@ -9,6 +9,7 @@ return {
   },
   {
     "gbprod/nord.nvim",
+    enabled = false,
     lazy = false,
     priority = 1000,
     setup = function()
@@ -17,7 +18,7 @@ return {
           colors.polar_night.brighter = "#000000"
         end,
       })
-      --vim.cmd.colorscheme("nord")
+      vim.cmd.colorscheme("nord")
     end,
   },
   {

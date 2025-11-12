@@ -6,8 +6,6 @@ function __zsh_conf_bail() { echo "Error in zsh config";  sh}
 trap __zsh_conf_bail ERR
 
 source "$HOME/.config/zsh/options.zsh"
-[[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && 
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" || true
 
 # ===== ZI PLUGIN MANAGER =====
 source ${XDG_CONFIG_HOME:-${HOME}}/.config/zi/init.zsh && zzinit
@@ -38,7 +36,7 @@ zi light-mode for \
     @annexes \
     @py-utils \
     @romkatv \
-    skip'forgit' @ext-git \
+    @ext-git \
   atload'source ~/.config/zsh/options.zsh' \
   jeffreytse/zsh-vi-mode
   
@@ -101,5 +99,3 @@ set +eo pipefail
 trap ' ' ERR
 unset -f __zsh_conf_bail
 
-# ===== POWERLEVEL10K CONFIG =====
-source ~/.p10k.zsh # this is not suited for safety area

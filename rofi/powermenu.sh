@@ -90,7 +90,7 @@ chosen="$(run_rofi)"
 case ${chosen} in
 $shutdown)
   if [[ "$(confirm_exit 'shutdown')" == "$yes" ]]; then
-    /usr/bin/shutdown --now
+    /usr/bin/shutdown
   fi
   ;;
 $reboot)

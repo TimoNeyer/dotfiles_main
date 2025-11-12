@@ -59,12 +59,8 @@ init_tmux() {
   git clone https://github.com/tmux-plugin/tpm.git ~/.config/tmux/plugins/tpm
 }
 
-pushd >/dev/null
+#pushd >/dev/null
 cd $HOME
 link_vim
 install_vim_plugins
-install_nvim_plugins
-link_zsh
-link_git
-init_tmux
-popd >/dev/null
+#popd >/dev/null

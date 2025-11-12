@@ -144,6 +144,7 @@ exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESK
 exec bash "$HOME/.config/sway/scripts/clamshell.sh"
 exec_always --no-startup-id "$HOME/.config/waybar/launch.sh"
 exec "bash $HOME/.config/sway/scripts/bitwarden.sh server"
+exec "bash $HOME/.config/swww/config.sh"
 
 # colors                border      background  text        indicator   child_border
 client.focused          #4c7899     #285577     #ffffff     #2e9ef4     #285577
@@ -158,7 +159,7 @@ bindsym $mod1+minus scratchpad show
 
 # screens
 output "*" {
-  background "~/Pictures/background/active" fill
+  #background "~/Pictures/background/active" fill
 }
 
 # personalized stuff
