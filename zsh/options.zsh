@@ -61,4 +61,8 @@ export FZF_DEFAULT_OPTS='
   --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
   --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-source "$HOME/.config/zsh/overrides.local"
+if [[ -d "$HOME/.config/zsh/overrides.d.local" ]]; then
+  for file in $HOME/.config/zsh/overrides.d.local/* ; do
+    source $file
+  done
+fi
