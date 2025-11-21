@@ -51,4 +51,15 @@ return {
     end,
   },
   { "nvim-tree/nvim-web-devicons", lazy = true },
+  {
+    "nvzone/floaterm",
+    dependencies = "nvzone/volt",
+    opts = {
+      terminals = {
+        { name = "Scratch" },
+        { name = "1" },
+      },
+    },
+    cmd = "FloatermToggle",
+  },
 }

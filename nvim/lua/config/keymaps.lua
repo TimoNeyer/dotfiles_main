@@ -46,3 +46,5 @@ map("t", "<C-l>", "<C-\\><C-N><C-w><C-l>", "Move focus to the right window")
 map("t", "<C-j>", "<C-\\><C-N><C-w><C-j>", "Move focus to the lower window")
 map("t", "<C-k>", "<C-\\><C-N><C-w><C-k>", "Move focus to the upper window")
 map("t", "<Esc>", "<C-\\><C-N>")
+
+map("n", "<leader>tt", "<cmd>FloatermToggle<CR>", "toggle floating terminals")
