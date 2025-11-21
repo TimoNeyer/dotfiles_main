@@ -23,28 +23,31 @@ autoload -Uz _zi
 # ===== PLUGINS =====
 # FZF integrations
 zi wait lucid for \
-    multisrc"shell/{completion,key-bindings}.zsh" id-as"junegunn/fzf_completions" pick"/dev/null" \
+    multisrc"shell/{completion,key-bindings}.zsh" id-as"junegunn/fzf_completions" pick"/dev/null" aliases \
         junegunn/fzf \
     id-as"fzf-history" atinit'zicompinit'\
       unixorn/fzf-zsh-plugin \
-    pick"fzf-tab.plugin.zsh" \
+    pick"fzf-tab.plugin.zsh" aliases \
         Aloxaf/fzf-tab
 zi cdclear -q
 
-zi light-mode for \
+ZVM_VI_ESCAPE_BINDKEY=jj zi light-mode for \
   z-shell/z-a-meta-plugins \
     @annexes \
     @ext-git \
-  atload'source ~/.config/zsh/options.zsh' \
+  depth=1 \
   jeffreytse/zsh-vi-mode
 
+# ===== LIFE IMPROVEMENTS =====
 zi wait lucid for \
   atinit'ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay;' atload'fast-theme default &>/dev/null;' compile'{functions/{.fast,fast}-*~*.zwc,chroma/*~*.zw' \
-     z-shell/F-Sy-H \
+   z-shell/F-Sy-H \
   blockf \
-     zsh-users/zsh-completions \
+   zsh-users/zsh-completions \
   atload"!_zsh_autosuggest_start" \
-     zsh-users/zsh-autosuggestions \
+   zsh-users/zsh-autosuggestions \
+   hlissner/zsh-autopair \
+  aliases  \
   ajeetdsouza/zoxide
 
 # Additional colorful plugins
@@ -55,6 +58,25 @@ zi wait lucid for \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"' \
         trapd00r/LS_COLORS
+
+PS1=" "
+zi light-mode for \
+  from"gh-r" as"starship" \
+  atclone'./starship init zsh > zhook.zsh' atpull'%atclone' \
+  src="zhook.zsh" compile"zhook.zsh" nocompile"starship" \
+  starship/starship
+
+zi wait lucid for \
+  from"gh-r" as"atuin" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
+  atclone"./atuin init zsh --disable-up-arrow > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+  atpull"%atclone" src"init.zsh" compile"init.zsh" nocompile'atuin' \
+  atuinsh/atuin
+
+zi wait lucid for \
+  as"settings" \
+  compile"{aliases,functions}.zsh" \
+  _local/settings \
+
 
 # ===== COMPLETION STYLING =====
 
@@ -84,12 +106,16 @@ bindkey '^[[1;5D' backward-word
 
 # ===== SOURCE CUSTOM FILES =====
 
-source "$HOME/.config/zsh/functions.zsh"
-source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/options.zsh"
+
+if [[ -d "$HOME/.config/zsh/overrides.d.local" ]]; then
+  for file in $HOME/.config/zsh/overrides.d.local/* ; do
+    source $file
+  done
+fi
 
 # ===== FINAL SETUP =====
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd precmd
 zicompinit
 zi cdreplay -q
 set +eo pipefail

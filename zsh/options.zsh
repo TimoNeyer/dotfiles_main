@@ -1,17 +1,3 @@
-# ===== VIM MODE OPTIONS =====
-export ZVM_VI_ESCAPE_BINDKEY=jj
-# this seems to not work right now
-function zvm_config() {
-  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-  ZVM_VI_ESCAPE_BINDKEY=jj
-  ZVM_VI_HIGHLIGHT_BACKGROUND=green
-}
-
-function zvm_after_init() {
-    zvm_bindkey viins '^R' fzf-history-widget
-    zvm_bindkey vicmd '/' fzf-history-widget
-}
-
 # ===== ZSH OPTIONS =====
 # History
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format
@@ -61,8 +47,3 @@ export FZF_DEFAULT_OPTS='
   --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
   --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-if [[ -d "$HOME/.config/zsh/overrides.d.local" ]]; then
-  for file in $HOME/.config/zsh/overrides.d.local/* ; do
-    source $file
-  done
-fi

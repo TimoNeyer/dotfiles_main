@@ -33,24 +33,12 @@ function fuck() {
   fi
 }
 
-function _add_paths() {
-  for d in "$@"; do
-    [[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
-  done
-  :
-}
-
 function ,c() {
   command $@
 }
 
-function _zsh_set_title_hook() {
-  command -v print >/dev/null || return
-  if [[ "$TERM" = "alacritty" ]]; then
-    print -Pn "\e]0;%n@%m: %~\a"
-  elif [[ "$TERM" = "xterm-kitty" ]]; then
-    kitten @ set-window-title "$(pwd)"
-  fi
+function wg-sync() {
+    sudo wg syncconf $1 <(wg-quick strip $1)
 }
 
 function vault() {
@@ -96,8 +84,4 @@ function vault() {
     return 1
     ;;
   esac
-}
-
-precmd() {
-  _zsh_set_title_hook
 }
