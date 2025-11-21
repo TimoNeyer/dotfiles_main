@@ -17,6 +17,7 @@ nvim/lazyvim.json
 !vim/
 vim/vim/plugged/
 vim/vim/view/
+vim/vim/autoload/
 !zsh/
 !zi/
 zsh/antidote.zsh
