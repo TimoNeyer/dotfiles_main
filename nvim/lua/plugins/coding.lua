@@ -45,6 +45,7 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "go",
         "html",
         "javascript",
         "json",
@@ -72,7 +73,7 @@ return {
     end,
   },
   {
-    "mini-pairs/mini.pairs",
+    "nvim-mini/mini.pairs",
     opts = {
       modes = { insert = true, command = false, terminal = false },
       skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
