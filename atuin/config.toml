@@ -23,13 +23,13 @@
 # timezone = "local"
 
 ## enable or disable automatic sync
-auto_sync = false
+auto_sync = true
 
 ## enable or disable automatic update checks
 # update_check = true
 
 ## address of the sync server
-# sync_address = "https://api.atuin.sh"
+sync_address = "https://atuin.ney3r.com"
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
@@ -49,7 +49,7 @@ auto_sync = false
 ## in any directory within a git repository tree (default: false).
 ##
 ## To use workspace mode by default when available, set this to true and
-## set filter_mode to "workspace" or leave it unspecified and 
+## set filter_mode to "workspace" or leave it unspecified and
 ## set search.filters to include "workspace" before other filter modes.
 # workspaces = false
 
@@ -147,7 +147,7 @@ auto_sync = false
 
 ## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
-enter_accept = false 
+enter_accept = false
 
 ## Defaults to "emacs".  This specifies the keymap on the startup of `atuin
 ## search`.  If this is set to "auto", the startup keymap mode in the Atuin
@@ -174,31 +174,32 @@ keymap_cursor = { emacs = "blink-block", vim_insert = "blink-block", vim_normal 
 
 [stats]
 ## Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
-# common_subcommands = [
+common_subcommands = [
 #   "apt",
-#   "cargo",
+   "cargo",
 #   "composer",
 #   "dnf",
-#   "docker",
-#   "git",
-#   "go",
-#   "ip",
+   "docker",
+   "git",
+   "go",
+   "ip",
 #   "jj",
 #   "kubectl",
 #   "nix",
-#   "nmcli",
+   "nmcli",
 #   "npm",
 #   "pecl",
 #   "pnpm",
-#   "podman",
+   "podman",
 #   "port",
-#   "systemctl",
+   "systemctl",
 #   "tmux",
 #   "yarn",
-# ]
+    "zig",
+ ]
 
 ## Set commands that should be totally stripped and ignored from stats
-# common_prefix = ["sudo"]
+ common_prefix = ["sudo", "doas"]
 
 ## Set commands that will be completely ignored from stats
 ignored_commands = [
@@ -231,7 +232,7 @@ ignored_commands = [
 
 [daemon]
 ## Enables using the daemon to sync. Requires the daemon to be running in the background. Start it with `atuin daemon`
-# enabled = false
+enabled = false
 
 ## How often the daemon should sync in seconds
 # sync_frequency = 300
@@ -239,12 +240,12 @@ ignored_commands = [
 ## The path to the unix socket used by the daemon (on unix systems)
 ## linux/mac: ~/.local/share/atuin/atuin.sock
 ## windows: Not Supported
-# socket_path = "~/.local/share/atuin/atuin.sock"
+#socket_path = "~/.local/share/atuin/atuin.sock"
 
 ## Use systemd socket activation rather than opening the given path (the path must still be correct for the client)
 ## linux: false
 ## mac/windows: Not Supported
-# systemd_socket = false
+#systemd_socket = true
 
 ## The port that should be used for TCP on non unix systems
 # tcp_port = 8889
