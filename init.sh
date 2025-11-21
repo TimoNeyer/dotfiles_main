@@ -24,12 +24,12 @@ link_vim() {
     echo "Moving existing ~/.vim directory to ~/.vim.bak"
     cmd mv $HOME/.vim $HOME/.vim.bak
   fi
-  cmd ln -s $HOME/.config/Vim/vim $HOME/.vim
+  cmd ln -s $HOME/.config/vim/vim $HOME/.vim
   if [[ -f "$HOME/.vimrc" ]]; then
     echo "Moving existing ~/.vimrc directory to ~/.vimrc.bak"
     cmd mv $HOME/.vimrc $HOME/.vimrc.bak
   fi
-  cmd ln -s $HOME/.config/Vim/vimrc $HOME/.vimrc
+  cmd ln -s $HOME/.config/vim/vimrc $HOME/.vimrc
   echo Successfully linked vim configurations into home dir
 }
 
@@ -40,6 +40,16 @@ link_zsh() {
   fi
   cmd ln -s $HOME/.config/zsh/zshrc $HOME/.zshrc
   echo "Successfully linked zsh configurations into home dir"
+  echo "Initialising zsh config"
+  cmd zsh "$HOME/.config/zsh/init.zsh"
+  cmd zsh "zinit create _local/settings"
+  cp "$HOME/.config/zsh/functions.zsh" "$HOME/.zi/plugins/_local---settings/functions.zsh"
+  cp "$HOME/.config/zsh/aliases.zsh" "$HOME/.zi/plugins/_local---settings/aliases.zsh"
+  echo '0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
+0="${${(M)0:#/*}:-$PWD/$0}"
+source "${0:A:h}/functions.zsh"
+source "${0:A:h}/aliases.zsh"' >"$HOME/.zi/plugins/_local---settings/settings.plugin.zsh"
+  EOF
 }
 
 link_git() {
@@ -59,12 +69,19 @@ init_tmux() {
   git clone https://github.com/tmux-plugin/tpm.git ~/.config/tmux/plugins/tpm
 }
 
-pushd >/dev/null
-cd $HOME
+RETURN_DIR=""
+if [[ "$(pwd)" != "$HOME" ]]; then
+  RETURN_DIR="1"
+  pushd >/dev/null
+  cd $HOME
+fi
 link_vim
 install_vim_plugins
 install_nvim_plugins
 link_zsh
 link_git
 init_tmux
-popd >/dev/null
+
+if [[ "$RETURN_DIR" -eq 1 ]]; then
+  popd >/dev/null
+fi
