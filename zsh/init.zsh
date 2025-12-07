@@ -75,7 +75,7 @@ zi wait lucid for \
 zi wait lucid for \
   as"settings" \
   compile"{aliases,functions}.zsh" \
-  _local/settings \
+  TimoNeyer/zsh-settings
 
 
 # ===== COMPLETION STYLING =====
