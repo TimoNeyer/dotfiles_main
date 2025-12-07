@@ -8,7 +8,8 @@
     {
         "context": "vim_mode == normal && !menu",
         "bindings": {
-            // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior: yank to end of line.
+            "shift-y": ["workspace::SendKeystrokes", "y $"], // Use neovim's yank behavior: yank to end of line.
+            "space space": "file_finder::Toggle"
         }
     },
     {

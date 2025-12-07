@@ -1,0 +1,98 @@
+[
+  {
+    "label": "cargo build",
+    "command": "cargo",
+    "args": ["build"],
+    "tags": ["rust-build"]
+  },
+  {
+    "label": "cargo build --release",
+    "command": "cargo",
+    "args": ["build", "--release"],
+    "tags": ["rust-build"]
+  },
+  {
+    "label": "cargo run",
+    "command": "cargo",
+    "args": ["run"],
+    "tags": ["rust-run"]
+  },
+  {
+    "label": "cargo run --release",
+    "command": "cargo",
+    "args": ["run", "--release"],
+    "tags": ["rust-run"]
+  },
+  {
+    "label": "cargo test",
+    "command": "cargo",
+    "args": ["test"],
+    "tags": ["rust-test"]
+  },
+  {
+    "label": "cargo test --release",
+    "command": "cargo",
+    "args": ["test", "--release"],
+    "tags": ["rust-test"]
+  },
+  {
+    "label": "cargo check",
+    "command": "cargo",
+    "args": ["check"],
+    "tags": ["rust-check"]
+  },
+  {
+    "label": "cargo clippy",
+    "command": "cargo",
+    "args": ["clippy", "--all-targets", "--all-features", "--", "-D", "warnings"],
+    "tags": ["rust-lint"]
+  },
+  {
+    "label": "cargo fmt",
+    "command": "cargo",
+    "args": ["fmt"],
+    "tags": ["rust-format"]
+  },
+  {
+    "label": "cargo fmt --check",
+    "command": "cargo",
+    "args": ["fmt", "--", "--check"],
+    "tags": ["rust-format"]
+  },
+  {
+    "label": "cargo doc",
+    "command": "cargo",
+    "args": ["doc", "--no-deps", "--open"],
+    "tags": ["rust-doc"]
+  },
+  {
+    "label": "cargo clean",
+    "command": "cargo",
+    "args": ["clean"],
+    "tags": ["rust-clean"]
+  },
+  {
+    "label": "cargo bench",
+    "command": "cargo",
+    "args": ["bench"],
+    "tags": ["rust-bench"]
+  },
+  {
+    "label": "cargo update",
+    "command": "cargo",
+    "args": ["update"],
+    "tags": ["rust-update"]
+  },
+  {
+    "label": "cargo tree",
+    "command": "cargo",
+    "args": ["tree"],
+    "tags": ["rust-deps"]
+  },
+  {
+    "label": "cargo audit",
+    "command": "cargo",
+    "args": ["audit"],
+    "tags": ["rust-security"]
+  }
+]

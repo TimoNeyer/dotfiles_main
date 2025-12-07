@@ -27,7 +27,7 @@
     },
     "base_keymap": "VSCode",
     "ui_font_size": 17.0,
-    "buffer_font_size": 20.0,
+    "buffer_font_size": 17.0,
     "theme": {
         "mode": "dark",
         "dark": "Catppuccin Frappé",
@@ -152,5 +152,8 @@
     "git_panel": {
         "dock": "right"
     },
-    "redact_private_values": true
+    "redact_private_values": true,
+    "terminal": {
+        "font_family": "JetBrains Mono NL"
+    }
 }
