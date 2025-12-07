@@ -1,10 +1,9 @@
 " VARIABLES ------------------------------------------------------------ {{{
 
-runtime! archlinux.vim
 " Fix some terminal related stuff
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-set report=0
+source ~/.vim/autoload/plug.vim
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
