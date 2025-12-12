@@ -41,15 +41,7 @@ link_zsh() {
   cmd ln -s $HOME/.config/zsh/zshrc $HOME/.zshrc
   echo "Successfully linked zsh configurations into home dir"
   echo "Initialising zsh config"
-  cmd zsh "$HOME/.config/zsh/init.zsh"
-  cmd zsh "zinit create _local/settings"
-  cp "$HOME/.config/zsh/functions.zsh" "$HOME/.zi/plugins/_local---settings/functions.zsh"
-  cp "$HOME/.config/zsh/aliases.zsh" "$HOME/.zi/plugins/_local---settings/aliases.zsh"
-  echo '0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
-0="${${(M)0:#/*}:-$PWD/$0}"
-source "${0:A:h}/functions.zsh"
-source "${0:A:h}/aliases.zsh"' >"$HOME/.zi/plugins/_local---settings/settings.plugin.zsh"
-  EOF
+  cmd zsh -c 'echo initialized'
 }
 
 link_git() {
