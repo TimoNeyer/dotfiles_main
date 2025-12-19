@@ -6,18 +6,10 @@
   ...
 }: {
   imports = [
-    ./packages/neovim.nix
+    ./packages/coding.nix
     ./packages/zsh.nix
     ./packages/misc.nix
   ];
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
 
   home = {
     username = "timo";
@@ -28,6 +20,7 @@
       VISUAL = "vim";
     };
   };
+    nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
 }

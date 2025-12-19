@@ -1,9 +1,0 @@
-[Unit]
-Description=Atuin socket activation
-
-[Socket]
-ListenStream=%h/.local/share/atuin/atuin.sock
-SocketMode=0700
-
-[Install]
-WantedBy=sockets.target

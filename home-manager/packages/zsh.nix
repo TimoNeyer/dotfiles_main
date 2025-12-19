@@ -5,5 +5,7 @@
         eza
         zoxide
         zsh
+        starship
+        bat
     ];
 }

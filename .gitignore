@@ -31,7 +31,6 @@ zsh/antidote.zsh
 tmux/plugins/
 !zed/
 !git/
-!systemd/
 !CONTRIBUTING
 !LICENSE
 !kitty

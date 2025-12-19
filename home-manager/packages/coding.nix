@@ -4,7 +4,10 @@
     neovim
     nerd-fonts.jetbrains-mono
     fd
+    fzf
+    git-lfs
     ripgrep
+    ripgrep-all
     lazygit
     lua5_1
     lua51Packages.jsregexp
@@ -12,6 +15,9 @@
     clang
     rustup
     zig
+    zls
     uv
+    claude-code
+    nodejs
   ];
 }
