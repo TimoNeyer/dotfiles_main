@@ -118,12 +118,13 @@ set splitbelow
       Plug 'nanotee/zoxide.vim'
       Plug 'octol/vim-cpp-enhanced-highlight'
       Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-      Plug 'ziglang/zig'
+      Plug 'ziglang/zig.vim'
       Plug 'LnL7/vim-nix'
       Plug 'rhysd/vim-llvm'
       Plug 'nordtheme/vim'
       Plug 'catppuccin/vim', { 'as': 'catppuccin' }
       Plug 'vim-airline/vim-airline'
+      Plug 'vim-airline/vim-airline-themes'
       Plug 'joshdick/onedark.vim'
     call plug#end()
 
@@ -149,7 +150,7 @@ set splitbelow
 
 
     " ALE
-    let g:ale_enabled = 0
+    let g:ale_enabled = 1
     let g:ale_sign_column_always = 1
     let g:ale_lint_on_text_changed = 'always'
     let g:ale_lint_on_insert_leave = 1
@@ -177,7 +178,7 @@ set splitbelow
     \   'python': ['autopep8', 'isort'],
     \   'c': ['clang-format'],
     \   'cpp': ['clang-format'],
-    \   'zig': ['zls']
+    \   'zig': ['zigfmt']
     \}
     let g:ale_statusline_format = ['E: %d', 'W: %d', 'Ok']
     let g:ale_set_highlights = 1
