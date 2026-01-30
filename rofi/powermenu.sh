@@ -17,15 +17,18 @@ suspend_="systemctl suspend -i"
 if [[ "$1" == "sway" ]]; then
   exit_="swaymsg exit"
   lock_="$HOME/.config/screenlock/wayland.sh"
+  lock_="gtklock"
 elif [[ "$1" == "hypr" ]]; then
   exit_="hyprctl dispatch exit"
   lock_="$HOME/.config/screenlock/wayland.sh"
+  lock_="gtklock"
 elif [[ "$1" == "i3" ]]; then
   exit_="i3-msg exit"
   lock_="$HOME/.config/screenlock/x.sh"
+  lock_="gtklock"
 elif [[ "$1" == "niri" ]]; then
   exit_="niri msg exit"
-  lock_="$HOME/.config/screenlock/wayland.sh"
+  lock_="gtklock"
 else
   echo "Failed to get exit function for powermenu! received $1" >>$LogFile
   exit 1
@@ -43,34 +46,34 @@ no='❌'
 
 # Rofi CMD
 rofi_cmd() {
-  rofi -dmenu \
+  fuzzel -dmenu \
     -p "Goodbye" \
-    -mesg "Uptime: $uptime" \
-    -theme $theme
+    #-mesg "Uptime: $uptime" \
+    #-theme $theme
 }
 
 # Confirmation CMD
 confirm_cmd() {
-  rofi -dmenu \
+  fuzzel -dmenu \
     -p 'Confirm' \
-    -mesg "${1:0:10}?" \
-    -theme $confirm
+    #-mesg "${1:0:10}?" \
+    #-theme $confirm
 }
 
 # Ask for confirmation
 confirm_exit() {
-  echo -e "$yes\n$no" | confirm_cmd $1
+  echo -e "yes\nno" | fuzzel -d
 }
 
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+  echo -e "lock\nsuspend\nlogout\nreboot\nshutdown" | fuzzel -d
 }
 
 # Execute Command
 run_cmd() {
   selected="$(confirm_exit $1)"
-  if [[ "$selected" == "$yes" ]]; then
+  if [[ "$selected" == "yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
       $poweroff
     elif [[ $1 == '--reboot' ]]; then
@@ -88,27 +91,27 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-$shutdown)
+"shutdown")
   if [[ "$(confirm_exit 'shutdown')" == "$yes" ]]; then
     /usr/bin/shutdown --now
   fi
   ;;
-$reboot)
+"reboot")
   if [[ "$(confirm_exit 'reboot')" == "$yes" ]]; then
     /usr/bin/reboot
   fi
   ;;
-$lock)
+"lock")
   $lock_
   ;;
-$suspend)
+"suspend")
   systemctl suspend
   "$lock_"
   ;;
-$logout)
+"logout")
   $exit_
   ;;
-$launcher)
+"launcher")
   ~/.config/rofi/launcher.sh
   ;;
 esac

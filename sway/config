@@ -3,14 +3,14 @@
 #
 
 # Basic keybinds
-set $mod1 Mod1
-set $mod2 Mod4
+set $mod2 Mod1
+set $mod1 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec alacritty -e zsh
+bindsym $mod1+Return exec kitty
 bindsym $mod1+q kill
-bindsym $mod1+Space exec ~/.config/sway/scripts/applauncher.sh
+bindsym $mod1+Space exec "~/.config/sway/scripts/applauncher.sh"
 bindsym $mod1+Shift+c reload
-bindsym $mod2+l exec ~/.config/sway/scripts/lock.sh
+bindsym $mod1+Escape exec gtklock
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
 bindsym $mod1+Shift+s exec ~/.config/sway/scripts/screenshot.sh
 bindsym $mod1+o exec ~/.config/sway/scripts/sway-select.sh
@@ -113,7 +113,7 @@ bindsym $mod1+Shift+0 move container to workspace $ws10
 include ~/.config/sway/modes/*.conf
 bindsym $mod1+r mode "resize"
 bindsym $mod1+Shift+x mode "jail"
-bindsym $mod1+Escape mode "normal"
+#bindsym $mod1+Escape mode "normal"
 
 # Inputs
 input type:keyboard {
