@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
+PS1="> "
+
 # safety inside this
 set -eo pipefail
-function __zsh_conf_bail() { echo "Error in zsh config";  sh}
-trap __zsh_conf_bail ERR
 
 source "$HOME/.config/zsh/options.zsh"
 
@@ -46,7 +46,7 @@ zi wait lucid for \
    zsh-users/zsh-completions \
   atload"!_zsh_autosuggest_start" \
    zsh-users/zsh-autosuggestions \
-   hlissner/zsh-autopair \
+  hlissner/zsh-autopair \
   aliases  \
   ajeetdsouza/zoxide
 
@@ -59,12 +59,12 @@ zi wait lucid for \
     atload'zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"' \
         trapd00r/LS_COLORS
 
-PS1=" "
 zi light-mode for \
-  from"gh-r" as"starship" \
-  atclone'./starship init zsh > zhook.zsh' atpull'%atclone' \
-  src="zhook.zsh" compile"zhook.zsh" nocompile"starship" \
-  starship/starship
+ from"gh-r" as"starship" \
+ atclone'./starship init zsh > zhook.zsh' atpull'%atclone' \
+ src="zhook.zsh" compile"zhook.zsh" nocompile"starship" \
+ aliases \
+ starship/starship
 
 zi wait lucid for \
   from"gh-r" as"atuin" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
@@ -74,7 +74,6 @@ zi wait lucid for \
 
 zi wait lucid for \
   as"settings" \
-  compile"{aliases,functions}.zsh" \
   TimoNeyer/zsh-settings
 
 
@@ -119,5 +118,3 @@ autoload -Uz add-zsh-hook
 zicompinit
 zi cdreplay -q
 set +eo pipefail
-trap ' ' ERR
-unset -f __zsh_conf_bail
