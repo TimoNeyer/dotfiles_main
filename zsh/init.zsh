@@ -8,7 +8,7 @@ set -eo pipefail
 source "$HOME/.config/zsh/options.zsh"
 
 # ===== ZI PLUGIN MANAGER =====
-source ${XDG_CONFIG_HOME:-${HOME}}/.config/zi/init.zsh && zzinit
+source ${XDG_CONFIG_HOME:-$HOME/.config}/zi/init.zsh && zzinit
 if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
   command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
