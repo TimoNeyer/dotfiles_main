@@ -1,2 +1,25 @@
-config-file = main.conf
 config-file = keybinds.conf
+theme = Nord
+
+font-family = "JetBrains Mono NF"
+
+cursor-opacity = 0.8
+
+
+window-decoration = client
+window-theme = ghostty
+window-subtitle = working-directory
+window-theme = auto
+window-inherit-working-directory = true
+window-step-resize = true
+focus-follows-mouse = true
+
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+
+#linux-cgroup = never
+
+gtk-titlebar = true
+gtk-tabs-location = top
+
+shell-integration-features = ssh-env,no-ssh-terminfo
