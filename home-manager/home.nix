@@ -9,6 +9,7 @@
     ./packages/coding.nix
     ./packages/zsh.nix
     ./packages/misc.nix
+    ./editors/vim.nix
   ];
 
   home = {

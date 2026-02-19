@@ -1,9 +1,33 @@
+{ config, pkgs, ... }:
+
+{
+  programs.vim = {
+    enable = true;
+
+    plugins = with pkgs.vimPlugins; [
+      #supertab
+      nerdtree
+      ale
+      vim-gitgutter
+      fzf-vim
+      zoxide-vim
+      lightline-vim
+      vim-lightline-coc
+      onedark-vim
+      nord-vim
+      tender-vim
+      coc-vimlsp
+      coc-clangd
+      coc-rust-analyzer
+    ];
+    extraConfig = ''
 " VARIABLES ------------------------------------------------------------ {{{
+
+let g:mapleader = "\<Space>"
 
 " Fix some terminal related stuff
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-source ~/.vim/autoload/plug.vim
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
@@ -105,48 +129,28 @@ set splitbelow
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
-    call plug#begin('~/.vim/plugged')
-      Plug 'ervandew/supertab'
-      Plug 'preservim/nerdtree'
-      Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-      Plug 'w0rp/ale'
-      Plug 'jiangmiao/auto-pairs'
-      Plug 'preservim/nerdcommenter'
-      Plug 'airblade/vim-gitgutter'
-      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-      Plug 'junegunn/fzf.vim'
-      Plug 'nanotee/zoxide.vim'
-      Plug 'octol/vim-cpp-enhanced-highlight'
-      Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-      Plug 'ziglang/zig.vim'
-      Plug 'LnL7/vim-nix'
-      Plug 'rhysd/vim-llvm'
-      Plug 'nordtheme/vim'
-      Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-      Plug 'vim-airline/vim-airline'
-      Plug 'vim-airline/vim-airline-themes'
-      Plug 'joshdick/onedark.vim'
-    call plug#end()
-
     let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
     let g:mkdp_auto_start = 0
     let g:mkdp_auto_close = 1
 
-    let g:airline#extensions#tabline#enabled = 1
-    if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-    endif
-    let g:airline#extensions#ale#enabled = 1
-    let g:airline#extensions#whitespace = 1
+    let g:lightline = { 'colorscheme': 'tender' }
 
-    let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
-    let g:airline_section_x = '%{&filetype}'
-    let g:airline_section_y = '%{&fileencoding?&fileencoding:&encoding}'
-    let g:airline_section_z = '%l:%c %3p%%'
-    let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-    let g:airline_theme = 'onedark'
-
+    let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment']
+    \ }
 
 
     " ALE
@@ -157,7 +161,7 @@ set splitbelow
     let g:ale_list_window_size = 5
     let g:ale_lint_on_save = 1
     let g:ale_fix_on_save = 1
-    let g:ale_completion_enable = 1
+    let g:ale_completion_enabled = 1
     let g:ale_cpp_cc_executable = 'clang++'
     let cpp_options = '-std=c++17 -Wall -Wextra -pedantic'
     let g:ale_cpp_cc_options    = cpp_options
@@ -234,6 +238,7 @@ set splitbelow
     nnoremap <F4> :MarkdownPreviewToggle<cr>
     " fzf
     nnoremap <c-o> :FZF<cr>
+    nnoremap <leader><Space> :GFiles .<cr>
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -273,4 +278,12 @@ set splitbelow
 " }}}}}}
 
 " Colorscheme:
-       colorscheme onedark
+       colorscheme tender
+    '';
+  };
+
+  home.packages = with pkgs; [
+    fzf
+    zoxide
+  ];
+}
