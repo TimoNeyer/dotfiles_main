@@ -6,7 +6,7 @@
 set $mod2 Mod1
 set $mod1 Mod4
 floating_modifier $mod1
-bindsym $mod1+Return exec kitty
+bindsym $mod1+Return exec /usr/local/bin/ghostty
 bindsym $mod1+q kill
 bindsym $mod1+Space exec "~/.config/sway/scripts/applauncher.sh"
 bindsym $mod1+Shift+c reload
@@ -14,8 +14,8 @@ bindsym $mod1+Escape exec gtklock
 bindsym $mod1+y exec "~/.config/rofi/powermenu.sh sway"
 bindsym $mod1+Shift+s exec ~/.config/sway/scripts/screenshot.sh
 bindsym $mod1+o exec ~/.config/sway/scripts/sway-select.sh
-bindsym $mod1+m exec "~/.config/sway/scripts/sway-marker.sh mark"
-bindsym $mod1+g exec "~/.config/sway/scripts/sway-marker.sh go"
+bindsym $mod1+m exec "bash ~/.config/sway/scripts/sway-marker.sh mark"
+bindsym $mod1+g exec "bash ~/.config/sway/scripts/sway-marker.sh go"
 bindsym $mod1+c exec clipman pick -t wofi -T"-d -i -E -M fuzzy -s $HOME/.config/wofi/sway-select/style.css -p Clipbard"
 bindsym $mod1+b exec "bash ~/.config/sway/scripts/bitwarden.sh"
 
@@ -33,6 +33,10 @@ focus_on_window_activation urgent
 focus_wrapping force
 focus_follows_mouse yes
 font JetBrains Mono:bold 10
+
+# gestures
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
 
 # focus switching
 bindsym $mod1+j focus down
@@ -135,8 +139,8 @@ input type:touchpad {
 
 # enviroment
 exec nm-applet
-#exec --no-startup-id swayidle -w  timeout 1800 'hyprlock'  timeout 1805 'swaymsg "output * power off"'  resume 'swaymsg "output * power on"'
-#exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
+exec --no-startup-id swayidle -w  timeout 1800 'gtklock'  timeout 1805 'swaymsg "output * power off"'  resume 'swaymsg "output * power on"'
+exec wlsunset -T 6500 -t 2000 -S 6:30 -s 19:00
 exec "/usr/libexec/polkit-gnome-authentication-agent-1"
 exec dunst --startup_notification "Notification daemon started successfully" --config ~/.config/dunst/dunstrc
 exec wl-paste -t text --watch clipman store --notify --no-persist

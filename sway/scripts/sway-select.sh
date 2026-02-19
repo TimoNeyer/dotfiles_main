@@ -11,7 +11,7 @@ swaymsg --raw -t get_tree |
       )
       | "[\(.app_id)] \(.name):\(.id)"' |
   tr -d '"' |
-  wofi -d -i -E -M fuzzy -s ~/.config/wofi/sway-select/style.css -p "Select Window" |
+  fuzzel -d -p "Window: " |
   cut -f2 -d: |
   (
     read id

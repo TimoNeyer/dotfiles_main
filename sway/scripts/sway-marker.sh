@@ -6,11 +6,11 @@ set -o pipefail
 if [[ "$1" = "mark" ]]; then
   swaymsg --raw -t get_marks |
     jq -r '.[]' |
-    wofi -s ~/.config/wofi/themes/nord.css -d -p Set Marker |
+    fuzzel -d -p "Mark: " |
     xargs swaymsg mark
 elif [[ "$1" = "go" ]]; then
   swaymsg --raw -t get_marks |
     jq -r '.[]' |
-    wofi -s ~/.config/wofi/themes/nord.css -d -p Set Marker |
+    fuzzel -d -p "Go: " |
     xargs -I % swaymsg "[con_mark=%]" focus
 fi
