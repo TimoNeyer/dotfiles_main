@@ -34,7 +34,13 @@ return {
       servers = {
         pyright = {},
         clangd = {},
-        yamlls = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              format = false,
+            },
+          },
+        },
         jsonls = {},
         zls = {},
       },
@@ -98,5 +104,9 @@ return {
   {
     "numToStr/Comment.nvim",
     opts = {},
+  },
+  {
+    "noice.nvim",
+    enabled = false,
   },
 }

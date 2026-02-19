@@ -19,9 +19,9 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
-    { import = "lazyvim.plugins.extras.editor.illuminate" },
+    --{ import = "lazyvim.plugins.extras.editor.illuminate" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
-    { import = "lazyvim.plugins.extras.ui.edgy" },
+    --{ import = "lazyvim.plugins.extras.ui.edgy" },
     -- import/override with your plugins, only valid after LazyVim internal stuff
     { import = "plugins" },
   },
@@ -55,4 +55,4 @@ require("lazy").setup({
   },
 })
 -- Set the colorscheme after plugins load
-vim.cmd([[colorscheme catppuccin-frappe]])
+vim.cmd([[colorscheme everforest]])

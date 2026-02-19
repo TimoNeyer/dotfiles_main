@@ -8,19 +8,6 @@ return {
     end,
   },
   {
-    "gbprod/nord.nvim",
-    lazy = false,
-    priority = 1000,
-    setup = function()
-      require("nord").setup({
-        on_colors = function(colors)
-          colors.polar_night.brighter = "#000000"
-        end,
-      })
-      --vim.cmd.colorscheme("nord")
-    end,
-  },
-  {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -40,26 +27,7 @@ return {
       },
     },
   },
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    priority = 1000,
-    setup = function()
-      require("catppuccin").setup()
-      vim.cmd.colorscheme("catppuccin-frappe")
-    end,
-  },
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  {
-    "nvzone/floaterm",
-    dependencies = "nvzone/volt",
-    opts = {
-      terminals = {
-        { name = "Scratch" },
-        { name = "1" },
-      },
-    },
-    cmd = "FloatermToggle",
-  },
+  { "junegunn/fzf.vim", dependencies = "junegunn/fzf", lazy = false },
+  { "sainnhe/everforest", lazy = false },
 }
