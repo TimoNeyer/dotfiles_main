@@ -67,7 +67,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "lock\nsuspend\nlogout\nreboot\nshutdown" | fuzzel -d
+  echo -e "lock\nsuspend\nhibernate\nlogout\nreboot\nshutdown" | fuzzel -d
 }
 
 # Execute Command
@@ -107,6 +107,9 @@ case ${chosen} in
 "suspend")
   systemctl suspend
   "$lock_"
+  ;;
+"hibernate")
+   systemctl hibernate
   ;;
 "logout")
   $exit_
