@@ -5,7 +5,7 @@
     enable = true;
 
     plugins = with pkgs.vimPlugins; [
-      #supertab
+      supertab
       nerdtree
       ale
       vim-gitgutter
@@ -13,8 +13,8 @@
       zoxide-vim
       lightline-vim
       vim-lightline-coc
-      onedark-vim
-      nord-vim
+      gruvbox-community
+      lightline-gruvbox-vim
       tender-vim
       coc-vimlsp
       coc-clangd
@@ -134,7 +134,7 @@ set splitbelow
     let g:mkdp_auto_start = 0
     let g:mkdp_auto_close = 1
 
-    let g:lightline = { 'colorscheme': 'tender' }
+    let g:lightline = { 'colorscheme': 'jellybean' }
 
     let g:fzf_colors = {
     \ 'fg':      ['fg', 'Normal'],
@@ -278,7 +278,7 @@ set splitbelow
 " }}}}}}
 
 " Colorscheme:
-       colorscheme tender
+       colorscheme gruvbox
     '';
   };
 
