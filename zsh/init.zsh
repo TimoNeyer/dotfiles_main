@@ -32,9 +32,6 @@ zi wait lucid for \
 zi cdclear -q
 
 ZVM_VI_ESCAPE_BINDKEY=jj zi light-mode for \
-  z-shell/z-a-meta-plugins \
-    @annexes \
-    @ext-git \
   depth=1 \
   jeffreytse/zsh-vi-mode
 
