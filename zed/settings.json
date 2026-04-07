@@ -7,15 +7,23 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "agent": {
+        "default_model": {
+            "provider": "copilot_chat",
+            "model": "gpt-5.2"
+        },
+        "favorite_models": [],
+        "model_parameters": []
+    },
     "confirm_quit": true,
     "agent_buffer_font_size": 16.0,
     "agent_ui_font_size": 20.0,
     "ui_font_family": ".ZedMono",
     "buffer_font_weight": 420.0,
     "code_actions_on_format": {
-        "source.organizeImports": true
+        "source.organizeImports": true,
     },
-    "disable_ai": true,
+    "disable_ai": false,
     "vim_mode": true,
     "vim": {
         "default_mode": "normal",
@@ -23,24 +31,24 @@
         "use_smartcase_find": true,
         "toggle_relative_line_numbers": true,
         "highlight_on_yank_duration": 50,
-        "custom_digraphs": {}
+        "custom_digraphs": {},
     },
     "base_keymap": "VSCode",
     "ui_font_size": 17.0,
     "buffer_font_size": 17.0,
     "theme": {
         "mode": "dark",
-        "dark": "Catppuccin Frappé",
-        "light": "Nord Light"
+        "dark": "Ayu Mirage",
+        "light": "Ayu Light",
     },
     "telemetry": {
         "diagnostics": false,
-        "metrics": false
+        "metrics": false,
     },
     "completions": {
         "lsp": true,
         "lsp_fetch_timeout_ms": 0,
-        "words": "fallback"
+        "words": "fallback",
     },
     "format_on_save": "on",
     "autosave": "on_focus_change",
@@ -48,13 +56,13 @@
         "include_warnings": true,
         "lsp_pull_diagnostics": {
             "enabled": true,
-            "debounce_ms": 50
+            "debounce_ms": 50,
         },
         "inline": {
             "enabled": true,
             "update_debounce_ms": 0,
-            "max_severity": "error"
-        }
+            "max_severity": "error",
+        },
     },
     "lsp": {
         "rust-analyzer": {
@@ -64,11 +72,11 @@
                     "maxLength": null,
                     "lifetimeElisionHints": {
                         "enable": "skip_trivial",
-                        "useParameterNames": true
+                        "useParameterNames": true,
                     },
                     "closureReturnTypeHints": {
-                        "enable": "always"
-                    }
+                        "enable": "always",
+                    },
                 },
                 "completion": {
                     "snippets": {
@@ -77,83 +85,83 @@
                                 "postfix": "arc",
                                 "body": ["Arc::new(${receiver})"],
                                 "requires": "std::sync::Arc",
-                                "scope": "expr"
+                                "scope": "expr",
                             },
                             "Some": {
                                 "postfix": "some",
                                 "body": ["Some(${receiver})"],
-                                "scope": "expr"
+                                "scope": "expr",
                             },
                             "Ok": {
                                 "postfix": "ok",
                                 "body": ["Ok(${receiver})"],
-                                "scope": "expr"
+                                "scope": "expr",
                             },
                             "Rc::new": {
                                 "postfix": "rc",
                                 "body": ["Rc::new(${receiver})"],
                                 "requires": "std::rc::Rc",
-                                "scope": "expr"
+                                "scope": "expr",
                             },
                             "Box::pin": {
                                 "postfix": "boxpin",
                                 "body": ["Box::pin(${receiver})"],
                                 "requires": "std::boxed::Box",
-                                "scope": "expr"
+                                "scope": "expr",
                             },
                             "vec!": {
                                 "postfix": "vec",
                                 "body": ["vec![${receiver}]"],
                                 "description": "vec![]",
-                                "scope": "expr"
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                                "scope": "expr",
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
     "tab_size": 4,
     "tabs": {
         "git_status": true,
-        "show_diagnostics": "all"
+        "show_diagnostics": "all",
     },
     "languages": {
         "Python": {
             "tab_size": 4,
             "formatter": "language_server",
-            "preferred_line_length": 100
+            "preferred_line_length": 100,
         },
         "Markdown": {
-            "format_on_save": "off"
+            "format_on_save": "off",
         },
         "Rust": {
             "formatter": "language_server",
             "tab_size": 2,
             "format_on_save": "on",
             "show_completion_documentation": true,
-            "show_completions_on_input": true
-        }
+            "show_completions_on_input": true,
+        },
     },
     "project_panel": {
         "button": true,
-        "dock": "left"
+        "dock": "left",
     },
     "collaboration_panel": {
-        "dock": "right"
+        "dock": "right",
     },
     // Move some unnecessary panels to the right
     "notification_panel": {
-        "dock": "right"
+        "dock": "right",
     },
     "outline_panel": {
-        "dock": "right"
+        "dock": "right",
     },
     "git_panel": {
-        "dock": "right"
+        "dock": "right",
     },
     "redact_private_values": true,
     "terminal": {
-        "font_family": "JetBrains Mono NL"
-    }
+        "font_family": ".ZedMono",
+    },
 }
