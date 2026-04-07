@@ -1,5 +1,5 @@
 config-file = keybinds.conf
-theme = Nord
+theme = Gruvbox Dark
 
 font-family = "JetBrains Mono NF"
 

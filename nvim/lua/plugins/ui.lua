@@ -30,4 +30,5 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "junegunn/fzf.vim", dependencies = "junegunn/fzf", lazy = false },
   { "sainnhe/everforest", lazy = false },
+  { "ellisonleao/gruvbox.nvim", lazy = false},
 }
